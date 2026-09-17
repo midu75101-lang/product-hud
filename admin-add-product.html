@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Add Product - Product HUD</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      padding: 30px;
+      margin: 0;
+    }
+
+    .box {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+
+    textarea {
+      height: 110px;
+      resize: vertical;
+    }
+
+    .status-box {
+      margin-top: 20px;
+    }
+
+    .status-box > label:first-child {
+      font-weight: bold;
+    }
+
+    .status-option {
+      font-weight: normal;
+      margin-top: 10px;
+    }
+
+    .status-option input {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    .button-area {
+      margin-top: 25px;
+    }
+
+    button {
+      padding: 12px 22px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .back-btn {
+      background: #64748b;
+      margin-right: 10px;
+    }
+
+    .back-btn:hover {
+      background: #475569;
+    }
+
+    .save-btn {
+      background: #16a34a;
+    }
+
+    .save-btn:hover {
+      background: #15803d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <h1>➕ Add Product</h1>
+
+    <!-- Product Name -->
+    <label>Product Name</label>
+    <input
+      id="productName"
+      type="text"
+      placeholder="Enter product name"
+    >
+
+    <!-- SKU -->
+    <label>SKU</label>
+    <input
+      id="sku"
+      type="text"
+      placeholder="Enter SKU"
+    >
+
+    <!-- Price -->
+    <label>Price</label>
+    <input
+      id="price"
+      type="number"
+      min="0"
+      placeholder="Enter price"
+    >
+
+    <!-- Discount -->
+    <label>Discount (%)</label>
+    <input
+      id="discount"
+      type="number"
+      min="0"
+      max="100"
+      placeholder="Enter discount"
+    >
+
+    <!-- Estimated Profit -->
+    <label>Estimated Profit</label>
+    <input
+      id="profit"
+      type="text"
+      placeholder="Example: ₹150 - ₹250"
+    >
+
+    <!-- Stock -->
+    <label>Stock</label>
+    <input
+      id="stock"
+      type="number"
+      min="0"
+      placeholder="Enter stock quantity"
+    >
+
+    <!-- Category -->
+    <label>Category</label>
+    <select id="category">
+      <option value="Home & Kitchen">Home & Kitchen</option>
+      <option value="Gadgets">Gadgets</option>
+      <option value="Wood Products">Wood Products</option>
+      <option value="Trending">Trending</option>
+    </select>
+
+    <!-- Rating -->
+    <label>Rating</label>
+    <input
+      id="rating"
+      type="number"
+      step="0.1"
+      min="0"
+      max="5"
+      placeholder="Example: 4.8"
+    >
+
+    <!-- Description -->
+    <label>Description</label>
+    <textarea
+      id="description"
+      placeholder="Enter product description"
+    ></textarea>
+
+    <!-- Product Image -->
+    <label>Product Image</label>
+    <input
+      id="productImage"
+      type="file"
+      accept="image/*"
+    >
+
+    <!-- Gallery -->
+    <label>Gallery Images</label>
+    <input
+      id="galleryImages"
+      type="file"
+      accept="image/*"
+      multiple
+    >
+
+    <!-- Product Status -->
+    <div class="status-box">
+
+      <label>Product Status</label>
+
+      <label class="status-option">
+        <input type="checkbox" id="trending">
+        🔥 Trending
+      </label>
+
+      <label class="status-option">
+        <input type="checkbox" id="hot">
+        🔥 Hot
+      </label>
+
+      <label class="status-option">
+        <input type="checkbox" id="newest">
+        🆕 Newest
+      </label>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-area">
+
+      <button
+        type="button"
+        class="back-btn"
+        onclick="window.location.href='admin-products.html'"
+      >
+        ← Products
+      </button>
+
+      <button
+        type="button"
+        class="save-btn"
+        id="saveProductBtn"
+      >
+        💾 Save Product
+      </button>
+
+    </div>
+
+  </div>
+
+
+<script>
+
+document
+  .getElementById("saveProductBtn")
+  .addEventListener("click", function () {
+
+    /* =========================
+       GET FORM VALUES
+    ========================= */
+
+    const name =
+      document.getElementById("productName").value.trim();
+
+    const sku =
+      document.getElementById("sku").value.trim();
+
+    const price =
+      document.getElementById("price").value;
+
+    const discount =
+      document.getElementById("discount").value;
+
+    const profit =
+      document.getElementById("profit").value.trim();
+
+    const stock =
+      document.getElementById("stock").value;
+
+    const category =
+      document.getElementById("category").value;
+
+    const rating =
+      document.getElementById("rating").value;
+
+    const description =
+      document.getElementById("description").value.trim();
+
+
+    /* =========================
+       PRODUCT NAME REQUIRED
+    ========================= */
+
+    if (!name) {
+      alert("Please enter product name.");
+      return;
+    }
+
+
+    /* =========================
+       CREATE PRODUCT
+    ========================= */
+
+    const product = {
+
+      id: Date.now(),
+
+      name: name,
+
+      sku: sku,
+
+      price: price,
+
+      discount: discount,
+
+      profit: profit,
+
+      stock: stock,
+
+      category: category,
+
+      rating: rating,
+
+      description: description,
+
+      image: "",
+
+      gallery: [],
+
+      trending:
+        document.getElementById("trending").checked,
+
+      hot:
+        document.getElementById("hot").checked,
+
+      newest:
+        document.getElementById("newest").checked
+    };
+
+
+    /* =========================
+       GET IMAGES
+    ========================= */
+
+    const imageFile =
+      document.getElementById("productImage").files[0];
+
+    const galleryFiles =
+      document.getElementById("galleryImages").files;
+
+
+    let completed = 0;
+
+    const totalFiles =
+      (imageFile ? 1 : 0) + galleryFiles.length;
+
+
+    /* =========================
+       FINAL SAVE
+    ========================= */
+
+    function finishSave() {
+
+      let products =
+        JSON.parse(
+          localStorage.getItem("adminProducts")
+        ) || [];
+
+
+      /*
+        IMPORTANT:
+        OLD PRODUCTS ARE KEPT.
+        NEW PRODUCT IS ADDED.
+      */
+
+      products.push(product);
+
+
+      localStorage.setItem(
+        "adminProducts",
+        JSON.stringify(products)
+      );
+
+
+      /*
+        Keep latest product separately
+        for existing customer-page system.
+      */
+
+      localStorage.setItem(
+        "adminProduct",
+        JSON.stringify(product)
+      );
+
+
+      alert("Product added successfully!");
+
+
+      window.location.href =
+        "admin-products.html";
+    }
+
+
+    /* =========================
+       NO IMAGE SELECTED
+    ========================= */
+
+    if (totalFiles === 0) {
+
+      finishSave();
+
+      return;
+    }
+
+
+    /* =========================
+       MAIN PRODUCT IMAGE
+    ========================= */
+
+    if (imageFile) {
+
+      const reader =
+        new FileReader();
+
+      reader.onload = function () {
+
+        product.image =
+          reader.result;
+
+        completed++;
+
+        if (completed === totalFiles) {
+          finishSave();
+        }
+      };
+
+      reader.readAsDataURL(imageFile);
+    }
+
+
+    /* =========================
+       GALLERY IMAGES
+    ========================= */
+
+    for (
+      let i = 0;
+      i < galleryFiles.length;
+      i++
+    ) {
+
+      const reader =
+        new FileReader();
+
+      reader.onload = function () {
+
+        product.gallery.push(
+          reader.result
+        );
+
+        completed++;
+
+        if (completed === totalFiles) {
+          finishSave();
+        }
+      };
+
+      reader.readAsDataURL(
+        galleryFiles[i]
+      );
+    }
+
+  });
+
+</script>
+
+</body>
+</html>

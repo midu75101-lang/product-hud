@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - Product HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="cart-page">
+    <h1>✓ Order Confirmed!</h1>
+
+    <p>Your order has been placed successfully.</p>
+
+    <p>Thank you for shopping with Product HUD.</p>
+<div id="confirmedProduct"></div>
+    <a href="index.html" class="login-btn">Continue Shopping</a>
+  </main>
+<script>
+  const confirmedProduct = document.getElementById("confirmedProduct");
+  const cartProduct = JSON.parse(localStorage.getItem("cartProduct"));
+
+  if (cartProduct) {
+    confirmedProduct.innerHTML = `
+      <div class="saved-product-card">
+        <img src="${cartProduct.image}" alt="${cartProduct.name}" style="width: 200px;">
+        <h2>${cartProduct.name}</h2>
+        <p><strong>Price:</strong> ${cartProduct.price}</p>
+        <p><strong>Status:</strong> Order Confirmed</p>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>

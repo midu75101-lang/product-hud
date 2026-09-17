@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Product HUD</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background: #111827;
+      color: white;
+      padding: 25px 15px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .logo span {
+      color: #3b82f6;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 13px 15px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: #2563eb;
+      color: white;
+    }
+
+    .main {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      color: #111827;
+    }
+
+    .store-btn {
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+    }
+
+    .welcome {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .welcome h2 {
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      color: #6b7280;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      color: #6b7280;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .card strong {
+      font-size: 30px;
+      color: #111827;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        display: block;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <aside class="sidebar">
+
+    <div class="logo">
+      Product <span>HUD</span>
+    </div>
+
+    <a href="#" class="active">🏠 Dashboard</a>
+    <a href="admin-products.html">📦 Products</a>
+  <a href="admin-categories.html">📁 Categories</a>
+   <a href="admin-orders.html">🛒 Orders</a>
+  <a href="admin-whatsapp.html">📱 Connect WhatsApp</a>
+
+  </aside>
+
+  <main class="main">
+
+    <div class="header">
+      <h1>Admin Dashboard</h1>
+      <a href="index.html" class="store-btn">View Store</a>
+    </div>
+
+    <div class="welcome">
+      <h2>Welcome back, Admin 👋</h2>
+      <p>Manage your Product HUD store from here.</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Total Products</h3>
+        <strong>0</strong>
+      </div>
+
+      <div class="card">
+        <h3>Total Orders</h3>
+        <strong>0</strong>
+      </div>
+
+      <div class="card">
+        <h3>Customers</h3>
+        <strong>0</strong>
+      </div>
+
+      <div class="card">
+        <h3>Categories</h3>
+        <strong>0</strong>
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>

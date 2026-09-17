@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - Product HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="logo">Product <span>HUD</span></div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html">Products</a>
+      <a href="index.html">Categories</a>
+      <a href="index.html">About</a>
+    </nav>
+
+    <a href="login.html" class="login-btn">Login</a>
+  </header>
+
+  <main class="product-details-page">
+
+  <div class="product-details-image">
+    <img id="mainProductImage" src="" alt="Product Image">
+
+    <div id="productGallery" class="product-gallery"></div>
+</div>
+    <div class="product-details-content">
+
+      <span class="product-badge">TRENDING</span>
+
+   <h1 id="productNameDisplay">Premium Kitchen Organizer</h1>
+
+<p id="productPriceDisplay" class="product-price">₹299</p>
+
+     <p id="productDescriptionDisplay" class="product-description">
+  A premium kitchen organizer designed to keep your kitchen
+  clean, organized and easy to manage.
+</p>
+
+      <div class="product-info">
+    <p><strong>Category:</strong> <span id="productCategoryDisplay">Home & Kitchen</span></p>
+  <p><strong>Rating:</strong> <span id="productRatingDisplay">4.8</span> / 5</p>
+  <p><strong>Discount:</strong> <span id="productDiscountDisplay">0</span>%</p>
+  <p><strong>Estimated Profit:</strong> <span id="productProfitDisplay">Not set</span></p>
+        <p><strong>Profit Potential:</strong> Good</p>
+      </div>
+
+      <button class="login-btn">
+        Start Selling
+      </button>
+
+    </div>
+
+  </main>
+<script>
+const savedProduct = JSON.parse(localStorage.getItem("adminProduct"));
+
+if (savedProduct) {
+
+  // Product Details
+  document.getElementById("productNameDisplay").textContent =
+    savedProduct.name || "Product Name";
+
+  document.getElementById("productPriceDisplay").textContent =
+    savedProduct.price ? "₹" + savedProduct.price : "₹0";
+
+  document.getElementById("productDescriptionDisplay").textContent =
+    savedProduct.description || "No description available.";
+
+  document.getElementById("productCategoryDisplay").textContent =
+    savedProduct.category || "Not set";
+
+  document.getElementById("productRatingDisplay").textContent =
+    savedProduct.rating || "0";
+
+  document.getElementById("productDiscountDisplay").textContent =
+    savedProduct.discount || "0";
+
+  document.getElementById("productProfitDisplay").textContent =
+    savedProduct.profit || "Not set";
+
+
+  // Main Product Image
+  const mainImage = document.getElementById("mainProductImage");
+  const gallery = document.getElementById("productGallery");
+
+  if (savedProduct.image) {
+    mainImage.src = savedProduct.image;
+  }
+
+
+  // Gallery Images
+  if (savedProduct.gallery && savedProduct.gallery.length > 0) {
+
+    savedProduct.gallery.forEach(function (image) {
+
+      const img = document.createElement("img");
+
+      img.src = image;
+      img.alt = "Product Gallery";
+
+      img.style.width = "100px";
+      img.style.height = "100px";
+      img.style.objectFit = "cover";
+      img.style.margin = "8px";
+      img.style.cursor = "pointer";
+      img.style.borderRadius = "8px";
+
+      img.addEventListener("click", function () {
+        mainImage.src = image;
+      });
+
+      gallery.appendChild(img);
+
+    });
+  }
+}
+</script>
+</body>
+</html>

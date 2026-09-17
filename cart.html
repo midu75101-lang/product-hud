@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Product HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="cart-page">
+    <h1>Shopping Cart</h1>
+
+    <div id="cartItems">
+      <p>Your cart is empty.</p>
+    </div>
+    <script>
+  const cartItems = document.getElementById("cartItems");
+  const cartProduct = JSON.parse(localStorage.getItem("cartProduct"));
+
+  if (cartProduct) {
+    cartItems.innerHTML = `
+      <div class="saved-product-card">
+        <img src="${cartProduct.image}" alt="${cartProduct.name}" style="width: 200px;">
+        <h2>${cartProduct.name}</h2>
+        <p>${cartProduct.price}</p>
+        <button id="removeCartBtn">Remove from Cart</button>
+        <button id="orderNowBtn">Order Now</button>
+      </div>
+    `;
+  }
+  const removeCartBtn = document.getElementById("removeCartBtn");
+
+if (removeCartBtn) {
+  removeCartBtn.addEventListener("click", function () {
+    localStorage.removeItem("cartProduct");
+    location.reload();
+  });
+}
+const orderNowBtn = document.getElementById("orderNowBtn");
+
+if (orderNowBtn) {
+  orderNowBtn.addEventListener("click", function () {
+    window.location.href = "order.html";
+  });
+}
+</script>
+
+  </main>
+
+</body>
+</html>

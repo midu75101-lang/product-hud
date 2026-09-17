@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - Product HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      Product <span>HUD</span>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#categories">Categories</a>
+      <a href="saved-products.html">Saved Products</a>
+      <a href="#">About</a>
+    </nav>
+
+    <a href="login.html" class="login-btn">Login</a>
+  </header>
+
+
+  <main class="product-details-page">
+
+    <div class="product-details-card">
+
+      <div class="product-image">
+       <img id="mainProductImage" src="" alt="Product Image">
+        <div id="productGallery" class="product-gallery"></div>
+      </div>
+
+      <div class="product-info">
+
+        <span class="product-badge">TRENDING PRODUCT</span>
+<h1 id="productNameDisplay">Wireless Smart Watch</h1>
+
+       <div class="product-rating">
+  ⭐⭐⭐⭐⭐ <span id="productRatingDisplay">4.8 / 5</span>
+</div>
+
+        <p id="productDescriptionDisplay" class="product-description">
+  Discover this stylish and practical wireless smart watch,
+  Perfect for fitness, daily activities and modern lifestyles.
+</p>
+
+      <div id="productPriceDisplay" class="product-price">
+  $29.99
+</div>
+<div class="product-discount">
+  🏷️ Discount: <span id="productDiscountDisplay">0%</span>
+</div>
+
+      <div id="productProfitDisplay" class="product-profit">
+  💰 Estimated Profit: $15 - $25
+</div>
+        <div class="product-actions">
+       <button id="saveProductBtn" class="save-btn">
+    ♡ Save Product
+<button id="addToCartBtn" class="cart-btn">
+  🛒 Add to Cart
+</button>
+<a href="cart.html" class="cart-link">View Cart</a>
+  <a href="order.html" class="cart-link">🛍️ Order Now</a>       
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+    <p>© 2026 Product HUD. All rights reserved.</p>
+  </footer>
+<script src="script.js"></script>
+<script>
+const savedProduct = JSON.parse(localStorage.getItem("adminProduct"));
+
+if (savedProduct) {
+
+  // Product Name
+  const name = document.getElementById("productNameDisplay");
+  if (name) name.textContent = savedProduct.name || "Product";
+
+  // Price
+  const price = document.getElementById("productPriceDisplay");
+  if (price) price.textContent = savedProduct.price
+    ? "₹" + savedProduct.price
+    : "₹0";
+
+  // Description
+  const description = document.getElementById("productDescriptionDisplay");
+  if (description) description.textContent =
+    savedProduct.description || "No description available.";
+
+  // Rating
+  const rating = document.getElementById("productRatingDisplay");
+  if (rating) rating.textContent =
+    (savedProduct.rating || "0") + " / 5";
+
+  // Discount
+  const discount = document.getElementById("productDiscountDisplay");
+  if (discount) discount.textContent =
+    (savedProduct.discount || "0") + "%";
+
+  // Estimated Profit
+  const profit = document.getElementById("productProfitDisplay");
+  if (profit) profit.textContent =
+    "💰 Estimated Profit: " + (savedProduct.profit || "Not set");
+
+  // Product Image
+  const gallery = document.getElementById("productGallery");
+
+if (gallery && savedProduct.gallery) {  gallery.innerHTML = "";
+
+savedProduct.gallery.forEach(function (image) { 
+   const img = document.createElement("img");
+
+    img.src = image;
+    img.alt = "Product Gallery";
+
+    img.style.width = "90px";
+    img.style.height = "90px";
+    img.style.objectFit = "cover";
+    img.style.margin = "8px";
+    img.style.borderRadius = "8px";
+
+    gallery.appendChild(img);
+  });
+}
+ const mainImage = document.getElementById("mainProductImage");
+
+if (mainImage && savedProduct.image) {
+    mainImage.src = savedProduct.image;
+}s
+
+ if (mainImage && savedProduct.image) {
+    mainImage.src = savedProduct.image;
+}
+
+
+  // Order Now
+  const productOrderBtn =
+    document.querySelector(".product-actions .cart-link:last-child");
+
+  if (productOrderBtn) {
+    productOrderBtn.addEventListener("click", function () {
+
+      const product = {
+        name: savedProduct.name || "Product",
+        price: savedProduct.price
+          ? "₹" + savedProduct.price
+          : "₹0",
+        image: savedProduct.image || "",
+        description: savedProduct.description || "",
+        rating: savedProduct.rating || "",
+        discount: savedProduct.discount || "",
+        profit: savedProduct.profit || ""
+      };
+
+      localStorage.setItem(
+        "cartProduct",
+        JSON.stringify(product)
+      );
+    });
+  }
+}
+</script>
+</body>
+</html>

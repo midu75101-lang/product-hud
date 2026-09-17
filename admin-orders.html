@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders - Product HUD</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      font-size: 24px;
+    }
+
+    .back-btn {
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .orders-container {
+      display: grid;
+      gap: 20px;
+    }
+
+    .order-card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .order-card h2 {
+      color: #111827;
+      margin-bottom: 15px;
+    }
+
+    .product-box {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      padding: 15px;
+      background: #f9fafb;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-box img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-box h3 {
+      color: #111827;
+      margin-bottom: 7px;
+    }
+
+    .customer-info {
+      color: #4b5563;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .status {
+      display: inline-block;
+      background: #f59e0b;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      background: #16a34a;
+      color: white;
+      text-decoration: none;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .whatsapp-btn:hover {
+      background: #15803d;
+    }
+
+    .empty {
+      background: white;
+      padding: 50px;
+      text-align: center;
+      border-radius: 14px;
+      color: #6b7280;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        padding: 18px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      .product-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>🛒 Orders</h1>
+    <a href="admin.html" class="back-btn">← Dashboard</a>
+  </header>
+
+  <main class="container">
+
+    <div id="ordersContainer" class="orders-container"></div>
+
+  </main>
+
+  <script>
+
+    function displayOrders() {
+
+      const container =
+        document.getElementById("ordersContainer");
+
+      const orders =
+        JSON.parse(
+          localStorage.getItem("myOrders")
+        ) || [];
+
+      container.innerHTML = "";
+
+      if (orders.length === 0) {
+
+        container.innerHTML = `
+          <div class="empty">
+            <h2>📭 No Orders Yet</h2>
+            <p>Customer orders will appear here.</p>
+          </div>
+        `;
+
+        return;
+      }
+
+      orders.forEach(function(order, index) {
+
+        const product = order.product || {};
+        const customer = order.customer || {};
+
+        const card =
+          document.createElement("div");
+
+        card.className = "order-card";
+
+        card.innerHTML = `
+
+          <h2>Order #${index + 1}</h2>
+
+          <div class="product-box">
+
+            <img
+              src="${product.image || ""}"
+              alt="Product"
+            >
+
+            <div>
+
+              <h3>
+                ${product.name || "Product"}
+              </h3>
+
+              <p>
+                Price:
+                ${product.price || "₹0"}
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="customer-info">
+
+            <strong>Customer Details</strong><br>
+
+            Name:
+            ${customer.name || "Not provided"}<br>
+
+            Phone:
+            ${customer.phone || "Not provided"}<br>
+
+            Address:
+            ${customer.address || "Not provided"}<br>
+
+            City:
+            ${customer.city || "Not provided"}<br>
+
+            PIN:
+            ${customer.pin || "Not provided"}
+
+          </div>
+
+          <span class="status">
+            ${order.status || "New Order"}
+          </span>
+
+          <br>
+
+          <button
+            class="whatsapp-btn"
+            onclick="sendWhatsApp(${index})"
+          >
+            📱 Send WhatsApp
+          </button>
+
+        `;
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+
+    function sendWhatsApp(index) {
+
+      const orders =
+        JSON.parse(
+          localStorage.getItem("myOrders")
+        ) || [];
+
+      const order = orders[index];
+
+      if (!order) {
+        alert("Order not found.");
+        return;
+      }
+
+      const whatsappNumber =
+        localStorage.getItem("whatsappNumber");
+
+      if (!whatsappNumber) {
+        alert(
+          "Please save your WhatsApp number first."
+        );
+        return;
+      }
+
+      const product =
+        order.product || {};
+
+      const customer =
+        order.customer || {};
+
+      const message =
+`New Product HUD Order
+
+Order: #${index + 1}
+
+Product: ${product.name || "Product"}
+Price: ${product.price || "₹0"}
+
+Customer Name: ${customer.name || "Not provided"}
+Phone: ${customer.phone || "Not provided"}
+
+Address:
+${customer.address || "Not provided"}
+${customer.city || ""}
+PIN: ${customer.pin || "Not provided"}`;
+
+      const url =
+        "https://wa.me/" +
+        whatsappNumber.replace(/\D/g, "") +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(url, "_blank");
+
+    }
+
+
+    displayOrders();
+
+  </script>
+
+</body>
+</html>s

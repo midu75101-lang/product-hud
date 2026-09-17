@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Now - Product HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="cart-page">
+    <h1>Order Now</h1>
+
+    <div id="orderProduct">
+      <p>Loading product...</p>
+    </div>
+<script>
+  const orderProduct = document.getElementById("orderProduct");
+  const cartProduct = JSON.parse(localStorage.getItem("cartProduct"));
+
+  if (cartProduct) {
+    orderProduct.innerHTML = `
+      <div class="saved-product-card">
+        <img src="${cartProduct.image}" alt="${cartProduct.name}" style="width: 200px;">
+        <h2>${cartProduct.name}</h2>
+        <p>${cartProduct.price}</p>
+        <h3>Delivery Details</h3>
+        <input type="text" placeholder="Full Name">required>
+<input type="text" placeholder="Phone Number">required>
+<input type="text" placeholder="Delivery Address">required>
+<input type="text" placeholder="City">required>
+<input type="text" placeholder="PIN Code">required>
+<h3>Payment Method</h3>
+
+<label>
+  <input type="radio" name="payment" value="cod" checked>
+  Cash on Delivery
+</label>
+
+<label>
+  <input type="radio" name="payment" value="online">
+  Online Payment
+</label>
+        <input type="text" placeholder="Full Name">
+        <input type="text" placeholder="Phone Number">
+        <input type="text" placeholder="Delivery Address">
+        <h3>Order Summary</h3>
+
+<p><strong>Product:</strong> <span id="summaryProduct"></span></p>
+<p><strong>Price:</strong> <span id="summaryPrice"></span></p>
+<p><strong>Delivery:</strong> Free</p>
+<hr>
+<p><strong>Total:</strong> <span id="summaryTotal"></span></p>
+        <button id="placeOrderBtn">Place Order</button>
+      </div>
+    `;
+  } else {
+    document.getElementById("summaryProduct").textContent = cartProduct.name;
+document.getElementById("summaryPrice").textContent = cartProduct.price;
+document.getElementById("summaryTotal").textContent = cartProduct.price;
+    orderProduct.innerHTML = "<p>No product selected.</p>";
+  }
+const placeOrderBtn = document.getElementById("placeOrderBtn");
+
+if (placeOrderBtn) {
+  placeOrderBtn.addEventListener("click", function () {
+      const inputs = orderProduct.querySelectorAll("input[type='text']");
+
+  const name = inputs[0].value.trim();
+  const phone = inputs[1].value.trim();
+  const address = inputs[2].value.trim();
+  const city = inputs[3].value.trim();
+  const pin = inputs[4].value.trim();
+
+  if (!name || !phone || !address || !city || !pin) {
+    alert("Please fill in all delivery details.");
+    return;
+  }
+
+ const newOrder = {
+  id: Date.now(),
+  product: cartProduct,
+  customer: {
+    name: name,
+    phone: phone,
+    address: address,
+    city: city,
+    pin: pin
+  },
+  status: "New Order",
+  date: new Date().toLocaleString()
+};
+
+localStorage.setItem(
+  "myOrder",
+  JSON.stringify(newOrder)
+);
+
+let myOrders =
+  JSON.parse(
+    localStorage.getItem("myOrders")
+  ) || [];
+
+myOrders.push(newOrder);
+
+localStorage.setItem(
+  "myOrders",
+  JSON.stringify(myOrders)
+);
+
+alert("Order placed successfully!");
+window.location.href = "order-success.html";
+  });
+}
+  
+</script>
+</script>
+  </main>
+
+</body>
+</html>

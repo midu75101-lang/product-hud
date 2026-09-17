@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders - Product HUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="cart-page">
+    <h1>My Orders</h1>
+
+    <div id="ordersList">
+      <p>No orders yet.</p>
+    </div>
+  </main>
+<script>
+  const ordersList = document.getElementById("ordersList");
+  const myOrder = JSON.parse(localStorage.getItem("myOrder"));
+
+  if (myOrder) {
+    ordersList.innerHTML = `
+      <div class="saved-product-card">
+        <img src="${myOrder.product.image}" alt="${myOrder.product.name}" style="width: 200px;">
+        <h2>${myOrder.product.name}</h2>
+        <p><strong>Price:</strong> ${myOrder.product.price}</p>
+
+        <p><strong>Customer:</strong> ${myOrder.customer.name}</p>
+        <p><strong>Phone:</strong> ${myOrder.customer.phone}</p>
+        <p><strong>Address:</strong> ${myOrder.customer.address}</p>
+        <p><strong>City:</strong> ${myOrder.customer.city}</p>
+        <p><strong>PIN:</strong> ${myOrder.customer.pin}</p>
+
+        <p><strong>Status:</strong> Order Confirmed</p>
+      </div>
+    `;
+  }
+</script>
+</body>
+</html>

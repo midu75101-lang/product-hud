@@ -106,18 +106,63 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
 <script>
-const adminProducts =
-  JSON.parse(localStorage.getItem("adminProducts")) || [];
+async function loadProductsFromSupabase() {
 
-const productGrid =
-  document.getElementById("dynamicProductGrid");
+  const productGrid =
+    document.getElementById("dynamicProductGrid");
 
-if (productGrid) {
+  if (!productGrid) return;
 
   productGrid.innerHTML = "";
 
-  adminProducts.forEach((product) => {
+  const { data, error } =
+    await supabaseClient
+      .from("products")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Supabase error:", error);
+
+    // Fallback to existing local products
+    const localProducts =
+      JSON.parse(localStorage.getItem("adminProducts")) || [];
+
+    renderProducts(localProducts);
+    return;
+  }
+
+  const products = data || [];
+
+  // Keep the products available locally for existing features
+  localStorage.setItem(
+    "adminProducts",
+    JSON.stringify(
+      products.map(product => ({
+        ...product,
+        image: product.image_url || "",
+        gallery: product.gallery_urls || ""
+      }))
+    )
+  );
+
+  renderProducts(products);
+}
+
+
+function renderProducts(products) {
+
+  const productGrid =
+    document.getElementById("dynamicProductGrid");
+
+  if (!productGrid) return;
+
+  productGrid.innerHTML = "";
+
+  products.forEach((product) => {
 
     const productCard =
       document.createElement("div");
@@ -126,7 +171,10 @@ if (productGrid) {
 
     productCard.innerHTML = `
       <div class="product-image">
-        <img src="${product.image || ""}" alt="${product.name || "Product"}">
+        <img
+          src="${product.image_url || product.image || ""}"
+          alt="${product.name || "Product"}"
+        >
       </div>
 
       <div class="product-info">
@@ -147,8 +195,11 @@ if (productGrid) {
           ⭐ ${product.rating || "0"} / 5
         </p>
 
-        <a href="product-details.html"
-           class="view-btn">
+        <a
+          href="product-details.html"
+          class="view-btn"
+          onclick='localStorage.setItem("adminProduct", ${JSON.stringify(product).replace(/'/g, "\\'")})'
+        >
           View Product
         </a>
 
@@ -156,9 +207,11 @@ if (productGrid) {
     `;
 
     productGrid.appendChild(productCard);
-
   });
 }
+
+
+loadProductsFromSupabase();
 </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>

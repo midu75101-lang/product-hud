@@ -115,6 +115,18 @@
       background: #15803d;
     }
   </style>
+  <script>
+(async function () {
+
+  const { data: { session } } =
+    await supabaseClient.auth.getSession();
+
+  if (!session) {
+    window.location.href = "login.html";
+  }
+
+})();
+</script>
 </head>
 
 <body>

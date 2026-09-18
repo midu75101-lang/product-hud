@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+<script>
+(async function () {
+
+  const { data: { session } } =
+    await supabaseClient.auth.getSession();
+
+  if (!session) {
+    window.location.href = "login.html";
+  }
+
+})();
+</script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

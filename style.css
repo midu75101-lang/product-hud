@@ -861,3 +861,23 @@ footer p {
         max-width: 100%;
     }
 }
+/* Mobile Navbar Fix */
+@media (max-width: 768px) {
+  nav {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  .navbar {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+}

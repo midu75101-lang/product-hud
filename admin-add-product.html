@@ -387,59 +387,66 @@ document
     /* =========================
        FINAL SAVE
     ========================= */
+async function finishSave() {
 
-    function finishSave() {
+  // Save to Supabase
+  const { data, error } = await supabaseClient
+    .from("products")
+    .insert([
+      {
+        name: product.name,
+        sku: product.sku,
+        price: product.price,
+        discount: product.discount,
+        profit: product.profit,
+        stock: product.stock,
+        category: product.category,
+        rating: product.rating,
+        description: product.description,
+        image_url: product.image || "",
+        trending: product.trending,
+        hot: product.hot,
+        newest: product.newest,
+        gallery_urls: JSON.stringify(product.gallery || []),
+        product_details: product.description || ""
+      }
+    ])
+    .select();
 
-      let products =
-        JSON.parse(
-          localStorage.getItem("adminProducts")
-        ) || [];
+  if (error) {
+    console.error("Supabase insert error:", error);
 
+    alert(
+      "Product could not be saved to database.\n\n" +
+      error.message
+    );
 
-      /*
-        IMPORTANT:
-        OLD PRODUCTS ARE KEPT.
-        NEW PRODUCT IS ADDED.
-      */
+    return;
+  }
 
-      products.push(product);
+  // Keep existing local system working
+  let products =
+    JSON.parse(
+      localStorage.getItem("adminProducts")
+    ) || [];
 
+  products.push(product);
 
-      localStorage.setItem(
-        "adminProducts",
-        JSON.stringify(products)
-      );
+  localStorage.setItem(
+    "adminProducts",
+    JSON.stringify(products)
+  );
 
+  localStorage.setItem(
+    "adminProduct",
+    JSON.stringify(product)
+  );
 
-      /*
-        Keep latest product separately
-        for existing customer-page system.
-      */
+  alert("Product added successfully!");
 
-      localStorage.setItem(
-        "adminProduct",
-        JSON.stringify(product)
-      );
-
-
-      alert("Product added successfully!");
-
-
-      window.location.href =
-        "admin-products.html";
-    }
-
-
-    /* =========================
-       NO IMAGE SELECTED
-    ========================= */
-
-    if (totalFiles === 0) {
-
-      finishSave();
-
-      return;
-    }
+  window.location.href =
+    "admin-products.html";
+}
 
 
     /* =========================

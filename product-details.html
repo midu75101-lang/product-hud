@@ -2,24 +2,15 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Product Details - Product HUD</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-
 
 <header class="navbar">
 
@@ -27,51 +18,27 @@
     Product <span>HUD</span>
   </div>
 
-
   <nav>
-
-    <a href="index.html">
-      Home
-    </a>
-
-    <a href="index.html#products">
-      Products
-    </a>
-
-    <a href="index.html#categories">
-      Categories
-    </a>
-
-    <a href="saved.html">
-      Saved Products
-    </a>
-
-    <a href="index.html#about">
-      About
-    </a>
-
+    <a href="index.html">Home</a>
+    <a href="index.html#products">Products</a>
+    <a href="index.html#categories">Categories</a>
+    <a href="saved.html">Saved Products</a>
+    <a href="index.html#about">About</a>
   </nav>
 
-
-  <a
-    href="login.html"
-    class="login-btn">
+  <a href="login.html" class="login-btn">
     Login
   </a>
 
 </header>
 
 
-
 <main class="product-details-page">
-
 
   <div class="product-details-card">
 
 
-    <!-- =========================
-         PRODUCT IMAGE
-    ========================== -->
+    <!-- PRODUCT IMAGE -->
 
     <div class="product-image">
 
@@ -79,7 +46,6 @@
         id="mainProductImage"
         src=""
         alt="Product Image">
-
 
       <div
         id="productGallery"
@@ -89,23 +55,17 @@
     </div>
 
 
-
-    <!-- =========================
-         PRODUCT INFORMATION
-    ========================== -->
+    <!-- PRODUCT INFORMATION -->
 
     <div class="product-info">
 
-
-      <!-- STATUS -->
-
-      <div id="productStatusDisplay">
+      <div id="productBadges">
 
         <span
           id="trendingBadge"
           class="product-badge"
           style="display:none;">
-          TRENDING
+          🔥 TRENDING
         </span>
 
         <span
@@ -119,135 +79,85 @@
           id="newestBadge"
           class="product-badge"
           style="display:none;">
-          NEW PRODUCT
+          🆕 NEW
         </span>
 
       </div>
 
-
-
-      <!-- NAME -->
 
       <h1 id="productNameDisplay">
         Product
       </h1>
 
 
-
-      <!-- RATING -->
-
       <div class="product-rating">
-
         ⭐⭐⭐⭐⭐
-
         <span id="productRatingDisplay">
           0 / 5
         </span>
-
       </div>
 
-
-
-      <!-- DESCRIPTION -->
 
       <p
         id="productDescriptionDisplay"
         class="product-description">
-
         No description available.
-
       </p>
 
 
-
-      <!-- CATEGORY -->
-
       <p>
-
-        <strong>
-          Category:
-        </strong>
-
+        <strong>Category:</strong>
         <span id="productCategoryDisplay">
           Not set
         </span>
-
       </p>
 
 
-
-      <!-- SKU -->
-
       <p>
-
-        <strong>
-          SKU:
-        </strong>
-
+        <strong>SKU:</strong>
         <span id="productSkuDisplay">
           Not set
         </span>
-
       </p>
 
-
-
-      <!-- PRICE -->
 
       <div
         id="productPriceDisplay"
         class="product-price">
-
         ₹0
-
       </div>
 
 
-
-      <!-- DISCOUNT -->
-
       <div class="product-discount">
-
         🏷️ Discount:
-
         <span id="productDiscountDisplay">
           0%
         </span>
-
       </div>
 
-
-
-      <!-- PROFIT -->
 
       <div
         id="productProfitDisplay"
         class="product-profit">
-
-        💰 Estimated Profit:
-        Not set
-
+        💰 Estimated Profit: Not set
       </div>
 
 
-
-      <!-- STOCK -->
-
       <p>
-
-        <strong>
-          Stock:
-        </strong>
-
+        <strong>Stock:</strong>
         <span id="productStockDisplay">
           Not set
         </span>
-
       </p>
 
 
+      <p>
+        <strong>Profit Potential:</strong>
+        <span id="productPotentialDisplay">
+          Not set
+        </span>
+      </p>
 
-      <!-- PRODUCT DETAILS -->
 
       <div
         id="productDetailsSection"
@@ -264,28 +174,11 @@
       </div>
 
 
+      <!-- ACTION BUTTONS -->
 
-      <!-- PROFIT POTENTIAL -->
-
-      <p>
-
-        <strong>
-          Profit Potential:
-        </strong>
-
-        <span id="productPotentialDisplay">
-          Not set
-        </span>
-
-      </p>
-
-
-
-      <!-- =========================
-           ACTION BUTTONS
-      ========================== -->
-
-      <div class="product-actions">
+      <div
+        class="product-actions"
+        style="display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;">
 
 
         <button
@@ -298,7 +191,6 @@
         </button>
 
 
-
         <button
           id="addToCartBtn"
           class="cart-btn"
@@ -309,15 +201,13 @@
         </button>
 
 
-
         <a
           href="cart.html"
           class="cart-link">
 
-          View Cart
+          🛒 View Cart
 
         </a>
-
 
 
         <a
@@ -329,18 +219,13 @@
 
         </a>
 
-
       </div>
-
 
     </div>
 
-
   </div>
 
-
 </main>
-
 
 
 <footer>
@@ -356,23 +241,26 @@
 <script>
 
 
-// ==================================================
+// ==========================================
 // GET SELECTED PRODUCT
-// ==================================================
+// ==========================================
 
-const savedProduct =
+const product =
   JSON.parse(
     localStorage.getItem("adminProduct")
   );
 
 
+if (!product) {
 
-if (savedProduct) {
+  console.warn("No product selected.");
+
+} else {
 
 
-  // ==================================================
-  // NAME
-  // ==================================================
+  // ==========================================
+  // PRODUCT NAME
+  // ==========================================
 
   const name =
     document.getElementById(
@@ -380,18 +268,15 @@ if (savedProduct) {
     );
 
   if (name) {
-
     name.textContent =
-      savedProduct.name ||
-      "Product";
-
+      product.name || "Product";
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // DESCRIPTION
-  // ==================================================
+  // ==========================================
 
   const description =
     document.getElementById(
@@ -399,18 +284,16 @@ if (savedProduct) {
     );
 
   if (description) {
-
     description.textContent =
-      savedProduct.description ||
+      product.description ||
       "No description available.";
-
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // CATEGORY
-  // ==================================================
+  // ==========================================
 
   const category =
     document.getElementById(
@@ -418,18 +301,15 @@ if (savedProduct) {
     );
 
   if (category) {
-
     category.textContent =
-      savedProduct.category ||
-      "Not set";
-
+      product.category || "Not set";
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // SKU
-  // ==================================================
+  // ==========================================
 
   const sku =
     document.getElementById(
@@ -437,18 +317,15 @@ if (savedProduct) {
     );
 
   if (sku) {
-
     sku.textContent =
-      savedProduct.sku ||
-      "Not set";
-
+      product.sku || "Not set";
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // PRICE
-  // ==================================================
+  // ==========================================
 
   const price =
     document.getElementById(
@@ -457,29 +334,21 @@ if (savedProduct) {
 
   if (price) {
 
-    if (
-      savedProduct.price !== undefined &&
-      savedProduct.price !== null &&
-      savedProduct.price !== ""
-    ) {
-
-      price.textContent =
-        "₹" + savedProduct.price;
-
-    } else {
-
-      price.textContent =
-        "₹0";
-
-    }
+    price.textContent =
+      "₹" +
+      (
+        product.price !== undefined
+          ? product.price
+          : "0"
+      );
 
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // RATING
-  // ==================================================
+  // ==========================================
 
   const rating =
     document.getElementById(
@@ -489,16 +358,16 @@ if (savedProduct) {
   if (rating) {
 
     rating.textContent =
-      (savedProduct.rating || "0") +
+      (product.rating || "0") +
       " / 5";
 
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // DISCOUNT
-  // ==================================================
+  // ==========================================
 
   const discount =
     document.getElementById(
@@ -508,16 +377,16 @@ if (savedProduct) {
   if (discount) {
 
     discount.textContent =
-      (savedProduct.discount || "0") +
+      (product.discount || "0") +
       "%";
 
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // PROFIT
-  // ==================================================
+  // ==========================================
 
   const profit =
     document.getElementById(
@@ -529,8 +398,8 @@ if (savedProduct) {
     profit.textContent =
       "💰 Estimated Profit: " +
       (
-        savedProduct.profit ||
-        savedProduct.estimatedProfit ||
+        product.profit ||
+        product.estimatedProfit ||
         "Not set"
       );
 
@@ -538,9 +407,9 @@ if (savedProduct) {
 
 
 
-  // ==================================================
+  // ==========================================
   // STOCK
-  // ==================================================
+  // ==========================================
 
   const stock =
     document.getElementById(
@@ -549,53 +418,39 @@ if (savedProduct) {
 
   if (stock) {
 
-    if (
-      savedProduct.stock !== undefined &&
-      savedProduct.stock !== null &&
-      savedProduct.stock !== ""
-    ) {
-
-      stock.textContent =
-        savedProduct.stock;
-
-    } else {
-
-      stock.textContent =
-        "Not set";
-
-    }
+    stock.textContent =
+      product.stock !== undefined &&
+      product.stock !== ""
+        ? product.stock
+        : "Not set";
 
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // PRODUCT DETAILS
-  // ==================================================
+  // ==========================================
 
-  const productDetails =
+  const details =
     document.getElementById(
       "productDetailsDisplay"
     );
 
-  const details =
-    savedProduct.product_details ||
-    savedProduct.productDetails ||
-    "";
+  if (details) {
 
-  if (productDetails) {
-
-    productDetails.textContent =
-      details ||
+    details.textContent =
+      product.product_details ||
+      product.productDetails ||
       "No additional details available.";
 
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // PROFIT POTENTIAL
-  // ==================================================
+  // ==========================================
 
   const potential =
     document.getElementById(
@@ -604,16 +459,11 @@ if (savedProduct) {
 
   if (potential) {
 
-    let profitValue =
-      parseFloat(
-        savedProduct.profit
-      );
+    const profitValue =
+      parseFloat(product.profit);
 
-    let priceValue =
-      parseFloat(
-        savedProduct.price
-      );
-
+    const priceValue =
+      parseFloat(product.price);
 
     if (
       !isNaN(profitValue) &&
@@ -622,31 +472,25 @@ if (savedProduct) {
     ) {
 
       const percentage =
-        (profitValue / priceValue) *
-        100;
-
+        (profitValue / priceValue) * 100;
 
       if (percentage >= 30) {
 
-        potential.textContent =
-          "High";
+        potential.textContent = "High";
 
       } else if (percentage >= 15) {
 
-        potential.textContent =
-          "Good";
+        potential.textContent = "Good";
 
       } else {
 
-        potential.textContent =
-          "Low";
+        potential.textContent = "Low";
 
       }
 
     } else {
 
-      potential.textContent =
-        "Not set";
+      potential.textContent = "Not set";
 
     }
 
@@ -654,63 +498,59 @@ if (savedProduct) {
 
 
 
-  // ==================================================
+  // ==========================================
   // TRENDING / HOT / NEWEST
-  // ==================================================
+  // ==========================================
 
-  const trending =
-    document.getElementById(
-      "trendingBadge"
-    );
+  if (product.trending === true) {
 
-  const hot =
-    document.getElementById(
-      "hotBadge"
-    );
+    const badge =
+      document.getElementById(
+        "trendingBadge"
+      );
 
-  const newest =
-    document.getElementById(
-      "newestBadge"
-    );
-
-
-  if (
-    trending &&
-    savedProduct.trending === true
-  ) {
-
-    trending.style.display =
-      "inline-block";
+    if (badge) {
+      badge.style.display =
+        "inline-block";
+    }
 
   }
 
 
-  if (
-    hot &&
-    savedProduct.hot === true
-  ) {
+  if (product.hot === true) {
 
-    hot.style.display =
-      "inline-block";
+    const badge =
+      document.getElementById(
+        "hotBadge"
+      );
+
+    if (badge) {
+      badge.style.display =
+        "inline-block";
+    }
 
   }
 
 
-  if (
-    newest &&
-    savedProduct.newest === true
-  ) {
+  if (product.newest === true) {
 
-    newest.style.display =
-      "inline-block";
+    const badge =
+      document.getElementById(
+        "newestBadge"
+      );
+
+    if (badge) {
+      badge.style.display =
+        "inline-block";
+    }
 
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // MAIN IMAGE
-  // ==================================================
+  // ==========================================
 
   const mainImage =
     document.getElementById(
@@ -718,27 +558,24 @@ if (savedProduct) {
     );
 
 
-  const mainImageUrl =
-    savedProduct.image_url ||
-    savedProduct.image ||
+  const imageUrl =
+    product.image_url ||
+    product.image ||
     "";
 
 
-  if (
-    mainImage &&
-    mainImageUrl
-  ) {
+  if (mainImage && imageUrl) {
 
     mainImage.src =
-      mainImageUrl;
+      imageUrl;
 
   }
 
 
 
-  // ==================================================
+  // ==========================================
   // GALLERY
-  // ==================================================
+  // ==========================================
 
   const gallery =
     document.getElementById(
@@ -747,101 +584,81 @@ if (savedProduct) {
 
 
   let galleryImages =
-    savedProduct.gallery_urls ||
-    savedProduct.gallery ||
+    product.gallery_urls ||
+    product.gallery ||
     [];
 
 
-  if (
-    typeof galleryImages ===
-    "string"
-  ) {
+  if (typeof galleryImages === "string") {
 
-    if (
-      galleryImages.trim() !== ""
-    ) {
-
-      galleryImages =
-        galleryImages
-          .split(",")
-          .map(
-            image =>
-              image.trim()
-          )
-          .filter(
-            image =>
-              image !== ""
-          );
-
-    } else {
-
-      galleryImages = [];
-
-    }
+    galleryImages =
+      galleryImages
+        .split(",")
+        .map(
+          item => item.trim()
+        )
+        .filter(
+          item => item !== ""
+        );
 
   }
 
 
   if (
     gallery &&
-    Array.isArray(
-      galleryImages
-    )
+    Array.isArray(galleryImages)
   ) {
 
     gallery.innerHTML = "";
 
 
     galleryImages.forEach(
-      function(image) {
+      function(imageUrl) {
+
+        const image =
+          document.createElement("img");
 
 
-        const img =
-          document.createElement(
-            "img"
-          );
+        image.src =
+          imageUrl;
 
 
-        img.src =
-          image;
-
-
-        img.alt =
+        image.alt =
           "Product Gallery";
 
 
-        img.style.width =
+        image.style.width =
           "90px";
 
 
-        img.style.height =
+        image.style.height =
           "90px";
 
 
-        img.style.objectFit =
+        image.style.objectFit =
           "cover";
 
 
-        img.style.margin =
+        image.style.margin =
           "8px";
 
 
-        img.style.cursor =
+        image.style.cursor =
           "pointer";
 
 
-        img.style.borderRadius =
+        image.style.borderRadius =
           "8px";
 
 
-        img.addEventListener(
+        image.addEventListener(
           "click",
           function() {
 
             if (mainImage) {
 
               mainImage.src =
-                image;
+                imageUrl;
 
             }
 
@@ -850,9 +667,8 @@ if (savedProduct) {
 
 
         gallery.appendChild(
-          img
+          image
         );
-
 
       }
     );
@@ -861,65 +677,59 @@ if (savedProduct) {
 
 
 
-  // ==================================================
-  // CART PRODUCT
-  // ==================================================
+  // ==========================================
+  // PRODUCT OBJECT FOR CART / SAVE / ORDER
+  // ==========================================
 
   const cartProduct = {
 
+    id:
+      product.id || Date.now(),
+
     name:
-      savedProduct.name ||
-      "Product",
+      product.name || "Product",
 
     price:
-      savedProduct.price ||
-      0,
+      product.price || 0,
 
     image:
-      savedProduct.image_url ||
-      savedProduct.image ||
+      product.image_url ||
+      product.image ||
       "",
 
     description:
-      savedProduct.description ||
-      "",
+      product.description || "",
 
     category:
-      savedProduct.category ||
-      "",
+      product.category || "",
 
     sku:
-      savedProduct.sku ||
-      "",
+      product.sku || "",
 
     rating:
-      savedProduct.rating ||
-      "",
+      product.rating || "",
 
     discount:
-      savedProduct.discount ||
-      "",
+      product.discount || "",
 
     profit:
-      savedProduct.profit ||
-      "",
+      product.profit || "",
 
     stock:
-      savedProduct.stock ||
-      "",
+      product.stock || "",
 
     product_details:
-      savedProduct.product_details ||
-      savedProduct.productDetails ||
+      product.product_details ||
+      product.productDetails ||
       ""
 
   };
 
 
 
-  // ==================================================
+  // ==========================================
   // ADD TO CART
-  // ==================================================
+  // ==========================================
 
   const addToCartBtn =
     document.getElementById(
@@ -933,7 +743,6 @@ if (savedProduct) {
       "click",
       function() {
 
-
         localStorage.setItem(
           "cartProduct",
           JSON.stringify(
@@ -946,7 +755,6 @@ if (savedProduct) {
           "Product added to cart!"
         );
 
-
       }
     );
 
@@ -954,9 +762,9 @@ if (savedProduct) {
 
 
 
-  // ==================================================
+  // ==========================================
   // ORDER NOW
-  // ==================================================
+  // ==========================================
 
   const orderNowBtn =
     document.getElementById(
@@ -970,14 +778,12 @@ if (savedProduct) {
       "click",
       function() {
 
-
         localStorage.setItem(
           "cartProduct",
           JSON.stringify(
             cartProduct
           )
         );
-
 
       }
     );
@@ -986,9 +792,9 @@ if (savedProduct) {
 
 
 
-  // ==================================================
+  // ==========================================
   // SAVE PRODUCT
-  // ==================================================
+  // ==========================================
 
   const saveProductBtn =
     document.getElementById(
@@ -1023,7 +829,6 @@ if (savedProduct) {
       "click",
       function() {
 
-
         localStorage.setItem(
           "savedProduct",
           JSON.stringify(
@@ -1040,28 +845,14 @@ if (savedProduct) {
           "Product saved!"
         );
 
-
       }
     );
 
   }
 
-
-} else {
-
-
-  // ==================================================
-  // NO PRODUCT
-  // ==================================================
-
-  console.warn(
-    "No product selected."
-  );
-
 }
 
 </script>
-
 
 </body>
 

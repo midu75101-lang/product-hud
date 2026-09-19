@@ -382,7 +382,14 @@ document
 
     const totalFiles =
       (imageFile ? 1 : 0) + galleryFiles.length;
+/* =========================
+   NO IMAGE SELECTED
+========================= */
 
+if (totalFiles === 0) {
+  finishSave();
+  return;
+}
 
     /* =========================
        FINAL SAVE

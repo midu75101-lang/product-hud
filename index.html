@@ -194,18 +194,30 @@ function renderProducts(products) {
         <p>
           ⭐ ${product.rating || "0"} / 5
         </p>
-
-        <a
-          href="product-details.html"
-          class="view-btn"
-          onclick='localStorage.setItem("adminProduct", ${JSON.stringify(product).replace(/'/g, "\\'")})'
-        >
-          View Product
-        </a>
-
+        
+<a
+  href="product-details.html"
+  class="view-btn"
+>
+  View Product
+</a>
       </div>
     `;
+const viewButton =
+  productCard.querySelector(".view-btn");
 
+viewButton.addEventListener("click", function(e) {
+
+  e.preventDefault();
+
+  localStorage.setItem(
+    "adminProduct",
+    JSON.stringify(product)
+  );
+
+  window.location.href =
+    "product-details.html";
+});
     productGrid.appendChild(productCard);
   });
 }

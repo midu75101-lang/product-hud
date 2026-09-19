@@ -1,179 +1,1068 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
   <title>Product Details - Product HUD</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link
+    rel="stylesheet"
+    href="style.css">
+
 </head>
+
 
 <body>
 
-  <header class="navbar">
-    <div class="logo">Product <span>HUD</span></div>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html">Products</a>
-      <a href="index.html">Categories</a>
-      <a href="index.html">About</a>
-    </nav>
+<header class="navbar">
 
-    <a href="login.html" class="login-btn">Login</a>
-  </header>
+  <div class="logo">
+    Product <span>HUD</span>
+  </div>
 
-  <main class="product-details-page">
 
-  <div class="product-details-image">
-    <img id="mainProductImage" src="" alt="Product Image">
+  <nav>
 
-    <div id="productGallery" class="product-gallery"></div>
-</div>
-    <div class="product-details-content">
+    <a href="index.html">
+      Home
+    </a>
 
-      <span class="product-badge">TRENDING</span>
+    <a href="index.html#products">
+      Products
+    </a>
 
-   <h1 id="productNameDisplay">Premium Kitchen Organizer</h1>
+    <a href="index.html#categories">
+      Categories
+    </a>
 
-<p id="productPriceDisplay" class="product-price">₹299</p>
+    <a href="saved.html">
+      Saved Products
+    </a>
 
-     <p id="productDescriptionDisplay" class="product-description">
-  A premium kitchen organizer designed to keep your kitchen
-  clean, organized and easy to manage.
-</p>
+    <a href="index.html#about">
+      About
+    </a>
 
-      <div class="product-info">
-    <p><strong>Category:</strong> <span id="productCategoryDisplay">Home & Kitchen</span></p>
-  <p><strong>Rating:</strong> <span id="productRatingDisplay">4.8</span> / 5</p>
-  <p><strong>Discount:</strong> <span id="productDiscountDisplay">0</span>%</p>
-  <p><strong>Estimated Profit:</strong> <span id="productProfitDisplay">Not set</span></p>
-        <p><strong>Profit Potential:</strong> Good</p>
+  </nav>
+
+
+  <a
+    href="login.html"
+    class="login-btn">
+    Login
+  </a>
+
+</header>
+
+
+
+<main class="product-details-page">
+
+
+  <div class="product-details-card">
+
+
+    <!-- =========================
+         PRODUCT IMAGE
+    ========================== -->
+
+    <div class="product-image">
+
+      <img
+        id="mainProductImage"
+        src=""
+        alt="Product Image">
+
+
+      <div
+        id="productGallery"
+        class="product-gallery">
       </div>
-
-      <button class="login-btn">
-        Start Selling
-      </button>
 
     </div>
 
-  </main>
+
+
+    <!-- =========================
+         PRODUCT INFORMATION
+    ========================== -->
+
+    <div class="product-info">
+
+
+      <!-- STATUS -->
+
+      <div id="productStatusDisplay">
+
+        <span
+          id="trendingBadge"
+          class="product-badge"
+          style="display:none;">
+          TRENDING
+        </span>
+
+        <span
+          id="hotBadge"
+          class="product-badge"
+          style="display:none;">
+          🔥 HOT
+        </span>
+
+        <span
+          id="newestBadge"
+          class="product-badge"
+          style="display:none;">
+          NEW PRODUCT
+        </span>
+
+      </div>
+
+
+
+      <!-- NAME -->
+
+      <h1 id="productNameDisplay">
+        Product
+      </h1>
+
+
+
+      <!-- RATING -->
+
+      <div class="product-rating">
+
+        ⭐⭐⭐⭐⭐
+
+        <span id="productRatingDisplay">
+          0 / 5
+        </span>
+
+      </div>
+
+
+
+      <!-- DESCRIPTION -->
+
+      <p
+        id="productDescriptionDisplay"
+        class="product-description">
+
+        No description available.
+
+      </p>
+
+
+
+      <!-- CATEGORY -->
+
+      <p>
+
+        <strong>
+          Category:
+        </strong>
+
+        <span id="productCategoryDisplay">
+          Not set
+        </span>
+
+      </p>
+
+
+
+      <!-- SKU -->
+
+      <p>
+
+        <strong>
+          SKU:
+        </strong>
+
+        <span id="productSkuDisplay">
+          Not set
+        </span>
+
+      </p>
+
+
+
+      <!-- PRICE -->
+
+      <div
+        id="productPriceDisplay"
+        class="product-price">
+
+        ₹0
+
+      </div>
+
+
+
+      <!-- DISCOUNT -->
+
+      <div class="product-discount">
+
+        🏷️ Discount:
+
+        <span id="productDiscountDisplay">
+          0%
+        </span>
+
+      </div>
+
+
+
+      <!-- PROFIT -->
+
+      <div
+        id="productProfitDisplay"
+        class="product-profit">
+
+        💰 Estimated Profit:
+        Not set
+
+      </div>
+
+
+
+      <!-- STOCK -->
+
+      <p>
+
+        <strong>
+          Stock:
+        </strong>
+
+        <span id="productStockDisplay">
+          Not set
+        </span>
+
+      </p>
+
+
+
+      <!-- PRODUCT DETAILS -->
+
+      <div
+        id="productDetailsSection"
+        style="margin-top:15px;">
+
+        <strong>
+          Product Details:
+        </strong>
+
+        <p id="productDetailsDisplay">
+          No additional details available.
+        </p>
+
+      </div>
+
+
+
+      <!-- PROFIT POTENTIAL -->
+
+      <p>
+
+        <strong>
+          Profit Potential:
+        </strong>
+
+        <span id="productPotentialDisplay">
+          Not set
+        </span>
+
+      </p>
+
+
+
+      <!-- =========================
+           ACTION BUTTONS
+      ========================== -->
+
+      <div class="product-actions">
+
+
+        <button
+          id="saveProductBtn"
+          class="save-btn"
+          type="button">
+
+          ♡ Save Product
+
+        </button>
+
+
+
+        <button
+          id="addToCartBtn"
+          class="cart-btn"
+          type="button">
+
+          🛒 Add to Cart
+
+        </button>
+
+
+
+        <a
+          href="cart.html"
+          class="cart-link">
+
+          View Cart
+
+        </a>
+
+
+
+        <a
+          href="order.html"
+          id="orderNowBtn"
+          class="cart-link">
+
+          🛍️ Order Now
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</main>
+
+
+
+<footer>
+
+  <p>
+    © 2026 Product HUD. All rights reserved.
+  </p>
+
+</footer>
+
+
+
 <script>
+
+
+// ==================================================
+// GET SELECTED PRODUCT
+// ==================================================
+
 const savedProduct =
-  JSON.parse(localStorage.getItem("adminProduct"));
+  JSON.parse(
+    localStorage.getItem("adminProduct")
+  );
+
+
 
 if (savedProduct) {
 
-  // Product Name
-  document.getElementById("productNameDisplay").textContent =
-    savedProduct.name || "Product Name";
 
-  // Price
-  document.getElementById("productPriceDisplay").textContent =
-    savedProduct.price !== undefined && savedProduct.price !== null
-      ? "₹" + savedProduct.price
-      : "₹0";
+  // ==================================================
+  // NAME
+  // ==================================================
 
-  // Description
-  document.getElementById("productDescriptionDisplay").textContent =
-    savedProduct.description || "No description available.";
+  const name =
+    document.getElementById(
+      "productNameDisplay"
+    );
 
-  // Category
-  document.getElementById("productCategoryDisplay").textContent =
-    savedProduct.category || "Not set";
+  if (name) {
 
-  // Rating
-  document.getElementById("productRatingDisplay").textContent =
-    savedProduct.rating !== undefined && savedProduct.rating !== null
-      ? savedProduct.rating
-      : "0";
+    name.textContent =
+      savedProduct.name ||
+      "Product";
 
-  // Discount
-  document.getElementById("productDiscountDisplay").textContent =
-    savedProduct.discount !== undefined &&
-    savedProduct.discount !== null &&
-    savedProduct.discount !== ""
-      ? savedProduct.discount
-      : "0";
-
-  // Estimated Profit
-  document.getElementById("productProfitDisplay").textContent =
-    savedProduct.profit ||
-    savedProduct.estimatedProfit ||
-    "Not set";
+  }
 
 
-  // =========================
-  // PRODUCT IMAGE
-  // =========================
+
+  // ==================================================
+  // DESCRIPTION
+  // ==================================================
+
+  const description =
+    document.getElementById(
+      "productDescriptionDisplay"
+    );
+
+  if (description) {
+
+    description.textContent =
+      savedProduct.description ||
+      "No description available.";
+
+  }
+
+
+
+  // ==================================================
+  // CATEGORY
+  // ==================================================
+
+  const category =
+    document.getElementById(
+      "productCategoryDisplay"
+    );
+
+  if (category) {
+
+    category.textContent =
+      savedProduct.category ||
+      "Not set";
+
+  }
+
+
+
+  // ==================================================
+  // SKU
+  // ==================================================
+
+  const sku =
+    document.getElementById(
+      "productSkuDisplay"
+    );
+
+  if (sku) {
+
+    sku.textContent =
+      savedProduct.sku ||
+      "Not set";
+
+  }
+
+
+
+  // ==================================================
+  // PRICE
+  // ==================================================
+
+  const price =
+    document.getElementById(
+      "productPriceDisplay"
+    );
+
+  if (price) {
+
+    if (
+      savedProduct.price !== undefined &&
+      savedProduct.price !== null &&
+      savedProduct.price !== ""
+    ) {
+
+      price.textContent =
+        "₹" + savedProduct.price;
+
+    } else {
+
+      price.textContent =
+        "₹0";
+
+    }
+
+  }
+
+
+
+  // ==================================================
+  // RATING
+  // ==================================================
+
+  const rating =
+    document.getElementById(
+      "productRatingDisplay"
+    );
+
+  if (rating) {
+
+    rating.textContent =
+      (savedProduct.rating || "0") +
+      " / 5";
+
+  }
+
+
+
+  // ==================================================
+  // DISCOUNT
+  // ==================================================
+
+  const discount =
+    document.getElementById(
+      "productDiscountDisplay"
+    );
+
+  if (discount) {
+
+    discount.textContent =
+      (savedProduct.discount || "0") +
+      "%";
+
+  }
+
+
+
+  // ==================================================
+  // PROFIT
+  // ==================================================
+
+  const profit =
+    document.getElementById(
+      "productProfitDisplay"
+    );
+
+  if (profit) {
+
+    profit.textContent =
+      "💰 Estimated Profit: " +
+      (
+        savedProduct.profit ||
+        savedProduct.estimatedProfit ||
+        "Not set"
+      );
+
+  }
+
+
+
+  // ==================================================
+  // STOCK
+  // ==================================================
+
+  const stock =
+    document.getElementById(
+      "productStockDisplay"
+    );
+
+  if (stock) {
+
+    if (
+      savedProduct.stock !== undefined &&
+      savedProduct.stock !== null &&
+      savedProduct.stock !== ""
+    ) {
+
+      stock.textContent =
+        savedProduct.stock;
+
+    } else {
+
+      stock.textContent =
+        "Not set";
+
+    }
+
+  }
+
+
+
+  // ==================================================
+  // PRODUCT DETAILS
+  // ==================================================
+
+  const productDetails =
+    document.getElementById(
+      "productDetailsDisplay"
+    );
+
+  const details =
+    savedProduct.product_details ||
+    savedProduct.productDetails ||
+    "";
+
+  if (productDetails) {
+
+    productDetails.textContent =
+      details ||
+      "No additional details available.";
+
+  }
+
+
+
+  // ==================================================
+  // PROFIT POTENTIAL
+  // ==================================================
+
+  const potential =
+    document.getElementById(
+      "productPotentialDisplay"
+    );
+
+  if (potential) {
+
+    let profitValue =
+      parseFloat(
+        savedProduct.profit
+      );
+
+    let priceValue =
+      parseFloat(
+        savedProduct.price
+      );
+
+
+    if (
+      !isNaN(profitValue) &&
+      !isNaN(priceValue) &&
+      priceValue > 0
+    ) {
+
+      const percentage =
+        (profitValue / priceValue) *
+        100;
+
+
+      if (percentage >= 30) {
+
+        potential.textContent =
+          "High";
+
+      } else if (percentage >= 15) {
+
+        potential.textContent =
+          "Good";
+
+      } else {
+
+        potential.textContent =
+          "Low";
+
+      }
+
+    } else {
+
+      potential.textContent =
+        "Not set";
+
+    }
+
+  }
+
+
+
+  // ==================================================
+  // TRENDING / HOT / NEWEST
+  // ==================================================
+
+  const trending =
+    document.getElementById(
+      "trendingBadge"
+    );
+
+  const hot =
+    document.getElementById(
+      "hotBadge"
+    );
+
+  const newest =
+    document.getElementById(
+      "newestBadge"
+    );
+
+
+  if (
+    trending &&
+    savedProduct.trending === true
+  ) {
+
+    trending.style.display =
+      "inline-block";
+
+  }
+
+
+  if (
+    hot &&
+    savedProduct.hot === true
+  ) {
+
+    hot.style.display =
+      "inline-block";
+
+  }
+
+
+  if (
+    newest &&
+    savedProduct.newest === true
+  ) {
+
+    newest.style.display =
+      "inline-block";
+
+  }
+
+
+
+  // ==================================================
+  // MAIN IMAGE
+  // ==================================================
 
   const mainImage =
-    document.getElementById("mainProductImage");
+    document.getElementById(
+      "mainProductImage"
+    );
 
-  const gallery =
-    document.getElementById("productGallery");
 
   const mainImageUrl =
     savedProduct.image_url ||
     savedProduct.image ||
     "";
 
-  if (mainImageUrl) {
-    mainImage.src = mainImageUrl;
+
+  if (
+    mainImage &&
+    mainImageUrl
+  ) {
+
+    mainImage.src =
+      mainImageUrl;
+
   }
 
 
-  // =========================
-  // GALLERY IMAGES
-  // =========================
+
+  // ==================================================
+  // GALLERY
+  // ==================================================
+
+  const gallery =
+    document.getElementById(
+      "productGallery"
+    );
+
 
   let galleryImages =
     savedProduct.gallery_urls ||
     savedProduct.gallery ||
     [];
 
-  // If gallery comes as text/string
-  if (typeof galleryImages === "string") {
 
-    if (galleryImages.trim() !== "") {
+  if (
+    typeof galleryImages ===
+    "string"
+  ) {
+
+    if (
+      galleryImages.trim() !== ""
+    ) {
 
       galleryImages =
         galleryImages
           .split(",")
-          .map(image => image.trim())
-          .filter(image => image !== "");
+          .map(
+            image =>
+              image.trim()
+          )
+          .filter(
+            image =>
+              image !== ""
+          );
 
     } else {
+
       galleryImages = [];
+
     }
+
   }
 
-  if (Array.isArray(galleryImages)) {
 
-    galleryImages.forEach(function(image) {
+  if (
+    gallery &&
+    Array.isArray(
+      galleryImages
+    )
+  ) {
 
-      const img =
-        document.createElement("img");
+    gallery.innerHTML = "";
 
-      img.src = image;
-      img.alt = "Product Gallery";
 
-      img.style.width = "100px";
-      img.style.height = "100px";
-      img.style.objectFit = "cover";
-      img.style.margin = "8px";
-      img.style.cursor = "pointer";
-      img.style.borderRadius = "8px";
+    galleryImages.forEach(
+      function(image) {
 
-      img.addEventListener("click", function() {
-        mainImage.src = image;
-      });
 
-      gallery.appendChild(img);
+        const img =
+          document.createElement(
+            "img"
+          );
 
-    });
+
+        img.src =
+          image;
+
+
+        img.alt =
+          "Product Gallery";
+
+
+        img.style.width =
+          "90px";
+
+
+        img.style.height =
+          "90px";
+
+
+        img.style.objectFit =
+          "cover";
+
+
+        img.style.margin =
+          "8px";
+
+
+        img.style.cursor =
+          "pointer";
+
+
+        img.style.borderRadius =
+          "8px";
+
+
+        img.addEventListener(
+          "click",
+          function() {
+
+            if (mainImage) {
+
+              mainImage.src =
+                image;
+
+            }
+
+          }
+        );
+
+
+        gallery.appendChild(
+          img
+        );
+
+
+      }
+    );
+
   }
+
+
+
+  // ==================================================
+  // CART PRODUCT
+  // ==================================================
+
+  const cartProduct = {
+
+    name:
+      savedProduct.name ||
+      "Product",
+
+    price:
+      savedProduct.price ||
+      0,
+
+    image:
+      savedProduct.image_url ||
+      savedProduct.image ||
+      "",
+
+    description:
+      savedProduct.description ||
+      "",
+
+    category:
+      savedProduct.category ||
+      "",
+
+    sku:
+      savedProduct.sku ||
+      "",
+
+    rating:
+      savedProduct.rating ||
+      "",
+
+    discount:
+      savedProduct.discount ||
+      "",
+
+    profit:
+      savedProduct.profit ||
+      "",
+
+    stock:
+      savedProduct.stock ||
+      "",
+
+    product_details:
+      savedProduct.product_details ||
+      savedProduct.productDetails ||
+      ""
+
+  };
+
+
+
+  // ==================================================
+  // ADD TO CART
+  // ==================================================
+
+  const addToCartBtn =
+    document.getElementById(
+      "addToCartBtn"
+    );
+
+
+  if (addToCartBtn) {
+
+    addToCartBtn.addEventListener(
+      "click",
+      function() {
+
+
+        localStorage.setItem(
+          "cartProduct",
+          JSON.stringify(
+            cartProduct
+          )
+        );
+
+
+        alert(
+          "Product added to cart!"
+        );
+
+
+      }
+    );
+
+  }
+
+
+
+  // ==================================================
+  // ORDER NOW
+  // ==================================================
+
+  const orderNowBtn =
+    document.getElementById(
+      "orderNowBtn"
+    );
+
+
+  if (orderNowBtn) {
+
+    orderNowBtn.addEventListener(
+      "click",
+      function() {
+
+
+        localStorage.setItem(
+          "cartProduct",
+          JSON.stringify(
+            cartProduct
+          )
+        );
+
+
+      }
+    );
+
+  }
+
+
+
+  // ==================================================
+  // SAVE PRODUCT
+  // ==================================================
+
+  const saveProductBtn =
+    document.getElementById(
+      "saveProductBtn"
+    );
+
+
+  if (saveProductBtn) {
+
+
+    const existingSaved =
+      JSON.parse(
+        localStorage.getItem(
+          "savedProduct"
+        )
+      );
+
+
+    if (
+      existingSaved &&
+      existingSaved.name ===
+      cartProduct.name
+    ) {
+
+      saveProductBtn.textContent =
+        "✓ Saved";
+
+    }
+
+
+    saveProductBtn.addEventListener(
+      "click",
+      function() {
+
+
+        localStorage.setItem(
+          "savedProduct",
+          JSON.stringify(
+            cartProduct
+          )
+        );
+
+
+        saveProductBtn.textContent =
+          "✓ Saved";
+
+
+        alert(
+          "Product saved!"
+        );
+
+
+      }
+    );
+
+  }
+
+
+} else {
+
+
+  // ==================================================
+  // NO PRODUCT
+  // ==================================================
+
+  console.warn(
+    "No product selected."
+  );
 
 }
+
 </script>
+
+
 </body>
+
 </html>

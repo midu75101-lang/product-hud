@@ -58,48 +58,101 @@
 
   </main>
 <script>
-const savedProduct = JSON.parse(localStorage.getItem("adminProduct"));
+const savedProduct =
+  JSON.parse(localStorage.getItem("adminProduct"));
 
 if (savedProduct) {
 
-  // Product Details
+  // Product Name
   document.getElementById("productNameDisplay").textContent =
     savedProduct.name || "Product Name";
 
+  // Price
   document.getElementById("productPriceDisplay").textContent =
-    savedProduct.price ? "₹" + savedProduct.price : "₹0";
+    savedProduct.price !== undefined && savedProduct.price !== null
+      ? "₹" + savedProduct.price
+      : "₹0";
 
+  // Description
   document.getElementById("productDescriptionDisplay").textContent =
     savedProduct.description || "No description available.";
 
+  // Category
   document.getElementById("productCategoryDisplay").textContent =
     savedProduct.category || "Not set";
 
+  // Rating
   document.getElementById("productRatingDisplay").textContent =
-    savedProduct.rating || "0";
+    savedProduct.rating !== undefined && savedProduct.rating !== null
+      ? savedProduct.rating
+      : "0";
 
+  // Discount
   document.getElementById("productDiscountDisplay").textContent =
-    savedProduct.discount || "0";
+    savedProduct.discount !== undefined &&
+    savedProduct.discount !== null &&
+    savedProduct.discount !== ""
+      ? savedProduct.discount
+      : "0";
 
+  // Estimated Profit
   document.getElementById("productProfitDisplay").textContent =
-    savedProduct.profit || "Not set";
+    savedProduct.profit ||
+    savedProduct.estimatedProfit ||
+    "Not set";
 
 
-  // Main Product Image
-  const mainImage = document.getElementById("mainProductImage");
-  const gallery = document.getElementById("productGallery");
+  // =========================
+  // PRODUCT IMAGE
+  // =========================
 
-  if (savedProduct.image) {
-    mainImage.src = savedProduct.image;
+  const mainImage =
+    document.getElementById("mainProductImage");
+
+  const gallery =
+    document.getElementById("productGallery");
+
+  const mainImageUrl =
+    savedProduct.image_url ||
+    savedProduct.image ||
+    "";
+
+  if (mainImageUrl) {
+    mainImage.src = mainImageUrl;
   }
 
 
-  // Gallery Images
-  if (savedProduct.gallery && savedProduct.gallery.length > 0) {
+  // =========================
+  // GALLERY IMAGES
+  // =========================
 
-    savedProduct.gallery.forEach(function (image) {
+  let galleryImages =
+    savedProduct.gallery_urls ||
+    savedProduct.gallery ||
+    [];
 
-      const img = document.createElement("img");
+  // If gallery comes as text/string
+  if (typeof galleryImages === "string") {
+
+    if (galleryImages.trim() !== "") {
+
+      galleryImages =
+        galleryImages
+          .split(",")
+          .map(image => image.trim())
+          .filter(image => image !== "");
+
+    } else {
+      galleryImages = [];
+    }
+  }
+
+  if (Array.isArray(galleryImages)) {
+
+    galleryImages.forEach(function(image) {
+
+      const img =
+        document.createElement("img");
 
       img.src = image;
       img.alt = "Product Gallery";
@@ -111,7 +164,7 @@ if (savedProduct) {
       img.style.cursor = "pointer";
       img.style.borderRadius = "8px";
 
-      img.addEventListener("click", function () {
+      img.addEventListener("click", function() {
         mainImage.src = image;
       });
 
@@ -119,6 +172,7 @@ if (savedProduct) {
 
     });
   }
+
 }
 </script>
 </body>

@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
 
-<script>
-(async function () {
-
-  const { data: { session } } =
-    await supabaseClient.auth.getSession();
-
-  if (!session) {
-    window.location.href = "login.html";
-  }
-
-})();
-</script>
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Orders - Product HUD</title>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+  <script>
+    (async function () {
+
+      const { data: { session } } =
+        await supabaseClient.auth.getSession();
+
+      if (!session) {
+        window.location.href = "login.html";
+      }
+
+    })();
+  </script>
+
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -141,7 +146,15 @@
       box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     }
 
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
     @media (max-width: 600px) {
+
       .header {
         padding: 18px;
       }
@@ -154,173 +167,396 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
     }
+
   </style>
+
 </head>
 
 <body>
 
   <header class="header">
+
     <h1>🛒 Orders</h1>
-    <a href="admin.html" class="back-btn">← Dashboard</a>
+
+    <a
+      href="admin.html"
+      class="back-btn"
+    >
+      ← Dashboard
+    </a>
+
   </header>
+
 
   <main class="container">
 
-    <div id="ordersContainer" class="orders-container"></div>
+    <div
+      id="ordersContainer"
+      class="orders-container"
+    ></div>
 
   </main>
 
+
   <script>
 
-    function displayOrders() {
+    let supabaseOrders = [];
+
+
+    async function displayOrders() {
 
       const container =
         document.getElementById("ordersContainer");
 
-      const orders =
-        JSON.parse(
-          localStorage.getItem("myOrders")
-        ) || [];
+      container.innerHTML = `
+        <div class="empty">
+          <h2>⏳ Loading Orders...</h2>
+          <p>Please wait.</p>
+        </div>
+      `;
 
-      container.innerHTML = "";
 
-      if (orders.length === 0) {
+      try {
 
-        container.innerHTML = `
-          <div class="empty">
-            <h2>📭 No Orders Yet</h2>
-            <p>Customer orders will appear here.</p>
-          </div>
-        `;
+        /*
+        ==========================================
+        LOAD ORDERS FROM SUPABASE
+        ==========================================
+        */
 
-        return;
-      }
+        let result =
+          await supabaseClient
+            .from("orders")
+            .select("*")
+            .order("created_at", {
+              ascending: false
+            });
 
-      orders.forEach(function(order, index) {
 
-        const product = order.product || {};
-        const customer = order.customer || {};
+        /*
+        ==========================================
+        IF created_at ORDER FAILS,
+        TRY WITHOUT ORDER
+        ==========================================
+        */
 
-        const card =
-          document.createElement("div");
+        if (result.error) {
 
-        card.className = "order-card";
+          console.error(
+            "Supabase Orders Error:",
+            result.error
+          );
 
-        card.innerHTML = `
+          result =
+            await supabaseClient
+              .from("orders")
+              .select("*");
 
-          <h2>Order #${index + 1}</h2>
+        }
 
-          <div class="product-box">
 
-            <img
-              src="${product.image || ""}"
-              alt="Product"
-            >
+        if (result.error) {
 
-            <div>
+          console.error(
+            "Supabase Orders Error:",
+            result.error
+          );
 
-              <h3>
-                ${product.name || "Product"}
-              </h3>
+          container.innerHTML = `
+            <div class="error">
+
+              <h2>❌ Could not load orders</h2>
 
               <p>
-                Price:
-                ${product.price || "₹0"}
+                ${result.error.message}
               </p>
 
             </div>
+          `;
+
+          return;
+
+        }
+
+
+        supabaseOrders =
+          result.data || [];
+
+
+        /*
+        ==========================================
+        NO ORDERS
+        ==========================================
+        */
+
+        if (supabaseOrders.length === 0) {
+
+          container.innerHTML = `
+            <div class="empty">
+
+              <h2>📭 No Orders Yet</h2>
+
+              <p>
+                Customer orders will appear here.
+              </p>
+
+            </div>
+          `;
+
+          return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        /*
+        ==========================================
+        DISPLAY SUPABASE ORDERS
+        ==========================================
+        */
+
+        supabaseOrders.forEach(
+          function(order, index) {
+
+            const card =
+              document.createElement("div");
+
+            card.className =
+              "order-card";
+
+
+            card.innerHTML = `
+
+              <h2>
+                Order #${index + 1}
+              </h2>
+
+
+              <div class="product-box">
+
+                <img
+                  src="${order.product_image || ""}"
+                  alt="Product"
+                >
+
+
+                <div>
+
+                  <h3>
+                    ${order.product_name || "Product"}
+                  </h3>
+
+
+                  <p>
+                    Price:
+                    ₹${order.product_price || "0"}
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="customer-info">
+
+                <strong>
+                  Customer Details
+                </strong>
+
+                <br>
+
+
+                Name:
+                ${order.customer_name || "Not provided"}
+
+                <br>
+
+
+                Phone:
+                ${order.phone || "Not provided"}
+
+                <br>
+
+
+                Address:
+                ${order.address || "Not provided"}
+
+                <br>
+
+
+                City:
+                ${order.city || "Not provided"}
+
+                <br>
+
+
+                PIN:
+                ${order.pin || "Not provided"}
+
+                <br>
+
+
+                Payment:
+                ${order.payment_method || "Not provided"}
+
+                <br>
+
+
+                ${
+                  order.created_at
+                    ? "Date: " +
+                      new Date(
+                        order.created_at
+                      ).toLocaleString()
+                    : ""
+                }
+
+              </div>
+
+
+              <span class="status">
+
+                ${
+                  order.status ||
+                  "New Order"
+                }
+
+              </span>
+
+
+              <br>
+
+
+              <button
+                class="whatsapp-btn"
+                onclick="sendWhatsApp(${index})"
+              >
+
+                📱 Send WhatsApp
+
+              </button>
+
+            `;
+
+
+            container.appendChild(card);
+
+          }
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          "Order Loading Error:",
+          error
+        );
+
+
+        container.innerHTML = `
+
+          <div class="error">
+
+            <h2>
+              ❌ Order loading failed
+            </h2>
+
+            <p>
+              ${error.message}
+            </p>
 
           </div>
-
-          <div class="customer-info">
-
-            <strong>Customer Details</strong><br>
-
-            Name:
-            ${customer.name || "Not provided"}<br>
-
-            Phone:
-            ${customer.phone || "Not provided"}<br>
-
-            Address:
-            ${customer.address || "Not provided"}<br>
-
-            City:
-            ${customer.city || "Not provided"}<br>
-
-            PIN:
-            ${customer.pin || "Not provided"}
-
-          </div>
-
-          <span class="status">
-            ${order.status || "New Order"}
-          </span>
-
-          <br>
-
-          <button
-            class="whatsapp-btn"
-            onclick="sendWhatsApp(${index})"
-          >
-            📱 Send WhatsApp
-          </button>
 
         `;
 
-        container.appendChild(card);
-
-      });
+      }
 
     }
 
 
+
+    /*
+    ==========================================
+    WHATSAPP
+    ==========================================
+    */
+
     function sendWhatsApp(index) {
 
-      const orders =
-        JSON.parse(
-          localStorage.getItem("myOrders")
-        ) || [];
+      const order =
+        supabaseOrders[index];
 
-      const order = orders[index];
 
       if (!order) {
-        alert("Order not found.");
+
+        alert(
+          "Order not found."
+        );
+
         return;
+
       }
 
+
       const whatsappNumber =
-        localStorage.getItem("whatsappNumber");
+        localStorage.getItem(
+          "whatsappNumber"
+        );
+
 
       if (!whatsappNumber) {
+
         alert(
           "Please save your WhatsApp number first."
         );
+
         return;
+
       }
 
-      const product =
-        order.product || {};
-
-      const customer =
-        order.customer || {};
 
       const message =
 `New Product HUD Order
 
 Order: #${index + 1}
 
-Product: ${product.name || "Product"}
-Price: ${product.price || "₹0"}
+Product: ${
+  order.product_name || "Product"
+}
 
-Customer Name: ${customer.name || "Not provided"}
-Phone: ${customer.phone || "Not provided"}
+Price: ₹${
+  order.product_price || "0"
+}
+
+Customer Name: ${
+  order.customer_name || "Not provided"
+}
+
+Phone: ${
+  order.phone || "Not provided"
+}
 
 Address:
-${customer.address || "Not provided"}
-${customer.city || ""}
-PIN: ${customer.pin || "Not provided"}`;
+${
+  order.address || "Not provided"
+}
+
+${
+  order.city || ""
+}
+
+PIN: ${
+  order.pin || "Not provided"
+}
+
+Payment Method: ${
+  order.payment_method || "Not provided"
+}`;
+
 
       const url =
         "https://wa.me/" +
@@ -328,14 +564,25 @@ PIN: ${customer.pin || "Not provided"}`;
         "?text=" +
         encodeURIComponent(message);
 
-      window.open(url, "_blank");
+
+      window.open(
+        url,
+        "_blank"
+      );
 
     }
 
+
+    /*
+    ==========================================
+    START
+    ==========================================
+    */
 
     displayOrders();
 
   </script>
 
 </body>
-</html>s
+
+</html>

@@ -1,121 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Order Now - Product HUD</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
 </head>
+
 <body>
 
   <main class="cart-page">
+
     <h1>Order Now</h1>
 
     <div id="orderProduct">
       <p>Loading product...</p>
     </div>
-<script>
-  const orderProduct = document.getElementById("orderProduct");
-  const cartProduct = JSON.parse(localStorage.getItem("cartProduct"));
 
-  if (cartProduct) {
-    orderProduct.innerHTML = `
-      <div class="saved-product-card">
-        <img src="${cartProduct.image}" alt="${cartProduct.name}" style="width: 200px;">
-        <h2>${cartProduct.name}</h2>
-        <p>${cartProduct.price}</p>
-        <h3>Delivery Details</h3>
-        <input type="text" placeholder="Full Name">required>
-<input type="text" placeholder="Phone Number">required>
-<input type="text" placeholder="Delivery Address">required>
-<input type="text" placeholder="City">required>
-<input type="text" placeholder="PIN Code">required>
-<h3>Payment Method</h3>
-
-<label>
-  <input type="radio" name="payment" value="cod" checked>
-  Cash on Delivery
-</label>
-
-<label>
-  <input type="radio" name="payment" value="online">
-  Online Payment
-</label>
-        <input type="text" placeholder="Full Name">
-        <input type="text" placeholder="Phone Number">
-        <input type="text" placeholder="Delivery Address">
-        <h3>Order Summary</h3>
-
-<p><strong>Product:</strong> <span id="summaryProduct"></span></p>
-<p><strong>Price:</strong> <span id="summaryPrice"></span></p>
-<p><strong>Delivery:</strong> Free</p>
-<hr>
-<p><strong>Total:</strong> <span id="summaryTotal"></span></p>
-        <button id="placeOrderBtn">Place Order</button>
-      </div>
-    `;
-  } else {
-    document.getElementById("summaryProduct").textContent = cartProduct.name;
-document.getElementById("summaryPrice").textContent = cartProduct.price;
-document.getElementById("summaryTotal").textContent = cartProduct.price;
-    orderProduct.innerHTML = "<p>No product selected.</p>";
-  }
-const placeOrderBtn = document.getElementById("placeOrderBtn");
-
-if (placeOrderBtn) {
-  placeOrderBtn.addEventListener("click", function () {
-      const inputs = orderProduct.querySelectorAll("input[type='text']");
-
-  const name = inputs[0].value.trim();
-  const phone = inputs[1].value.trim();
-  const address = inputs[2].value.trim();
-  const city = inputs[3].value.trim();
-  const pin = inputs[4].value.trim();
-
-  if (!name || !phone || !address || !city || !pin) {
-    alert("Please fill in all delivery details.");
-    return;
-  }
-
- const newOrder = {
-  id: Date.now(),
-  product: cartProduct,
-  customer: {
-    name: name,
-    phone: phone,
-    address: address,
-    city: city,
-    pin: pin
-  },
-  status: "New Order",
-  date: new Date().toLocaleString()
-};
-
-localStorage.setItem(
-  "myOrder",
-  JSON.stringify(newOrder)
-);
-
-let myOrders =
-  JSON.parse(
-    localStorage.getItem("myOrders")
-  ) || [];
-
-myOrders.push(newOrder);
-
-localStorage.setItem(
-  "myOrders",
-  JSON.stringify(myOrders)
-);
-
-alert("Order placed successfully!");
-window.location.href = "order-success.html";
-  });
-}
-  
-</script>
-</script>
   </main>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const orderProduct =
+    document.getElementById("orderProduct");
+
+  const cartProduct =
+    JSON.parse(
+      localStorage.getItem("cartProduct")
+    );
+
+
+  /* ================================
+     CHECK PRODUCT
+  ================================= */
+
+  if (!cartProduct) {
+
+    orderProduct.innerHTML =
+      "<p>No product selected.</p>";
+
+    return;
+
+  }
+
+
+  /* ================================
+     DISPLAY ORDER PAGE
+  ================================= */
+
+  orderProduct.innerHTML = `
+
+    <div class="saved-product-card">
+
+      <img
+        src="${cartProduct.image || ""}"
+        alt="${cartProduct.name || "Product"}"
+        style="width:200px; max-width:100%;"
+      >
+
+      <h2>
+        ${cartProduct.name || "Product"}
+      </h2>
+
+      <p>
+        Price: ₹${cartProduct.price || "0"}
+      </p>
+
+
+      <h3>Delivery Details</h3>
+
+
+      <input
+        id="customerName"
+        type="text"
+        placeholder="Full Name"
+      >
+
+
+      <input
+        id="customerPhone"
+        type="text"
+        placeholder="Phone Number"
+      >
+
+
+      <input
+        id="customerAddress"
+        type="text"
+        placeholder="Delivery Address"
+      >
+
+
+      <input
+        id="customerCity"
+        type="text"
+        placeholder="City"
+      >
+
+
+      <input
+        id="customerPin"
+        type="text"
+        placeholder="PIN Code"
+      >
+
+
+      <h3>Payment Method</h3>
+
+
+      <label>
+
+        <input
+          type="radio"
+          name="payment"
+          value="cod"
+          checked
+        >
+
+        Cash on Delivery
+
+      </label>
+
+
+      <label>
+
+        <input
+          type="radio"
+          name="payment"
+          value="online"
+        >
+
+        Online Payment
+
+      </label>
+
+
+      <h3>Order Summary</h3>
+
+
+      <p>
+        <strong>Product:</strong>
+        ${cartProduct.name || "Product"}
+      </p>
+
+
+      <p>
+        <strong>Price:</strong>
+        ₹${cartProduct.price || "0"}
+      </p>
+
+
+      <p>
+        <strong>Delivery:</strong>
+        Free
+      </p>
+
+
+      <hr>
+
+
+      <p>
+        <strong>Total:</strong>
+        ₹${cartProduct.price || "0"}
+      </p>
+
+
+      <button
+        id="placeOrderBtn"
+        type="button"
+      >
+        Place Order
+      </button>
+
+    </div>
+
+  `;
+
+
+  /* ================================
+     PLACE ORDER
+  ================================= */
+
+  const placeOrderBtn =
+    document.getElementById("placeOrderBtn");
+
+
+  placeOrderBtn.addEventListener(
+    "click",
+    async function () {
+
+
+      const name =
+        document
+          .getElementById("customerName")
+          .value
+          .trim();
+
+
+      const phone =
+        document
+          .getElementById("customerPhone")
+          .value
+          .trim();
+
+
+      const address =
+        document
+          .getElementById("customerAddress")
+          .value
+          .trim();
+
+
+      const city =
+        document
+          .getElementById("customerCity")
+          .value
+          .trim();
+
+
+      const pin =
+        document
+          .getElementById("customerPin")
+          .value
+          .trim();
+
+
+      const payment =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        ).value;
+
+
+      /* ================================
+         VALIDATION
+      ================================= */
+
+      if (
+        !name ||
+        !phone ||
+        !address ||
+        !city ||
+        !pin
+      ) {
+
+        alert(
+          "Please fill in all delivery details."
+        );
+
+        return;
+
+      }
+
+
+      /* ================================
+         ORDER OBJECT
+      ================================= */
+
+      const newOrder = {
+
+        id: Date.now(),
+
+        product: cartProduct,
+
+        customer: {
+
+          name: name,
+
+          phone: phone,
+
+          address: address,
+
+          city: city,
+
+          pin: pin
+
+        },
+
+        payment: payment,
+
+        status: "New Order",
+
+        date:
+          new Date().toLocaleString()
+
+      };
+
+
+      /* ================================
+         SAVE LOCAL BACKUP
+      ================================= */
+
+      localStorage.setItem(
+        "myOrder",
+        JSON.stringify(newOrder)
+      );
+
+
+      let myOrders =
+        JSON.parse(
+          localStorage.getItem("myOrders")
+        ) || [];
+
+
+      myOrders.push(newOrder);
+
+
+      localStorage.setItem(
+        "myOrders",
+        JSON.stringify(myOrders)
+      );
+
+
+      /* ================================
+         SAVE TO SUPABASE
+      ================================= */
+
+      try {
+
+        const { data, error } =
+          await supabaseClient
+            .from("orders")
+            .insert([
+
+              {
+
+                product_name:
+                  cartProduct.name || "Product",
+
+                product_price:
+                  cartProduct.price || 0,
+
+                product_image:
+                  cartProduct.image || "",
+
+                customer_name:
+                  name,
+
+                phone:
+                  phone,
+
+                address:
+                  address,
+
+                city:
+                  city,
+
+                pin:
+                  pin,
+
+                payment_method:
+                  payment,
+
+                status:
+                  "New Order"
+
+              }
+
+            ])
+            .select();
+
+
+        if (error) {
+
+          console.error(
+            "Supabase Order Error:",
+            error
+          );
+
+          alert(
+            "Order saved locally, but could not sync to server.\n\n" +
+            error.message
+          );
+
+          return;
+
+        }
+
+
+        console.log(
+          "Order saved to Supabase:",
+          data
+        );
+
+
+        /* ================================
+           SUCCESS
+        ================================= */
+
+        localStorage.removeItem(
+          "cartProduct"
+        );
+
+
+        alert(
+          "Order placed successfully!"
+        );
+
+
+        window.location.href =
+          "order-success.html";
+
+
+      }
+
+      catch (error) {
+
+        console.error(
+          "Order Error:",
+          error
+        );
+
+
+        alert(
+          "Order could not be synced to server."
+        );
+
+      }
+
+    }
+  );
+
+});
+
+</script>
 
 </body>
 </html>

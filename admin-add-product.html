@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script>
-(async function () {
-
-  const { data: { session } } =
-    await supabaseClient.auth.getSession();
-
-  if (!session) {
-    window.location.href = "login.html";
-  }
-
-})();
-</script>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,18 +103,6 @@
       background: #15803d;
     }
   </style>
-  <script>
-(async function () {
-
-  const { data: { session } } =
-    await supabaseClient.auth.getSession();
-
-  if (!session) {
-    window.location.href = "login.html";
-  }
-
-})();
-</script>
 </head>
 
 <body>
@@ -276,13 +252,20 @@
 
   </div>
 
+
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>
+
+
 <script>
 
 document
   .getElementById("saveProductBtn")
-  .addEventListener("click", function () {
+  .addEventListener("click", async function () {
+
+    const saveButton =
+      document.getElementById("saveProductBtn");
 
     /* =========================
        GET FORM VALUES
@@ -327,7 +310,20 @@ document
 
 
     /* =========================
-       CREATE PRODUCT
+       GET IMAGES
+    ========================= */
+
+    const imageFile =
+      document.getElementById("productImage").files[0];
+
+    const galleryFiles =
+      Array.from(
+        document.getElementById("galleryImages").files
+      );
+
+
+    /* =========================
+       PRODUCT OBJECT
     ========================= */
 
     const product = {
@@ -368,148 +364,308 @@ document
 
 
     /* =========================
-       GET IMAGES
+       UPLOAD IMAGE
     ========================= */
 
-    const imageFile =
-      document.getElementById("productImage").files[0];
+    async function uploadImage(file) {
 
-    const galleryFiles =
-      document.getElementById("galleryImages").files;
+      const fileName =
+        Date.now() +
+        "-" +
+        Math.random()
+          .toString(36)
+          .substring(2, 10) +
+        "-" +
+        file.name
+          .replace(/\s+/g, "-");
 
 
-    let completed = 0;
+      const { error: uploadError } =
+        await supabaseClient
+          .storage
+          .from("product-images")
+          .upload(
+            fileName,
+            file,
+            {
+              cacheControl: "3600",
+              upsert: false
+            }
+          );
 
-    const totalFiles =
-      (imageFile ? 1 : 0) + galleryFiles.length;
-/* =========================
-   NO IMAGE SELECTED
-========================= */
 
-if (totalFiles === 0) {
-  finishSave();
-  return;
-}
-
-    /* =========================
-       FINAL SAVE
-    ========================= */
-async function finishSave() {
-
-  // Save to Supabase
-  const { data, error } = await supabaseClient
-    .from("products")
-    .insert([
-      {
-        name: product.name,
-        sku: product.sku,
-        price: product.price,
-        discount: product.discount,
-        profit: product.profit,
-        stock: product.stock,
-        category: product.category,
-        rating: product.rating,
-        description: product.description,
-        image_url: product.image || "",
-        trending: product.trending,
-        hot: product.hot,
-        newest: product.newest,
-        gallery_urls: JSON.stringify(product.gallery || []),
-        product_details: product.description || ""
+      if (uploadError) {
+        throw uploadError;
       }
-    ])
-    .select();
-
-  if (error) {
-    console.error("Supabase insert error:", error);
-
-    alert(
-      "Product could not be saved to database.\n\n" +
-      error.message
-    );
-
-    return;
-  }
-
-  // Keep existing local system working
-  let products =
-    JSON.parse(
-      localStorage.getItem("adminProducts")
-    ) || [];
-
-  products.push(product);
-
-  localStorage.setItem(
-    "adminProducts",
-    JSON.stringify(products)
-  );
-
-  localStorage.setItem(
-    "adminProduct",
-    JSON.stringify(product)
-  );
-
-  alert("Product added successfully!");
-
-  window.location.href =
-    "admin-products.html";
-}
 
 
-    /* =========================
-       MAIN PRODUCT IMAGE
-    ========================= */
+      const { data: publicData } =
+        supabaseClient
+          .storage
+          .from("product-images")
+          .getPublicUrl(fileName);
 
-    if (imageFile) {
 
-      const reader =
-        new FileReader();
-
-      reader.onload = function () {
-
-        product.image =
-          reader.result;
-
-        completed++;
-
-        if (completed === totalFiles) {
-          finishSave();
-        }
-      };
-
-      reader.readAsDataURL(imageFile);
+      return publicData.publicUrl;
     }
 
 
     /* =========================
-       GALLERY IMAGES
+       FINAL SAVE
     ========================= */
 
-    for (
-      let i = 0;
-      i < galleryFiles.length;
-      i++
-    ) {
+    async function finishSave() {
 
-      const reader =
-        new FileReader();
+      try {
 
-      reader.onload = function () {
+        saveButton.disabled = true;
 
-        product.gallery.push(
-          reader.result
+        saveButton.textContent =
+          "Saving...";
+
+
+        /* =========================
+           LOGIN CHECK
+        ========================= */
+
+        const {
+          data: {
+            session
+          }
+        } =
+          await supabaseClient
+            .auth
+            .getSession();
+
+
+        if (!session) {
+
+          alert(
+            "Please login to add a product."
+          );
+
+          saveButton.disabled = false;
+
+          saveButton.textContent =
+            "💾 Save Product";
+
+          return;
+        }
+
+
+        /* =========================
+           SAVE TO SUPABASE
+        ========================= */
+
+        const { data, error } =
+          await supabaseClient
+            .from("products")
+            .insert([
+
+              {
+                name: product.name,
+
+                sku: product.sku,
+
+                price:
+                  Number(product.price) || 0,
+
+                discount:
+                  Number(product.discount) || 0,
+
+                profit:
+                  product.profit,
+
+                stock:
+                  Number(product.stock) || 0,
+
+                category:
+                  product.category,
+
+                rating:
+                  Number(product.rating) || 0,
+
+                description:
+                  product.description,
+
+                image_url:
+                  product.image || "",
+
+                trending:
+                  product.trending,
+
+                hot:
+                  product.hot,
+
+                newest:
+                  product.newest,
+
+                gallery_urls:
+                  JSON.stringify(
+                    product.gallery
+                  )
+              }
+
+            ])
+            .select()
+            .single();
+
+
+        if (error) {
+
+          console.error(
+            "Supabase insert error:",
+            error
+          );
+
+          throw error;
+        }
+
+
+        /* =========================
+           KEEP LOCAL STORAGE
+        ========================= */
+
+        let products =
+          JSON.parse(
+            localStorage.getItem(
+              "adminProducts"
+            )
+          ) || [];
+
+
+        /*
+          OLD PRODUCTS ARE KEPT.
+          NEW PRODUCT IS ADDED.
+        */
+
+        products.push(product);
+
+
+        localStorage.setItem(
+          "adminProducts",
+          JSON.stringify(products)
         );
 
-        completed++;
 
-        if (completed === totalFiles) {
-          finishSave();
+        /*
+          Keep latest product separately
+          for existing customer-page system.
+        */
+
+        localStorage.setItem(
+          "adminProduct",
+          JSON.stringify(product)
+        );
+
+
+        alert(
+          "Product added successfully!"
+        );
+
+
+        window.location.href =
+          "admin-products.html";
+
+
+      } catch (error) {
+
+        console.error(
+          "Product save error:",
+          error
+        );
+
+
+        alert(
+          "Product save failed:\n\n" +
+          error.message
+        );
+
+
+        saveButton.disabled = false;
+
+        saveButton.textContent =
+          "💾 Save Product";
+      }
+    }
+
+
+    /* =========================
+       UPLOAD MAIN IMAGE
+    ========================= */
+
+    try {
+
+      if (imageFile) {
+
+        saveButton.disabled = true;
+
+        saveButton.textContent =
+          "Uploading image...";
+
+
+        product.image =
+          await uploadImage(
+            imageFile
+          );
+      }
+
+
+      /* =========================
+         UPLOAD GALLERY
+      ========================= */
+
+      if (
+        galleryFiles.length > 0
+      ) {
+
+        saveButton.disabled = true;
+
+        saveButton.textContent =
+          "Uploading gallery...";
+
+
+        for (
+          const file of galleryFiles
+        ) {
+
+          const url =
+            await uploadImage(
+              file
+            );
+
+          product.gallery.push(
+            url
+          );
         }
-      };
+      }
 
-      reader.readAsDataURL(
-        galleryFiles[i]
+
+      /* =========================
+         SAVE EVERYTHING
+      ========================= */
+
+      await finishSave();
+
+
+    } catch (error) {
+
+      console.error(
+        "Image upload error:",
+        error
       );
+
+
+      alert(
+        "Image upload failed:\n\n" +
+        error.message
+      );
+
+
+      saveButton.disabled = false;
+
+      saveButton.textContent =
+        "💾 Save Product";
     }
 
   });

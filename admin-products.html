@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
 
-<script>
-(async function () {
-
-  const { data: { session } } =
-    await supabaseClient.auth.getSession();
-
-  if (!session) {
-    window.location.href = "login.html";
-  }
-
-})();
-</script>
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>Products - Product HUD</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
 
   <style>
 
@@ -68,17 +60,9 @@
       color: white;
     }
 
-    .dashboard-btn:hover {
-      background: #475569;
-    }
-
     .add-btn {
       background: #2563eb;
       color: white;
-    }
-
-    .add-btn:hover {
-      background: #1d4ed8;
     }
 
     .container {
@@ -193,26 +177,14 @@
       color: white;
     }
 
-    .edit-btn:hover {
-      background: #d97706;
-    }
-
     .delete-btn {
       background: #dc2626;
       color: white;
     }
 
-    .delete-btn:hover {
-      background: #b91c1c;
-    }
-
     .view-btn {
       background: #0f766e;
       color: white;
-    }
-
-    .view-btn:hover {
-      background: #115e59;
     }
 
     .empty {
@@ -223,17 +195,9 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     }
 
-    .empty h3 {
-      margin-bottom: 8px;
-    }
-
-    .empty p {
-      color: #64748b;
-    }
-
-    /* POPUP */
-
-    .popup {
+    .popup,
+    .edit-modal,
+    .view-modal {
       display: none;
       position: fixed;
       inset: 0;
@@ -244,61 +208,33 @@
       padding: 20px;
     }
 
-    .popup-box {
+    .popup-box,
+    .edit-box,
+    .view-box {
       background: white;
-      width: 420px;
-      max-width: 100%;
-      padding: 25px;
       border-radius: 14px;
+      padding: 25px;
+      max-width: 100%;
+    }
+
+    .popup-box {
+      width: 420px;
       text-align: center;
     }
 
-    .popup-box h3 {
-      margin-top: 0;
-    }
-
-    .popup-actions {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .yes-btn {
-      background: #dc2626;
-      color: white;
-    }
-
-    .no-btn {
-      background: #64748b;
-      color: white;
-    }
-
-    /* EDIT MODAL */
-
     .edit-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-      padding: 20px;
       overflow-y: auto;
     }
 
     .edit-box {
-      background: white;
       width: 700px;
-      max-width: 100%;
-      padding: 25px;
-      border-radius: 14px;
       margin: 20px auto;
     }
 
-    .edit-box h2 {
-      margin-top: 0;
+    .view-box {
+      width: 650px;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .form-group {
@@ -341,13 +277,24 @@
       width: auto;
     }
 
+    .popup-actions,
     .edit-actions {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       gap: 10px;
       margin-top: 20px;
     }
 
+    .edit-actions {
+      justify-content: flex-end;
+    }
+
+    .yes-btn {
+      background: #dc2626;
+      color: white;
+    }
+
+    .no-btn,
     .cancel-btn {
       background: #64748b;
       color: white;
@@ -356,33 +303,6 @@
     .save-edit-btn {
       background: #2563eb;
       color: white;
-    }
-
-    /* VIEW MODAL */
-
-    .view-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      align-items: center;
-      justify-content: center;
-      z-index: 9998;
-      padding: 20px;
-    }
-
-    .view-box {
-      background: white;
-      width: 650px;
-      max-width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 25px;
-      border-radius: 14px;
-    }
-
-    .view-box h2 {
-      margin-top: 0;
     }
 
     .view-main-image {
@@ -414,25 +334,19 @@
 
 <body>
 
-  <!-- TOP BAR -->
-
   <div class="topbar">
 
     <h1>📦 Products</h1>
 
     <div class="top-buttons">
 
-      <a
-        href="admin.html"
-        class="btn dashboard-btn"
-      >
+      <a href="admin.html"
+         class="btn dashboard-btn">
         ← Dashboard
       </a>
 
-      <a
-        href="admin-add-product.html"
-        class="btn add-btn"
-      >
+      <a href="admin-add-product.html"
+         class="btn add-btn">
         + Add Product
       </a>
 
@@ -440,8 +354,6 @@
 
   </div>
 
-
-  <!-- PRODUCTS -->
 
   <div class="container">
 
@@ -460,12 +372,7 @@
   </div>
 
 
-  <!-- DELETE POPUP -->
-
-  <div
-    id="deletePopup"
-    class="popup"
-  >
+  <div id="deletePopup" class="popup">
 
     <div class="popup-box">
 
@@ -479,15 +386,13 @@
 
         <button
           class="btn yes-btn"
-          onclick="confirmDelete()"
-        >
+          onclick="confirmDelete()">
           Yes, Delete
         </button>
 
         <button
           class="btn no-btn"
-          onclick="closeDeletePopup()"
-        >
+          onclick="closeDeletePopup()">
           No
         </button>
 
@@ -498,64 +403,31 @@
   </div>
 
 
-  <!-- EDIT MODAL -->
-
-  <div
-    id="editModal"
-    class="edit-modal"
-  >
+  <div id="editModal" class="edit-modal">
 
     <div class="edit-box">
 
       <h2>✏️ Edit Product</h2>
 
       <div class="form-group">
-
         <label>Product Name</label>
-
-        <input
-          id="editName"
-          type="text"
-        >
-
+        <input id="editName" type="text">
       </div>
 
-
       <div class="form-group">
-
         <label>Price</label>
-
-        <input
-          id="editPrice"
-          type="number"
-        >
-
+        <input id="editPrice" type="number">
       </div>
 
-
       <div class="form-group">
-
         <label>Discount (%)</label>
-
-        <input
-          id="editDiscount"
-          type="number"
-        >
-
+        <input id="editDiscount" type="number">
       </div>
-
 
       <div class="form-group">
-
         <label>Estimated Profit</label>
-
-        <input
-          id="editProfit"
-          type="text"
-        >
-
+        <input id="editProfit" type="text">
       </div>
-
 
       <div class="form-group">
 
@@ -583,7 +455,6 @@
 
       </div>
 
-
       <div class="form-group">
 
         <label>Rating</label>
@@ -593,11 +464,9 @@
           type="number"
           step="0.1"
           min="0"
-          max="5"
-        >
+          max="5">
 
       </div>
-
 
       <div class="form-group">
 
@@ -607,7 +476,6 @@
 
       </div>
 
-
       <div class="form-group">
 
         <label>Change Product Image</label>
@@ -615,11 +483,9 @@
         <input
           id="editImage"
           type="file"
-          accept="image/*"
-        >
+          accept="image/*">
 
       </div>
-
 
       <div class="form-group">
 
@@ -629,11 +495,9 @@
           id="editGallery"
           type="file"
           accept="image/*"
-          multiple
-        >
+          multiple>
 
       </div>
-
 
       <div class="form-group">
 
@@ -644,24 +508,21 @@
           <label>
             <input
               type="checkbox"
-              id="editTrending"
-            >
+              id="editTrending">
             🔥 Trending
           </label>
 
           <label>
             <input
               type="checkbox"
-              id="editHot"
-            >
+              id="editHot">
             🔥 Hot
           </label>
 
           <label>
             <input
               type="checkbox"
-              id="editNewest"
-            >
+              id="editNewest">
             🆕 Newest
           </label>
 
@@ -669,20 +530,17 @@
 
       </div>
 
-
       <div class="edit-actions">
 
         <button
           class="btn cancel-btn"
-          onclick="closeEditModal()"
-        >
+          onclick="closeEditModal()">
           Cancel
         </button>
 
         <button
           class="btn save-edit-btn"
-          onclick="saveEditedProduct()"
-        >
+          onclick="saveEditedProduct()">
           💾 Save Changes
         </button>
 
@@ -693,12 +551,7 @@
   </div>
 
 
-  <!-- VIEW MODAL -->
-
-  <div
-    id="viewModal"
-    class="view-modal"
-  >
+  <div id="viewModal" class="view-modal">
 
     <div class="view-box">
 
@@ -708,13 +561,12 @@
         id="viewImage"
         class="view-main-image"
         src=""
-        alt="Product Image"
-      >
+        alt="Product Image">
 
       <div
         id="viewGallery"
-        class="view-gallery"
-      ></div>
+        class="view-gallery">
+      </div>
 
       <p>
         <strong>Price:</strong>
@@ -753,8 +605,7 @@
 
       <button
         class="btn cancel-btn"
-        onclick="closeViewModal()"
-      >
+        onclick="closeViewModal()">
         Close
       </button>
 
@@ -766,43 +617,145 @@
 <script>
 
   /* =========================================
-     PRODUCT DATA
+     SUPABASE PRODUCT DATA
   ========================================= */
 
-  let products =
-    JSON.parse(
-      localStorage.getItem("adminProducts")
-    ) || [];
+  let products = [];
 
 
-  /*
-    OLD DATA COMPATIBILITY
+  function normalizeGallery(value) {
 
-    If an old product exists only in
-    adminProduct, move it into adminProducts.
-  */
-
-  const oldProduct =
-    JSON.parse(
-      localStorage.getItem("adminProduct")
-    );
-
-
-  if (
-    products.length === 0 &&
-    oldProduct
-  ) {
-
-    if (!oldProduct.id) {
-      oldProduct.id = Date.now();
+    if (!value) {
+      return [];
     }
 
-    products.push(oldProduct);
+    if (Array.isArray(value)) {
+      return value;
+    }
+
+    if (typeof value === "string") {
+
+      try {
+
+        const parsed = JSON.parse(value);
+
+        return Array.isArray(parsed)
+          ? parsed
+          : [];
+
+      } catch (error) {
+
+        return [];
+
+      }
+
+    }
+
+    return [];
+
+  }
+
+
+  function normalizeProduct(product) {
+
+    return {
+
+      ...product,
+
+      id: product.id,
+
+      image:
+        product.image_url ||
+        product.image ||
+        "",
+
+      gallery:
+        normalizeGallery(
+          product.gallery_urls ||
+          product.gallery
+        )
+
+    };
+
+  }
+
+
+  async function loadProducts() {
+
+    const productList =
+      document.getElementById("productList");
+
+
+    productList.innerHTML = `
+
+      <div class="empty">
+
+        <h3>⏳ Loading Products...</h3>
+
+        <p>
+          Loading products from database.
+        </p>
+
+      </div>
+
+    `;
+
+
+    const { data, error } =
+      await supabaseClient
+        .from("products")
+        .select("*")
+        .order("created_at", {
+          ascending: false
+        });
+
+
+    if (error) {
+
+      console.error(
+        "Supabase Products Error:",
+        error
+      );
+
+
+      productList.innerHTML = `
+
+        <div class="empty">
+
+          <h3>⚠️ Unable to Load Products</h3>
+
+          <p>
+            ${escapeHTML(error.message)}
+          </p>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    products =
+      (data || []).map(
+        normalizeProduct
+      );
+
+
+    /*
+      Keep localStorage updated
+      for existing customer-page
+      compatibility.
+    */
 
     localStorage.setItem(
       "adminProducts",
       JSON.stringify(products)
     );
+
+
+    displayProducts();
 
   }
 
@@ -839,6 +792,7 @@
       `;
 
       return;
+
     }
 
 
@@ -894,19 +848,25 @@
         if (product.image) {
 
           imageHTML = `
+
             <img
               class="product-image"
               src="${product.image}"
-              alt="${escapeHTML(product.name || "Product")}"
+              alt="${escapeHTML(
+                product.name || "Product"
+              )}"
             >
+
           `;
 
         } else {
 
           imageHTML = `
+
             <div class="no-image">
               No Product Image
             </div>
+
           `;
 
         }
@@ -921,7 +881,9 @@
         ) {
 
           galleryHTML = `
+
             <div class="gallery">
+
           `;
 
 
@@ -929,10 +891,12 @@
             function(image) {
 
               galleryHTML += `
+
                 <img
                   src="${image}"
                   alt="Gallery"
                 >
+
               `;
 
             }
@@ -940,7 +904,9 @@
 
 
           galleryHTML += `
+
             </div>
+
           `;
 
         }
@@ -951,7 +917,9 @@
           ${imageHTML}
 
           <h3>
-            ${escapeHTML(product.name || "Product")}
+            ${escapeHTML(
+              product.name || "Product"
+            )}
           </h3>
 
           <div class="badges">
@@ -962,32 +930,45 @@
 
             <div>
               <strong>Price:</strong>
-              ₹${escapeHTML(product.price || "0")}
+              ₹${escapeHTML(
+                product.price || "0"
+              )}
             </div>
 
             <div>
               <strong>Discount:</strong>
-              ${escapeHTML(product.discount || "0")}%
+              ${escapeHTML(
+                product.discount || "0"
+              )}%
             </div>
 
             <div>
               <strong>Estimated Profit:</strong>
-              ${escapeHTML(product.profit || "Not set")}
+              ${escapeHTML(
+                product.profit || "Not set"
+              )}
             </div>
 
             <div>
               <strong>Category:</strong>
-              ${escapeHTML(product.category || "Not set")}
+              ${escapeHTML(
+                product.category || "Not set"
+              )}
             </div>
 
             <div>
               <strong>Rating:</strong>
-              ⭐ ${escapeHTML(product.rating || "0")} / 5
+              ⭐ ${escapeHTML(
+                product.rating || "0"
+              )} / 5
             </div>
 
             <div>
               <strong>Description:</strong>
-              ${escapeHTML(product.description || "No description")}
+              ${escapeHTML(
+                product.description ||
+                "No description"
+              )}
             </div>
 
           </div>
@@ -998,22 +979,19 @@
 
             <button
               class="btn view-btn"
-              onclick="viewProduct(${index})"
-            >
+              onclick="viewProduct(${index})">
               👁️ View
             </button>
 
             <button
               class="btn edit-btn"
-              onclick="editProduct(${index})"
-            >
+              onclick="editProduct(${index})">
               ✏️ Edit Product
             </button>
 
             <button
               class="btn delete-btn"
-              onclick="deleteProduct(${index})"
-            >
+              onclick="deleteProduct(${index})">
               🗑️ Delete Product
             </button>
 
@@ -1040,7 +1018,9 @@
       document.createElement("div");
 
     div.textContent =
-      value == null ? "" : value;
+      value == null
+        ? ""
+        : value;
 
     return div.innerHTML;
 
@@ -1083,9 +1063,12 @@
     }
 
 
-    const deletedProduct =
-      products[deleteIndex];
-
+    /*
+      At this stage we only remove
+      from the current local display.
+      Supabase DELETE will be added
+      after DELETE policy is enabled.
+    */
 
     products.splice(
       deleteIndex,
@@ -1097,42 +1080,6 @@
       "adminProducts",
       JSON.stringify(products)
     );
-
-
-    /*
-      Keep customer page compatible.
-    */
-
-    const currentProduct =
-      JSON.parse(
-        localStorage.getItem("adminProduct")
-      );
-
-
-    if (
-      currentProduct &&
-      deletedProduct &&
-      currentProduct.id === deletedProduct.id
-    ) {
-
-      if (products.length > 0) {
-
-        localStorage.setItem(
-          "adminProduct",
-          JSON.stringify(
-            products[products.length - 1]
-          )
-        );
-
-      } else {
-
-        localStorage.removeItem(
-          "adminProduct"
-        );
-
-      }
-
-    }
 
 
     closeDeletePopup();
@@ -1189,7 +1136,8 @@
     document.getElementById(
       "editCategory"
     ).value =
-      product.category || "Home & Kitchen";
+      product.category ||
+      "Home & Kitchen";
 
 
     document.getElementById(
@@ -1364,30 +1312,6 @@
       );
 
 
-      /*
-        Update latest product
-        for customer page compatibility.
-      */
-
-      const currentProduct =
-        JSON.parse(
-          localStorage.getItem("adminProduct")
-        );
-
-
-      if (
-        currentProduct &&
-        currentProduct.id === product.id
-      ) {
-
-        localStorage.setItem(
-          "adminProduct",
-          JSON.stringify(product)
-        );
-
-      }
-
-
       closeEditModal();
 
       displayProducts();
@@ -1399,10 +1323,6 @@
     }
 
 
-    /*
-      No new image or gallery
-    */
-
     if (totalFiles === 0) {
 
       finishEdit();
@@ -1411,10 +1331,6 @@
 
     }
 
-
-    /*
-      New main image
-    */
 
     if (imageFile) {
 
@@ -1448,10 +1364,6 @@
 
     }
 
-
-    /*
-      New gallery images
-    */
 
     if (
       galleryFiles.length > 0
@@ -1549,37 +1461,43 @@
     document.getElementById(
       "viewPrice"
     ).textContent =
-      "₹" + (product.price || "0");
+      "₹" +
+      (product.price || "0");
 
 
     document.getElementById(
       "viewDiscount"
     ).textContent =
-      (product.discount || "0") + "%";
+      (product.discount || "0") +
+      "%";
 
 
     document.getElementById(
       "viewProfit"
     ).textContent =
-      product.profit || "Not set";
+      product.profit ||
+      "Not set";
 
 
     document.getElementById(
       "viewCategory"
     ).textContent =
-      product.category || "Not set";
+      product.category ||
+      "Not set";
 
 
     document.getElementById(
       "viewRating"
     ).textContent =
-      (product.rating || "0") + " / 5";
+      (product.rating || "0") +
+      " / 5";
 
 
     document.getElementById(
       "viewDescription"
     ).textContent =
-      product.description || "No description";
+      product.description ||
+      "No description";
 
 
     let status = [];
@@ -1664,9 +1582,10 @@
      START
   ========================================= */
 
-  displayProducts();
+  loadProducts();
 
 </script>
 
 </body>
+
 </html>

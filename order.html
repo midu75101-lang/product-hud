@@ -325,7 +325,20 @@ const smallOrder = {
   date: newOrder.date
 };
 
-myOrders.push(newOrder);
+const savedOrder = {
+  ...newOrder,
+  product: {
+    ...cartProduct,
+    image:
+      cartProduct.image &&
+      !cartProduct.image.startsWith("data:")
+        ? cartProduct.image
+        : "",
+    gallery: []
+  }
+};
+
+myOrders.push(savedOrder);
 
 try {
   localStorage.setItem(
@@ -334,6 +347,7 @@ try {
   );
 } catch (storageError) {
   console.warn("Local order storage limit reached:", storageError);
+  localStorage.removeItem("myOrders");
 }
       /* ================================
          SAVE TO SUPABASE

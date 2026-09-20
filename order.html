@@ -297,57 +297,79 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
 
-      /* ================================
-         SAVE LOCAL BACKUP
-      ================================= */
-
-      localStorage.setItem(
-        "myOrder",
-        JSON.stringify(newOrder)
-      );
-
-
-     let myOrders =
-  JSON.parse(
-    localStorage.getItem("myOrders")
-  ) || [];
-
-const smallOrder = {
-  id: newOrder.id,
-  product: {
-    name: cartProduct.name || "Product",
-    price: cartProduct.price || 0,
-    image: cartProduct.image || ""
-  },
-  customer: newOrder.customer,
-  payment: newOrder.payment,
-  status: newOrder.status,
-  date: newOrder.date
-};
-
-const savedOrder = {
-  ...newOrder,
-  product: {
-    ...cartProduct,
-    image:
-      cartProduct.image &&
-      !cartProduct.image.startsWith("data:")
-        ? cartProduct.image
-        : "",
-    gallery: []
-  }
-};
-
-myOrders.push(savedOrder);
+  /* ==========================================
+   SAVE LOCAL BACKUP
+   ========================================== */
 
 try {
+
+  const safeProduct = {
+
+    name:
+      cartProduct.name || "Product",
+
+    price:
+      cartProduct.price || 0,
+
+    image:
+      (
+        cartProduct.image &&
+        !cartProduct.image.startsWith("data:")
+      )
+        ? cartProduct.image
+        : ""
+
+  };
+
+
+  const savedOrder = {
+
+    id: newOrder.id,
+
+    product: safeProduct,
+
+    customer: newOrder.customer,
+
+    payment: newOrder.payment,
+
+    status: newOrder.status,
+
+    date: newOrder.date
+
+  };
+
+
+  let myOrders =
+
+    JSON.parse(
+      localStorage.getItem("myOrders")
+    ) || [];
+
+
+  myOrders.push(savedOrder);
+
+
+  /*
+  Keep only the latest 10 orders
+  */
+
+  myOrders =
+    myOrders.slice(-10);
+
+
   localStorage.setItem(
     "myOrders",
-    JSON.stringify(myOrders.slice(-10))
+    JSON.stringify(myOrders)
   );
+
+
 } catch (storageError) {
-  console.warn("Local order storage limit reached:", storageError);
-  localStorage.removeItem("myOrders");
+
+  console.warn(
+    "Local order storage skipped:",
+    storageError
+  );
+
 }
       /* ================================
          SAVE TO SUPABASE

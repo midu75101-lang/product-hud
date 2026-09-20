@@ -325,13 +325,16 @@ const smallOrder = {
   date: newOrder.date
 };
 
-myOrders.push(smallOrder);
+myOrders.push(newOrder);
 
-localStorage.setItem(
-  "myOrders",
-  JSON.stringify(myOrders)
-);
-
+try {
+  localStorage.setItem(
+    "myOrders",
+    JSON.stringify(myOrders.slice(-10))
+  );
+} catch (storageError) {
+  console.warn("Local order storage limit reached:", storageError);
+}
       /* ================================
          SAVE TO SUPABASE
       ================================= */

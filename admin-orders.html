@@ -8,14 +8,17 @@
 
   <title>Orders - Product HUD</title>
 
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase.js"></script>
 
+  <!-- Admin Login Check -->
   <script>
     (async function () {
 
-      const { data: { session } } =
-        await supabaseClient.auth.getSession();
+      const {
+        data: { session }
+      } = await supabaseClient.auth.getSession();
 
       if (!session) {
         window.location.href = "login.html";
@@ -23,6 +26,7 @@
 
     })();
   </script>
+
 
   <style>
 
@@ -38,134 +42,363 @@
       min-height: 100vh;
     }
 
+
+    /* =========================
+       HEADER
+    ========================= */
+
     .header {
       background: #111827;
       color: white;
       padding: 20px 30px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      gap: 15px;
     }
 
     .header h1 {
       font-size: 24px;
     }
 
-    .back-btn {
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 8px;
+
+    .header-buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
     }
 
+
+    .back-btn,
+    .refresh-btn {
+
+      color: white;
+      text-decoration: none;
+
+      border: none;
+
+      padding: 10px 16px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      font-size: 14px;
+    }
+
+
+    .back-btn {
+      background: #2563eb;
+    }
+
+
+    .refresh-btn {
+      background: #374151;
+    }
+
+
+    .back-btn:hover {
+      background: #1d4ed8;
+    }
+
+
+    .refresh-btn:hover {
+      background: #4b5563;
+    }
+
+
+    /* =========================
+       CONTAINER
+    ========================= */
+
     .container {
+
       max-width: 900px;
+
       margin: 30px auto;
+
       padding: 20px;
     }
 
+
     .orders-container {
+
       display: grid;
+
       gap: 20px;
     }
 
+
+    /* =========================
+       ORDER CARD
+    ========================= */
+
     .order-card {
+
       background: white;
+
       padding: 22px;
+
       border-radius: 14px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.06);
     }
+
 
     .order-card h2 {
+
       color: #111827;
+
       margin-bottom: 15px;
     }
+
+
+    /* =========================
+       PRODUCT
+    ========================= */
 
     .product-box {
+
       display: flex;
+
       gap: 15px;
+
       align-items: center;
+
       padding: 15px;
+
       background: #f9fafb;
+
       border-radius: 10px;
+
       margin-bottom: 15px;
     }
 
+
     .product-box img {
+
       width: 90px;
+
       height: 90px;
+
       object-fit: cover;
+
       border-radius: 10px;
+
+      background: #e5e7eb;
     }
 
+
     .product-box h3 {
+
       color: #111827;
+
       margin-bottom: 7px;
     }
 
+
+    .product-box p {
+
+      color: #374151;
+    }
+
+
+    /* =========================
+       CUSTOMER DETAILS
+    ========================= */
+
     .customer-info {
+
       color: #4b5563;
+
       line-height: 1.8;
+
       margin-bottom: 15px;
     }
+
+
+    .customer-info strong {
+
+      color: #111827;
+
+      font-size: 17px;
+    }
+
+
+    /* =========================
+       STATUS
+    ========================= */
 
     .status {
+
       display: inline-block;
+
       background: #f59e0b;
+
       color: white;
+
       padding: 6px 12px;
+
       border-radius: 20px;
+
       font-size: 13px;
+
       font-weight: bold;
+
       margin-bottom: 15px;
     }
 
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
     .whatsapp-btn {
+
       display: inline-block;
+
       background: #16a34a;
+
       color: white;
+
       text-decoration: none;
+
       border: none;
+
       padding: 11px 16px;
+
       border-radius: 8px;
+
       font-weight: bold;
+
       cursor: pointer;
     }
 
+
     .whatsapp-btn:hover {
+
       background: #15803d;
     }
 
+
+    /* =========================
+       EMPTY
+    ========================= */
+
     .empty {
+
       background: white;
+
       padding: 50px;
+
       text-align: center;
+
       border-radius: 14px;
+
       color: #6b7280;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.05);
     }
 
+
+    /* =========================
+       ERROR
+    ========================= */
+
     .error {
+
       background: #fee2e2;
+
       color: #991b1b;
+
       padding: 20px;
+
       border-radius: 12px;
     }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 600px) {
 
       .header {
+
+        padding: 18px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+
+      .header h1 {
+
+        font-size: 22px;
+      }
+
+
+      .header-buttons {
+
+        width: 100%;
+
+        flex-wrap: wrap;
+      }
+
+
+      .back-btn,
+      .refresh-btn {
+
+        font-size: 13px;
+
+        padding: 9px 12px;
+      }
+
+
+      .container {
+
+        padding: 15px;
+
+        margin: 15px auto;
+      }
+
+
+      .order-card {
+
         padding: 18px;
       }
 
-      .container {
-        padding: 15px;
-      }
 
       .product-box {
+
         flex-direction: column;
+
         align-items: flex-start;
+      }
+
+
+      .product-box img {
+
+        width: 100%;
+
+        max-width: 180px;
+
+        height: 180px;
+      }
+
+
+      .whatsapp-btn {
+
+        width: 100%;
+
+        text-align: center;
       }
 
     }
@@ -174,21 +407,44 @@
 
 </head>
 
+
 <body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
 
   <header class="header">
 
     <h1>🛒 Orders</h1>
 
-    <a
-      href="admin.html"
-      class="back-btn"
-    >
-      ← Dashboard
-    </a>
+
+    <div class="header-buttons">
+
+      <button
+        class="refresh-btn"
+        onclick="displayOrders()"
+      >
+        🔄 Refresh
+      </button>
+
+
+      <a
+        href="admin.html"
+        class="back-btn"
+      >
+        ← Dashboard
+      </a>
+
+    </div>
 
   </header>
 
+
+  <!-- =========================
+       ORDERS
+  ========================= -->
 
   <main class="container">
 
@@ -202,132 +458,310 @@
 
   <script>
 
+
+    /*
+    ==========================================
+       SUPABASE ORDERS
+    ==========================================
+    */
+
     let supabaseOrders = [];
 
+
+    /*
+    ==========================================
+       DISPLAY ORDERS
+    ==========================================
+    */
 
     async function displayOrders() {
 
       const container =
-        document.getElementById("ordersContainer");
+        document.getElementById(
+          "ordersContainer"
+        );
+
 
       container.innerHTML = `
+
         <div class="empty">
+
           <h2>⏳ Loading Orders...</h2>
+
           <p>Please wait.</p>
+
         </div>
+
       `;
 
 
       try {
 
+
         /*
         ==========================================
-        LOAD ORDERS FROM SUPABASE
+           GET ORDERS FROM SUPABASE
         ==========================================
         */
 
-        let result =
-          await supabaseClient
-            .from("orders")
-            .select("*")
-            .order("created_at", {
+        const {
+          data,
+          error
+        } = await supabaseClient
+
+          .from("orders")
+
+          .select("*")
+
+          .order(
+            "created_at",
+            {
               ascending: false
-            });
+            }
+          );
 
 
         /*
         ==========================================
-        IF created_at ORDER FAILS,
-        TRY WITHOUT ORDER
+           ERROR
         ==========================================
         */
 
-        if (result.error) {
+        if (error) {
 
           console.error(
             "Supabase Orders Error:",
-            result.error
+            error
           );
 
-          result =
-            await supabaseClient
-              .from("orders")
-              .select("*");
-
-        }
-
-
-        if (result.error) {
-
-          console.error(
-            "Supabase Orders Error:",
-            result.error
-          );
 
           container.innerHTML = `
+
             <div class="error">
 
-              <h2>❌ Could not load orders</h2>
+              <h2>
+                ❌ Could not load orders
+              </h2>
+
+              <br>
 
               <p>
-                ${result.error.message}
+                ${error.message}
               </p>
 
             </div>
+
           `;
 
           return;
-
         }
-
-
-        supabaseOrders =
-          result.data || [];
 
 
         /*
         ==========================================
-        NO ORDERS
+           STORE SUPABASE ORDERS
         ==========================================
         */
 
-        if (supabaseOrders.length === 0) {
+        supabaseOrders =
+          data || [];
+
+
+        /*
+        ==========================================
+           NO ORDERS
+        ==========================================
+        */
+
+        if (
+          supabaseOrders.length === 0
+        ) {
 
           container.innerHTML = `
+
             <div class="empty">
 
-              <h2>📭 No Orders Yet</h2>
+              <h2>
+                📭 No Orders Yet
+              </h2>
+
+              <br>
 
               <p>
                 Customer orders will appear here.
               </p>
 
             </div>
+
           `;
 
           return;
-
         }
 
+
+        /*
+        ==========================================
+           CLEAR CONTAINER
+        ==========================================
+        */
 
         container.innerHTML = "";
 
 
         /*
         ==========================================
-        DISPLAY SUPABASE ORDERS
+           DISPLAY EACH ORDER
         ==========================================
         */
 
         supabaseOrders.forEach(
           function(order, index) {
 
+
             const card =
-              document.createElement("div");
+              document.createElement(
+                "div"
+              );
+
 
             card.className =
               "order-card";
 
+
+            /*
+            ======================================
+               PRODUCT IMAGE
+            ======================================
+            */
+
+            const productImage =
+              order.product_image || "";
+
+
+            /*
+            ======================================
+               PRODUCT NAME
+            ======================================
+            */
+
+            const productName =
+              order.product_name ||
+              "Product";
+
+
+            /*
+            ======================================
+               PRICE
+            ======================================
+            */
+
+            const productPrice =
+              order.product_price ??
+              0;
+
+
+            /*
+            ======================================
+               CUSTOMER
+            ======================================
+            */
+
+            const customerName =
+              order.customer_name ||
+              "Not provided";
+
+
+            /*
+            ======================================
+               PHONE
+            ======================================
+            */
+
+            const customerPhone =
+              order.customer_phone ||
+              "Not provided";
+
+
+            /*
+            ======================================
+               ADDRESS
+            ======================================
+            */
+
+            const address =
+              order.address ||
+              "Not provided";
+
+
+            /*
+            ======================================
+               CITY
+            ======================================
+            */
+
+            const city =
+              order.city ||
+              "Not provided";
+
+
+            /*
+            ======================================
+               PIN
+            ======================================
+            */
+
+            const pin =
+              order.pin ||
+              "Not provided";
+
+
+            /*
+            ======================================
+               PAYMENT
+            ======================================
+            */
+
+            const paymentMethod =
+              order.payment_method ||
+              "Not provided";
+
+
+            /*
+            ======================================
+               STATUS
+            ======================================
+            */
+
+            const status =
+              order.status ||
+              "New Order";
+
+
+            /*
+            ======================================
+               DATE
+            ======================================
+            */
+
+            let orderDate =
+              "Not available";
+
+
+            if (order.created_at) {
+
+              orderDate =
+                new Date(
+                  order.created_at
+                ).toLocaleString();
+
+            }
+
+
+            /*
+            ======================================
+               CARD HTML
+            ======================================
+            */
 
             card.innerHTML = `
 
@@ -338,22 +772,26 @@
 
               <div class="product-box">
 
+
                 <img
-                  src="${order.product_image || ""}"
+                  src="${productImage}"
                   alt="Product"
+                  onerror="
+                    this.style.display='none';
+                  "
                 >
 
 
                 <div>
 
                   <h3>
-                    ${order.product_name || "Product"}
+                    ${productName}
                   </h3>
 
 
                   <p>
                     Price:
-                    ₹${order.product_price || "0"}
+                    ₹${productPrice}
                   </p>
 
                 </div>
@@ -363,67 +801,66 @@
 
               <div class="customer-info">
 
+
                 <strong>
                   Customer Details
                 </strong>
 
-                <br>
+
+                <br><br>
 
 
                 Name:
-                ${order.customer_name || "Not provided"}
+                ${customerName}
+
 
                 <br>
 
 
                 Phone:
-                ${order.phone || "Not provided"}
+                ${customerPhone}
+
 
                 <br>
 
 
                 Address:
-                ${order.address || "Not provided"}
+                ${address}
+
 
                 <br>
 
 
                 City:
-                ${order.city || "Not provided"}
+                ${city}
+
 
                 <br>
 
 
                 PIN:
-                ${order.pin || "Not provided"}
+                ${pin}
+
 
                 <br>
 
 
                 Payment:
-                ${order.payment_method || "Not provided"}
+                ${paymentMethod}
+
 
                 <br>
 
 
-                ${
-                  order.created_at
-                    ? "Date: " +
-                      new Date(
-                        order.created_at
-                      ).toLocaleString()
-                    : ""
-                }
+                Date:
+                ${orderDate}
 
               </div>
 
 
               <span class="status">
 
-                ${
-                  order.status ||
-                  "New Order"
-                }
+                ${status}
 
               </span>
 
@@ -440,16 +877,23 @@
 
               </button>
 
+
             `;
 
 
-            container.appendChild(card);
+            container.appendChild(
+              card
+            );
+
 
           }
         );
 
 
-      } catch (error) {
+      }
+
+      catch (error) {
+
 
         console.error(
           "Order Loading Error:",
@@ -465,6 +909,8 @@
               ❌ Order loading failed
             </h2>
 
+            <br>
+
             <p>
               ${error.message}
             </p>
@@ -478,14 +924,14 @@
     }
 
 
-
     /*
     ==========================================
-    WHATSAPP
+       WHATSAPP
     ==========================================
     */
 
     function sendWhatsApp(index) {
+
 
       const order =
         supabaseOrders[index];
@@ -501,6 +947,12 @@
 
       }
 
+
+      /*
+      ==========================================
+         WHATSAPP NUMBER
+      ==========================================
+      */
 
       const whatsappNumber =
         localStorage.getItem(
@@ -519,50 +971,97 @@
       }
 
 
+      /*
+      ==========================================
+         ORDER DATA
+      ==========================================
+      */
+
+      const productName =
+        order.product_name ||
+        "Product";
+
+
+      const productPrice =
+        order.product_price ??
+        0;
+
+
+      const customerName =
+        order.customer_name ||
+        "Not provided";
+
+
+      const customerPhone =
+        order.customer_phone ||
+        "Not provided";
+
+
+      const address =
+        order.address ||
+        "Not provided";
+
+
+      const city =
+        order.city ||
+        "";
+
+
+      const pin =
+        order.pin ||
+        "Not provided";
+
+
+      const paymentMethod =
+        order.payment_method ||
+        "Not provided";
+
+
+      /*
+      ==========================================
+         MESSAGE
+      ==========================================
+      */
+
       const message =
 `New Product HUD Order
 
 Order: #${index + 1}
 
-Product: ${
-  order.product_name || "Product"
-}
+Product: ${productName}
+Price: ₹${productPrice}
 
-Price: ₹${
-  order.product_price || "0"
-}
-
-Customer Name: ${
-  order.customer_name || "Not provided"
-}
-
-Phone: ${
-  order.phone || "Not provided"
-}
+Customer Name: ${customerName}
+Phone: ${customerPhone}
 
 Address:
-${
-  order.address || "Not provided"
-}
+${address}
+${city}
 
-${
-  order.city || ""
-}
+PIN: ${pin}
 
-PIN: ${
-  order.pin || "Not provided"
-}
+Payment Method: ${paymentMethod}`;
 
-Payment Method: ${
-  order.payment_method || "Not provided"
-}`;
 
+      /*
+      ==========================================
+         WHATSAPP URL
+      ==========================================
+      */
 
       const url =
         "https://wa.me/" +
-        whatsappNumber.replace(/\D/g, "") +
+
+        whatsappNumber.replace(
+          /\D/g,
+          ""
+        ) +
+
         "?text=" +
-        encodeURIComponent(message);
+
+        encodeURIComponent(
+          message
+        );
 
 
       window.open(
@@ -575,13 +1074,15 @@ Payment Method: ${
 
     /*
     ==========================================
-    START
+       START
     ==========================================
     */
 
     displayOrders();
 
+
   </script>
+
 
 </body>
 

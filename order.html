@@ -307,20 +307,30 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
 
-      let myOrders =
-        JSON.parse(
-          localStorage.getItem("myOrders")
-        ) || [];
+     let myOrders =
+  JSON.parse(
+    localStorage.getItem("myOrders")
+  ) || [];
 
+const smallOrder = {
+  id: newOrder.id,
+  product: {
+    name: cartProduct.name || "Product",
+    price: cartProduct.price || 0,
+    image: cartProduct.image || ""
+  },
+  customer: newOrder.customer,
+  payment: newOrder.payment,
+  status: newOrder.status,
+  date: newOrder.date
+};
 
-      myOrders.push(newOrder);
+myOrders.push(smallOrder);
 
-
-      localStorage.setItem(
-        "myOrders",
-        JSON.stringify(myOrders)
-      );
-
+localStorage.setItem(
+  "myOrders",
+  JSON.stringify(myOrders)
+);
 
       /* ================================
          SAVE TO SUPABASE

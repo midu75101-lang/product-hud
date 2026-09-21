@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Create Account - Product HUD</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,23 +21,56 @@
       </div>
 
       <h1>Create Account</h1>
-      <p class="subtitle">Create your account to get started</p>
+
+      <p class="subtitle">
+        Create your account to get started
+      </p>
 
       <form id="signupForm">
 
         <label>Full Name</label>
-        <input type="text" placeholder="Enter your full name" required>
+
+        <input
+          type="text"
+          id="signupName"
+          placeholder="Enter your full name"
+          required
+        >
 
         <label>Email</label>
-        <input type="email" placeholder="Enter your email" required>
+
+        <input
+          type="email"
+          id="signupEmail"
+          placeholder="Enter your email"
+          required
+        >
 
         <label>Password</label>
-        <input type="password" placeholder="Create a password" required>
+
+        <input
+          type="password"
+          id="signupPassword"
+          placeholder="Create a password"
+          required
+          minlength="6"
+        >
 
         <label>Confirm Password</label>
-        <input type="password" placeholder="Confirm your password" required>
 
-        <button type="submit" class="login-btn">
+        <input
+          type="password"
+          id="signupConfirmPassword"
+          placeholder="Confirm your password"
+          required
+          minlength="6"
+        >
+
+        <button
+          type="submit"
+          class="login-btn"
+          id="signupButton"
+        >
           Create Account
         </button>
 
@@ -50,7 +85,132 @@
 
   </div>
 
-  <script src="script.js"></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
+
+  <script>
+
+    const signupForm = document.getElementById("signupForm");
+    const signupButton = document.getElementById("signupButton");
+
+    signupForm.addEventListener("submit", async function (event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("signupName").value.trim();
+
+      const email =
+        document.getElementById("signupEmail").value.trim();
+
+      const password =
+        document.getElementById("signupPassword").value;
+
+      const confirmPassword =
+        document.getElementById("signupConfirmPassword").value;
+
+
+      /* Password check */
+
+      if (password !== confirmPassword) {
+
+        alert("Passwords do not match!");
+
+        return;
+      }
+
+
+      if (password.length < 6) {
+
+        alert("Password must be at least 6 characters.");
+
+        return;
+      }
+
+
+      signupButton.disabled = true;
+
+      signupButton.textContent = "Creating Account...";
+
+
+      try {
+
+        const { data, error } =
+          await supabaseClient.auth.signUp({
+
+            email: email,
+
+            password: password,
+
+            options: {
+
+              data: {
+
+                full_name: name,
+
+                role: "customer"
+
+              }
+
+            }
+
+          });
+
+
+        if (error) {
+
+          alert("Account creation failed: " + error.message);
+
+          signupButton.disabled = false;
+
+          signupButton.textContent = "Create Account";
+
+          return;
+        }
+
+
+        /*
+          Supabase may require email confirmation
+          depending on the project settings.
+        */
+
+        if (data.session) {
+
+          alert("Account created successfully!");
+
+          window.location.href = "index.html";
+
+        } else {
+
+          alert(
+            "Account created successfully! " +
+            "Please check your email to confirm your account, then login."
+          );
+
+          window.location.href = "login.html";
+
+        }
+
+
+      } catch (error) {
+
+        alert("Something went wrong. Please try again.");
+
+        console.error(error);
+
+        signupButton.disabled = false;
+
+        signupButton.textContent = "Create Account";
+
+      }
+
+    });
+
+  </script>
 
 </body>
+
 </html>

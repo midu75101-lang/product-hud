@@ -721,10 +721,12 @@
             ======================================
             */
 
-            const paymentMethod =
-              order.payment_method ||
-              "Not provided";
-
+          const paymentMethod =
+  order.payment_method === "cod"
+    ? "Cash on Delivery"
+    : order.payment_method === "online"
+      ? "Online Payment"
+      : order.payment_method || "Not provided";
 
             /*
             ======================================

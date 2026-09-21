@@ -235,7 +235,15 @@ document.addEventListener("DOMContentLoaded", function () {
           .value
           .trim();
 
+const { data: { user } } =
+  await supabaseClient.auth.getUser();
 
+if (!user) {
+  alert("Please login before placing an order.");
+  return;
+}
+
+const customerEmail = user.email;
       const payment =
         document.querySelector(
           'input[name="payment"]:checked'
@@ -278,6 +286,8 @@ document.addEventListener("DOMContentLoaded", function () {
           name: name,
 
           phone: phone,
+          customer_email:
+  customerEmail,
 
           address: address,
 

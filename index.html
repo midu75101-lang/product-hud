@@ -134,40 +134,35 @@ function renderProducts(products) {
 
     productCard.className = "product-card";
 
-    productCard.innerHTML = `
-      <div class="product-image">
-        <img
-          src="${product.image_url || product.image || ""}"
-          alt="${product.name || "Product"}"
-        >
-      </div>
+productCard.innerHTML = `
+  <div class="product-image">
+    <img
+      src="${product.image_url || product.image || ""}"
+      alt="${product.name || "Product"}"
+    >
+  </div>
 
-      <div class="product-info">
+  <div class="product-info">
 
-        <span class="badge">
-          ${product.newest ? "NEW PRODUCT" : ""}
-        </span>
+    <h3>${product.name || "Product"}</h3>
 
-        <h3>${product.name || "Product"}</h3>
+    <p class="price">
+      ₹${product.price || "0"}
+    </p>
 
-        <p>${product.description || ""}</p>
+    <p class="product-card-rating">
+      ⭐ ${product.rating || "0"} / 5
+    </p>
 
-        <p class="price">
-          ₹${product.price || "0"}
-        </p>
+    <a
+      href="product-details.html"
+      class="view-btn"
+    >
+      View Product
+    </a>
 
-        <p>
-          ⭐ ${product.rating || "0"} / 5
-        </p>
-        
-<a
-  href="product-details.html"
-  class="view-btn"
->
-  View Product
-</a>
-      </div>
-    `;
+  </div>
+`;
 const viewButton =
   productCard.querySelector(".view-btn");
 

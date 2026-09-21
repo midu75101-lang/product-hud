@@ -881,3 +881,89 @@ footer p {
     justify-content: center;
   }
 }
+/* ================================
+   PRODUCT DETAILS ACTION BUTTONS
+================================ */
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.product-actions button,
+.product-actions a {
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Save Product */
+.product-actions .save-btn {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #333;
+}
+
+/* Add to Cart */
+.product-actions .cart-btn {
+  background: #ffffff;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* View Cart */
+.product-actions .cart-link {
+  background: #ffffff;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+}
+
+/* Order Now - Bigger & Highlighted */
+.product-actions #orderNowBtn {
+  min-height: 62px;
+  font-size: 18px;
+  font-weight: 700;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.product-actions #orderNowBtn:hover {
+  background: #1d4ed8;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .product-actions {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .product-actions button,
+  .product-actions a {
+    width: 100%;
+    min-height: 52px;
+    font-size: 16px;
+  }
+
+  .product-actions #orderNowBtn {
+    min-height: 62px;
+    font-size: 18px;
+  }
+}

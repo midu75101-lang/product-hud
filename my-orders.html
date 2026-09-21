@@ -1,41 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>My Orders - Product HUD</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+
 </head>
+
 <body>
 
   <main class="cart-page">
+
     <h1>My Orders</h1>
 
     <div id="ordersList">
-      <p>No orders yet.</p>
+      <p>Loading orders...</p>
     </div>
+
   </main>
+
+
 <script>
-  const ordersList = document.getElementById("ordersList");
-  const myOrder = JSON.parse(localStorage.getItem("myOrder"));
 
-  if (myOrder) {
+document.addEventListener("DOMContentLoaded", async function () {
+
+  const ordersList =
+    document.getElementById("ordersList");
+
+
+  /* ================================
+     GET LOGGED-IN CUSTOMER
+  ================================= */
+
+  const { data: { user }, error: userError } =
+    await supabaseClient.auth.getUser();
+
+
+  if (userError || !user) {
+
     ordersList.innerHTML = `
-      <div class="saved-product-card">
-        <img src="${myOrder.product.image}" alt="${myOrder.product.name}" style="width: 200px;">
-        <h2>${myOrder.product.name}</h2>
-        <p><strong>Price:</strong> ${myOrder.product.price}</p>
+      <p>Please login to view your orders.</p>
 
-        <p><strong>Customer:</strong> ${myOrder.customer.name}</p>
-        <p><strong>Phone:</strong> ${myOrder.customer.phone}</p>
-        <p><strong>Address:</strong> ${myOrder.customer.address}</p>
-        <p><strong>City:</strong> ${myOrder.customer.city}</p>
-        <p><strong>PIN:</strong> ${myOrder.customer.pin}</p>
-
-        <p><strong>Status:</strong> Order Confirmed</p>
-      </div>
+      <a href="login.html"
+         class="cart-link"
+         style="display:inline-block; margin-top:15px;">
+        Login
+      </a>
     `;
+
+    return;
+
   }
+
+
+  const customerEmail = user.email;
+
+
+  /* ================================
+     LOAD CUSTOMER ORDERS
+  ================================= */
+
+  const { data: orders, error } =
+    await supabaseClient
+      .from("orders")
+      .select("*")
+      .eq("customer_email", customerEmail)
+      .order("created_at", {
+        ascending: false
+      });
+
+
+  if (error) {
+
+    console.error(
+      "My Orders Error:",
+      error
+    );
+
+    ordersList.innerHTML = `
+      <p>Could not load your orders.</p>
+    `;
+
+    return;
+
+  }
+
+
+  /* ================================
+     NO ORDERS
+  ================================= */
+
+  if (!orders || orders.length === 0) {
+
+    ordersList.innerHTML = `
+      <p>No orders yet.</p>
+    `;
+
+    return;
+
+  }
+
+
+  /* ================================
+     PAYMENT LABEL
+  ================================= */
+
+  function getPaymentLabel(payment) {
+
+    if (payment === "cod") {
+      return "Cash on Delivery";
+    }
+
+    if (payment === "online") {
+      return "Online Payment";
+    }
+
+    return payment || "Not provided";
+
+  }
+
+
+  /* ================================
+     DISPLAY ORDERS
+  ================================= */
+
+  ordersList.innerHTML = orders.map(order => {
+
+    const isCancelled =
+      order.status === "Order Cancelled";
+
+
+    return `
+
+      <div
+        class="saved-product-card"
+        style="margin-bottom:20px;"
+      >
+
+        <img
+          src="${order.product_image || ""}"
+          alt="${order.product_name || "Product"}"
+          style="width:200px; max-width:100%;"
+        >
+
+
+        <h2>
+          ${order.product_name || "Product"}
+        </h2>
+
+
+        <p>
+          <strong>Price:</strong>
+          ₹${order.product_price || "0"}
+        </p>
+
+
+        <p>
+          <strong>Customer:</strong>
+          ${order.customer_name || "Not provided"}
+        </p>
+
+
+        <p>
+          <strong>Phone:</strong>
+          ${order.customer_phone || "Not provided"}
+        </p>
+
+
+        <p>
+          <strong>Address:</strong>
+          ${order.address || "Not provided"}
+        </p>
+
+
+        <p>
+          <strong>City:</strong>
+          ${order.city || "Not provided"}
+        </p>
+
+
+        <p>
+          <strong>PIN:</strong>
+          ${order.pin || "Not provided"}
+        </p>
+
+
+        <p>
+          <strong>Payment:</strong>
+          ${getPaymentLabel(order.payment_method)}
+        </p>
+
+
+        <p>
+          <strong>Status:</strong>
+          <span
+            style="
+              font-weight:700;
+              color:${isCancelled ? "#dc2626" : "#16a34a"};
+            "
+          >
+            ${order.status || "New Order"}
+          </span>
+        </p>
+
+
+        ${
+          !isCancelled
+          ?
+
+          `
+          <button
+            class="cancel-order-btn"
+            data-order-id="${order.id}"
+            type="button"
+            style="
+              margin-top:15px;
+              padding:12px 18px;
+              background:#dc2626;
+              color:white;
+              border:none;
+              border-radius:8px;
+              font-weight:600;
+              cursor:pointer;
+            "
+          >
+            Cancel Order
+          </button>
+          `
+
+          :
+
+          ""
+        }
+
+
+      </div>
+
+    `;
+
+  }).join("");
+
+
+  /* ================================
+     CANCEL ORDER
+  ================================= */
+
+  document
+    .querySelectorAll(".cancel-order-btn")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        async function () {
+
+          const orderId =
+            this.dataset.orderId;
+
+
+          /* ================================
+             CONFIRMATION
+          ================================= */
+
+          const confirmed =
+            confirm(
+              "Are you sure you want to cancel this order?"
+            );
+
+
+          if (!confirmed) {
+
+            return;
+
+          }
+
+
+          /* ================================
+             UPDATE SUPABASE
+          ================================= */
+
+          this.disabled = true;
+
+          this.textContent =
+            "Cancelling...";
+
+
+          const { error: updateError } =
+            await supabaseClient
+              .from("orders")
+              .update({
+                status: "Order Cancelled"
+              })
+              .eq("id", orderId)
+              .eq(
+                "customer_email",
+                customerEmail
+              );
+
+
+          if (updateError) {
+
+            console.error(
+              "Cancel Order Error:",
+              updateError
+            );
+
+
+            alert(
+              "Order could not be cancelled.\n\n" +
+              updateError.message
+            );
+
+
+            this.disabled = false;
+
+            this.textContent =
+              "Cancel Order";
+
+            return;
+
+          }
+
+
+          /* ================================
+             SUCCESS
+          ================================= */
+
+          alert(
+            "Order cancelled successfully."
+          );
+
+
+          /* Reload orders */
+          location.reload();
+
+        }
+
+      );
+
+    });
+
+});
+
 </script>
+
 </body>
 </html>

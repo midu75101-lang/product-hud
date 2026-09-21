@@ -21,7 +21,17 @@
         <a href="my-orders.html">My Orders</a>
     </nav>
 
-    <a href="login.html" class="login-btn">Login</a>
+    <div id="accountArea">
+
+  <a
+    href="login.html"
+    class="login-btn"
+    id="loginButton"
+  >
+    Login
+  </a>
+
+</div>
   </header>
 
   <section class="hero">
@@ -187,5 +197,65 @@ loadProductsFromSupabase();
 </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", async function () {
+
+  const accountArea = document.getElementById("accountArea");
+
+  if (!accountArea) return;
+
+  const customerName = localStorage.getItem("customerName");
+
+  if (customerName) {
+
+    accountArea.innerHTML = `
+      <div class="customer-menu">
+
+        <button class="customer-btn" type="button">
+          👤 ${customerName}
+        </button>
+
+        <div class="customer-dropdown">
+
+          <a href="my-orders.html">
+            My Orders
+          </a>
+
+          <a href="saved.html">
+            Saved Products
+          </a>
+
+          <a href="#" id="logoutBtn">
+            Logout
+          </a>
+
+        </div>
+
+      </div>
+    `;
+
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+
+      logoutBtn.addEventListener("click", async function (e) {
+
+        e.preventDefault();
+
+        await supabaseClient.auth.signOut();
+
+        localStorage.removeItem("customerName");
+        localStorage.removeItem("customerEmail");
+
+        window.location.href = "index.html";
+
+      });
+
+    }
+
+  }
+
+});
+</script>
 </body>
 </html>

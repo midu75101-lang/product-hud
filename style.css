@@ -967,3 +967,34 @@ footer p {
     font-size: 18px;
   }
 }
+/* Professional View Product Button */
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 20px);
+  margin: 10px;
+  padding: 11px 16px;
+
+  background: #2563eb;
+  color: #ffffff !important;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.view-btn:active {
+  transform: scale(0.98);
+}

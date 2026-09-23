@@ -243,7 +243,10 @@ if (!user) {
   return;
 }
 
-const customerEmail = user.email;
+const customerEmail =
+  user?.email ||
+  localStorage.getItem("customerEmail") ||
+  "";
       const payment =
         document.querySelector(
           'input[name="payment"]:checked'

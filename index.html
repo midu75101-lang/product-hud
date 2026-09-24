@@ -1,261 +1,1254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Product HUD</title>
-<meta name="google-site-verification" content="N4B3BlK9T5KYGx40snnsMC-QxVehv24nVn2TrT6KaH0" />
+
+  <meta
+    name="google-site-verification"
+    content="N4B3BlK9T5KYGx40snnsMC-QxVehv24VnV2TrT6KaH0"
+  >
+
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body id="top">
 
-  <header class="navbar">
-    <div class="logo">Product <span>HUD</span></div>
 
-    <nav>
-<a href="#top">Home</a>  
-     <a href="#categories">Categories</a>
-      <a href="#about">About</a>
-      <a href="saved.html">Saved Products
-        <a href="my-orders.html">My Orders</a>
-    </nav>
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
-    <div id="accountArea">
+<header class="navbar hud-navbar">
 
-  <a
-    href="login.html"
-    class="login-btn"
-    id="loginButton"
-  >
-    Login
-  </a>
+  <div class="logo">
+    Product <span>HUD</span>
+  </div>
 
-</div>
-  </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <p class="small-title">PRODUCT DISCOVERY PLATFORM</p>
+  <nav>
 
-      <h1>Find Products.<br><span>Sell Smarter.</span></h1>
+    <a href="#top">Home</a>
 
-      <p>
-        Discover trending products, explore profitable ideas
-        and find products for your online business.
+    <a href="#products">Products</a>
+
+    <a href="#categories">Categories</a>
+
+    <a href="saved.html">Saved Products</a>
+
+    <a href="my-orders.html">My Orders</a>
+
+    <a href="#about">About</a>
+
+  </nav>
+
+
+  <div id="accountArea">
+
+    <a
+      href="login.html"
+      class="login-btn"
+      id="loginButton"
+    >
+      Login
+    </a>
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hud-hero">
+
+  <div class="hud-hero-content">
+
+
+    <p class="hud-small-title">
+      DISCOVER AMAZING
+    </p>
+
+
+    <h1>
+      Products.<br>
+      <span>Order Instantly.</span>
+    </h1>
+
+
+    <p class="hud-hero-description">
+      Top trending products, best prices,
+      trusted suppliers — all in one place.
+      <br>
+      No extra steps. Just discover & order!
+    </p>
+
+
+    <!-- FEATURES -->
+
+    <div class="hud-features">
+
+      <div class="hud-feature">
+
+        <span class="hud-feature-icon">⚡</span>
+
+        <div>
+          <strong>Fast Order</strong>
+          <small>Just 1 Click</small>
+        </div>
+
+      </div>
+
+
+      <div class="hud-feature">
+
+        <span class="hud-feature-icon">🛡️</span>
+
+        <div>
+          <strong>Secure</strong>
+          <small>Payments</small>
+        </div>
+
+      </div>
+
+
+      <div class="hud-feature">
+
+        <span class="hud-feature-icon">🚚</span>
+
+        <div>
+          <strong>Worldwide</strong>
+          <small>Shipping</small>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="hud-search-box">
+
+      <span class="hud-search-icon">⌕</span>
+
+      <input
+        id="productSearchInput"
+        type="text"
+        placeholder="Search for products, categories..."
+      >
+
+      <button
+        id="productSearchButton"
+        type="button"
+      >
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =================================================
+       SHOPPING CART ILLUSTRATION
+  ================================================= -->
+
+  <div class="hud-shopping-illustration">
+
+    <div class="hud-red-circle"></div>
+
+    <div class="hud-shopping-bag bag-one">
+      🛍️
+    </div>
+
+    <div class="hud-shopping-bag bag-two">
+      🎁
+    </div>
+
+    <div class="hud-cart">
+
+      <div class="hud-cart-handle"></div>
+
+      <div class="hud-cart-body">
+
+        <span>🛍️</span>
+        <span>📦</span>
+        <span>🎁</span>
+
+      </div>
+
+      <div class="hud-wheel wheel-one"></div>
+      <div class="hud-wheel wheel-two"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section
+  class="categories hud-categories"
+  id="categories"
+>
+
+
+  <div class="hud-section-title">
+
+    <div>
+
+      <p class="hud-section-mini">
+        SHOP BY
       </p>
 
-      <div class="search-box">
-        <input type="text" placeholder="Search products...">
-        <button>Search</button>
+      <h2>
+        Categories
+      </h2>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="category-grid hud-category-grid">
+
+
+    <!-- HOME -->
+
+    <div
+      class="category-card hud-category-card"
+      data-category="home"
+      title="Home & Kitchen"
+      aria-label="Home & Kitchen"
+    >
+
+      <div class="hud-category-icon">
+        🏠
       </div>
-    </div>
-  </section>
 
-  <section class="categories" id="categories">
-    <h2>Explore Categories</h2>
-
-    <div class="category-grid">
-      <div class="category-card" data-category="home">🏠 <h3>Home & Kitchen</h3></div>
-     <div class="category-card" data-category="gadgets">💡 <h3>Gadgets</h3></div>
-      <div class="category-card" data-category="wood">🪵<h3>Wood Products</h3></div>
-      <div class="category-card" data-category="trending">✨<h3>Trending</h3></div>
-    </div>
-  </section>
-
- <section class="products" id="products">
-    <div class="section-heading">
-      <h2>Trending Products</h2>
-     <button id="viewAllBtn">View All →</button>
     </div>
 
-   <div id="dynamicProductGrid" class="product-grid"></div>
 
-     
-  </section>
 
-  <footer id="about">
-    <div class="logo">Product <span>HUD</span></div>
-    <p>Discover products. Build your business.</p>
-    <p>© 2026 Product HUD</p>
-  </footer>
+    <!-- GADGETS -->
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <div
+      class="category-card hud-category-card"
+      data-category="gadgets"
+      title="Gadgets"
+      aria-label="Gadgets"
+    >
+
+      <div class="hud-category-icon">
+        💡
+      </div>
+
+    </div>
+
+
+
+    <!-- WOOD -->
+
+    <div
+      class="category-card hud-category-card"
+      data-category="wood"
+      title="Wood Products"
+      aria-label="Wood Products"
+    >
+
+      <div class="hud-category-icon">
+        🪵
+      </div>
+
+    </div>
+
+
+
+    <!-- TRENDING -->
+
+    <div
+      class="category-card hud-category-card"
+      data-category="trending"
+      title="Trending"
+      aria-label="Trending"
+    >
+
+      <div class="hud-category-icon">
+        🔥
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section
+  class="products hud-products"
+  id="products"
+>
+
+
+  <div class="section-heading hud-products-heading">
+
+    <div>
+
+      <p class="hud-section-mini">
+        HOT PICKS
+      </p>
+
+      <h2>
+        🔥 Trending Products
+      </h2>
+
+      <p class="hud-products-subtitle">
+        High demand. Don't miss out!
+      </p>
+
+    </div>
+
+
+    <button
+      id="viewAllBtn"
+      type="button"
+    >
+      View All →
+    </button>
+
+  </div>
+
+
+
+  <!-- EXISTING PRODUCT GRID -->
+
+  <div
+    id="dynamicProductGrid"
+    class="product-grid hud-product-grid"
+  ></div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     DEAL BANNER
+===================================================== -->
+
+<section class="hud-deal-section">
+
+  <div class="hud-deal-banner">
+
+    <div>
+
+      <span class="hud-deal-label">
+        LIMITED TIME
+      </span>
+
+      <h2>
+        Best Deals.<br>
+        Bigger Savings.
+      </h2>
+
+      <p>
+        Grab trending products at great prices.
+      </p>
+
+    </div>
+
+
+    <div class="hud-deal-offer">
+      UP TO<br>
+      <strong>50%</strong><br>
+      OFF
+    </div>
+
+
+    <button
+      type="button"
+      onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
+    >
+      Shop Now →
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="about" class="hud-footer">
+
+  <div class="logo">
+    Product <span>HUD</span>
+  </div>
+
+  <p>
+    Discover products. Build your business.
+  </p>
+
+  <p>
+    © 2026 Product HUD
+  </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     EXISTING SCRIPT
+===================================================== -->
+
+<script src="script.js"></script>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="supabase.js"></script>
+
+
+
+<!-- =====================================================
+     SUPABASE PRODUCT LOADING
+===================================================== -->
+
 <script>
+
 async function loadProductsFromSupabase() {
 
   const productGrid =
     document.getElementById("dynamicProductGrid");
 
+
   if (!productGrid) return;
 
+
   productGrid.innerHTML = "";
+
 
   const { data, error } =
     await supabaseClient
       .from("products")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("created_at", {
+        ascending: false
+      });
+
 
   if (error) {
-    console.error("Supabase error:", error);
 
-    // Fallback to existing local products
+    console.error(
+      "Supabase error:",
+      error
+    );
+
+
     const localProducts =
-      JSON.parse(localStorage.getItem("adminProducts")) || [];
+      JSON.parse(
+        localStorage.getItem("adminProducts")
+      ) || [];
+
 
     renderProducts(localProducts);
+
     return;
+
   }
+
 
   const products = data || [];
 
-  // Keep the products available locally for existing features
+
+  /* Keep existing local product backup */
+
   localStorage.setItem(
     "adminProducts",
+
     JSON.stringify(
+
       products.map(product => ({
+
         ...product,
-        image: product.image_url || "",
-        gallery: product.gallery_urls || ""
+
+        image:
+          product.image_url || "",
+
+        gallery:
+          product.gallery_urls || ""
+
       }))
+
     )
   );
 
+
   renderProducts(products);
+
 }
 
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
 
 function renderProducts(products) {
 
   const productGrid =
-    document.getElementById("dynamicProductGrid");
+    document.getElementById(
+      "dynamicProductGrid"
+    );
+
 
   if (!productGrid) return;
 
+
   productGrid.innerHTML = "";
 
+
   products.forEach((product) => {
+
 
     const productCard =
       document.createElement("div");
 
-    productCard.className = "product-card";
 
-productCard.innerHTML = `
-  <div class="product-image">
-    <img
-      src="${product.image_url || product.image || ""}"
-      alt="${product.name || "Product"}"
-    >
-  </div>
+    productCard.className =
+      "product-card hud-product-card";
 
-  <div class="product-info">
 
-    <h3>${product.name || "Product"}</h3>
+    productCard.innerHTML = `
 
-    <p class="price">
-      ₹${product.price || "0"}
-    </p>
+      <div class="product-image">
 
-    <p class="product-card-rating">
-      ⭐ ${product.rating || "0"} / 5
-    </p>
+        <img
+          src="${product.image_url || product.image || ""}"
+          alt="${product.name || "Product"}"
+        >
 
-    <a
-      href="product-details.html"
-      class="view-btn"
-    >
-      View Product
-    </a>
+      </div>
 
-  </div>
-`;
-const viewButton =
-  productCard.querySelector(".view-btn");
 
-viewButton.addEventListener("click", function(e) {
+      <div class="product-info">
 
-  e.preventDefault();
+        <h3>
+          ${product.name || "Product"}
+        </h3>
 
-  localStorage.setItem(
-    "adminProduct",
-    JSON.stringify(product)
-  );
 
-  window.location.href =
-    "product-details.html";
-});
-    productGrid.appendChild(productCard);
+        <p class="price">
+          ₹${product.price || "0"}
+        </p>
+
+
+        <p class="product-card-rating">
+          ⭐ ${product.rating || "0"} / 5
+        </p>
+
+
+        <a
+          href="product-details.html"
+          class="view-btn hud-view-btn"
+        >
+          View Product
+        </a>
+
+      </div>
+
+    `;
+
+
+
+    /* Existing View Product functionality */
+
+    const viewButton =
+      productCard.querySelector(
+        ".view-btn"
+      );
+
+
+    if (viewButton) {
+
+      viewButton.addEventListener(
+        "click",
+        function(e) {
+
+          e.preventDefault();
+
+
+          localStorage.setItem(
+
+            "adminProduct",
+
+            JSON.stringify(product)
+
+          );
+
+
+          window.location.href =
+            "product-details.html";
+
+        }
+      );
+
+    }
+
+
+    productGrid.appendChild(
+      productCard
+    );
+
   });
+
 }
 
 
+
+/* Load products */
+
 loadProductsFromSupabase();
+
 </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-  <script>
-document.addEventListener("DOMContentLoaded", async function () {
 
-  const accountArea = document.getElementById("accountArea");
 
-  if (!accountArea) return;
 
-  const customerName = localStorage.getItem("customerName");
+<!-- =====================================================
+     CUSTOMER ACCOUNT
+===================================================== -->
 
-  if (customerName) {
+<script>
 
-    accountArea.innerHTML = `
-      <div class="customer-menu">
+document.addEventListener(
+  "DOMContentLoaded",
+  async function () {
 
-        <button class="customer-btn" type="button">
-          👤 ${customerName}
-        </button>
 
-        <div class="customer-dropdown">
+    const accountArea =
+      document.getElementById(
+        "accountArea"
+      );
 
-          <a href="my-orders.html">
-            My Orders
-          </a>
 
-          <a href="saved.html">
-            Saved Products
-          </a>
+    if (!accountArea) return;
 
-          <a href="#" id="logoutBtn">
-            Logout
-          </a>
+
+    const customerName =
+      localStorage.getItem(
+        "customerName"
+      );
+
+
+    if (customerName) {
+
+
+      accountArea.innerHTML = `
+
+        <div class="customer-menu hud-customer-menu">
+
+          <button
+            class="customer-btn"
+            type="button"
+          >
+            👤 ${customerName}
+          </button>
+
+
+          <div class="customer-dropdown">
+
+            <a href="my-orders.html">
+              My Orders
+            </a>
+
+
+            <a href="saved.html">
+              Saved Products
+            </a>
+
+
+            <a
+              href="#"
+              id="logoutBtn"
+            >
+              Logout
+            </a>
+
+          </div>
 
         </div>
 
-      </div>
-    `;
+      `;
 
-    const logoutBtn = document.getElementById("logoutBtn");
 
-    if (logoutBtn) {
+      const logoutBtn =
+        document.getElementById(
+          "logoutBtn"
+        );
 
-      logoutBtn.addEventListener("click", async function (e) {
 
-        e.preventDefault();
+      if (logoutBtn) {
 
-        await supabaseClient.auth.signOut();
+        logoutBtn.addEventListener(
+          "click",
+          async function(e) {
 
-        localStorage.removeItem("customerName");
-        localStorage.removeItem("customerEmail");
 
-        window.location.href = "index.html";
+            e.preventDefault();
 
-      });
+
+            await supabaseClient.auth.signOut();
+
+
+            localStorage.removeItem(
+              "customerName"
+            );
+
+
+            localStorage.removeItem(
+              "customerEmail"
+            );
+
+
+            window.location.href =
+              "index.html";
+
+          }
+        );
+
+      }
 
     }
 
   }
+);
 
-});
 </script>
-</body>
-</html>
+
+
+
+<!-- =====================================================
+     RED / BLACK MOBILE DESIGN
+===================================================== -->
+
+<style>
+
+/* =====================================================
+   GLOBAL RED BLACK MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+
+  body {
+
+    background: #070707 !important;
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+  }
+
+
+
+  /* ===================================================
+     NAVBAR
+  =================================================== */
+
+  .hud-navbar {
+
+    background: #090909 !important;
+
+    border-bottom:
+      1px solid #262626 !important;
+
+    min-height: 62px;
+
+    padding:
+      10px 12px !important;
+
+  }
+
+
+  .hud-navbar .logo {
+
+    color: #ffffff !important;
+
+    font-size: 19px;
+
+  }
+
+
+  .hud-navbar .logo span {
+
+    color: #ff1f2d !important;
+
+  }
+
+
+  .hud-navbar nav {
+
+    display: none !important;
+
+  }
+
+
+  .hud-navbar #accountArea {
+
+    margin-left: auto;
+
+  }
+
+
+
+  /* ===================================================
+     HERO
+  =================================================== */
+
+  .hud-hero {
+
+    position: relative;
+
+    min-height: 530px;
+
+    padding:
+      34px 18px 20px !important;
+
+    background:
+
+      radial-gradient(
+        circle at 85% 35%,
+        rgba(255, 20, 35, 0.22),
+        transparent 35%
+      ),
+
+      linear-gradient(
+        145deg,
+        #050505,
+        #100002 55%,
+        #250006
+      );
+
+    overflow: hidden;
+
+    border-bottom:
+      1px solid #252525;
+
+  }
+
+
+  .hud-hero-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 100%;
+
+  }
+
+
+  .hud-small-title {
+
+    color: #ff1f2d !important;
+
+    font-size: 11px !important;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+
+  }
+
+
+  .hud-hero h1 {
+
+    color: #ffffff !important;
+
+    font-size: 36px !important;
+
+    line-height: 1.03 !important;
+
+    margin-bottom: 13px !important;
+
+  }
+
+
+  .hud-hero h1 span {
+
+    color: #ff1f2d !important;
+
+  }
+
+
+  .hud-hero-description {
+
+    color: #c7c7c7 !important;
+
+    font-size: 13px !important;
+
+    line-height: 1.5;
+
+    max-width: 270px;
+
+  }
+
+
+
+  /* ===================================================
+     FEATURES
+  =================================================== */
+
+  .hud-features {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 17px;
+
+    position: relative;
+
+    z-index: 5;
+
+  }
+
+
+  .hud-feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+  }
+
+
+  .hud-feature-icon {
+
+    width: 31px;
+
+    height: 31px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #151515;
+
+    border: 1px solid #333;
+
+    font-size: 14px;
+
+  }
+
+
+  .hud-feature strong {
+
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 9px;
+
+  }
+
+
+  .hud-feature small {
+
+    display: block;
+
+    color: #888;
+
+    font-size: 7px;
+
+  }
+
+
+
+  /* ===================================================
+     SHOPPING CART ILLUSTRATION
+  =================================================== */
+
+  .hud-shopping-illustration {
+
+    position: absolute;
+
+    right: -8px;
+
+    top: 105px;
+
+    width: 165px;
+
+    height: 180px;
+
+    z-index: 1;
+
+    opacity: 0.95;
+
+  }
+
+
+  .hud-red-circle {
+
+    position: absolute;
+
+    width: 125px;
+
+    height: 125px;
+
+    right: 8px;
+
+    top: 10px;
+
+    border-radius: 50%;
+
+    background:
+
+      radial-gradient(
+        circle,
+        #ff2434,
+        #8d0010
+      );
+
+    opacity: 0.35;
+
+  }
+
+
+  .hud-cart {
+
+    position: absolute;
+
+    right: 5px;
+
+    top: 55px;
+
+    width: 135px;
+
+    height: 90px;
+
+    transform:
+      rotate(-4deg);
+
+  }
+
+
+  .hud-cart-handle {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 42px;
+
+    height: 30px;
+
+    border-top:
+      7px solid #ff1f2d;
+
+    border-left:
+      7px solid #ff1f2d;
+
+    border-radius:
+      12px 0 0 0;
+
+  }
+
+
+  .hud-cart-body {
+
+    position: absolute;
+
+    right: 0;
+
+    top: 18px;
+
+    width: 120px;
+
+    height: 65px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #252525,
+        #080808
+      );
+
+    border:
+      3px solid #ff1f2d;
+
+    border-top:
+      5px solid #ff1f2d;
+
+    transform:
+      skewX(-8deg);
+
+    border-radius: 5px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-around;
+
+    font-size: 24px;
+
+  }
+
+
+  .hud-wheel {
+
+    position: absolute;
+
+    bottom: -13px;
+
+    width: 20px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    border:
+      4px solid #ff1f2d;
+
+  }
+
+
+  .wheel-one {
+
+    left: 38px;
+
+  }
+
+
+  .wheel-two {
+
+    right: 15px;
+
+  }
+
+
+  .hud-shopping-bag {
+
+    position: absolute;
+
+    font-size: 43px;
+
+    z-index: 2;
+
+  }
+
+
+  .bag-one {
+
+    right: 70px;
+
+    top: 12px;
+
+  }
+
+
+  .bag-two {
+
+    right: 20px;
+
+    top: 22px;
+
+    font-size: 35px;
+
+  }
+
+
+
+  /* ===================================================
+     SEARCH
+  =================================================== */
+
+  .hud-search-box {
+
+    position: relative;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 24px;
+
+    padding-left: 15px;
+
+    background: #1a1d20;
+
+    border:
+      1px solid #34373a;
+
+    border-radius: 28px;
+
+    box-shadow:
+      0 5px 25px
+      rgba(0,0,0,0.35);
+
+  }
+
+
+  .hud-search-icon {
+
+    color: #ffffff;
+
+    font-size:

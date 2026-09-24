@@ -14,7 +14,7 @@
 
   <meta
     name="google-site-verification"
-    content="N4B3BlK9T5KYGx40snnsMC-QxVehv24nV2TrT6KaH0"
+    content="N4B3BlK9T5KYGx40snnsMC-QxVehv24nVn2TrT6KaH0"
   >
 
   <link rel="stylesheet" href="style.css">
@@ -31,15 +31,14 @@
 
 <header class="navbar hud-navbar">
 
-  <a href="#top" class="hud-brand">
+  <div class="logo">
 
     <img
-      src="product-hud-logo.png"
+      src="product-hud-logo.png.jpg"
       alt="Product HUD"
-      class="hud-logo-image"
     >
 
-  </a>
+  </div>
 
 
   <nav>
@@ -82,9 +81,6 @@
 <section class="hud-hero">
 
 
-  <div class="hud-hero-background"></div>
-
-
   <div class="hud-hero-content">
 
 
@@ -97,9 +93,7 @@
 
       Products.<br>
 
-      <span>
-        Order Instantly.
-      </span>
+      <span>Order Instantly.</span>
 
     </h1>
 
@@ -195,8 +189,9 @@
 
     <div class="hud-search-box">
 
+
       <span class="hud-search-icon">
-        ⌕
+        🔍
       </span>
 
 
@@ -204,17 +199,16 @@
         id="productSearchInput"
         type="text"
         placeholder="Search for products, categories..."
-        autocomplete="off"
       >
 
 
       <button
         id="productSearchButton"
         type="button"
-        aria-label="Search"
       >
         →
       </button>
+
 
     </div>
 
@@ -224,7 +218,7 @@
 
 
   <!-- =================================================
-       SHOPPING CART VISUAL
+       SHOPPING CART ILLUSTRATION
   ================================================= -->
 
   <div class="hud-shopping-illustration">
@@ -233,27 +227,14 @@
     <div class="hud-red-circle"></div>
 
 
-    <div class="hud-red-glow"></div>
-
-
-
     <div class="hud-shopping-bag bag-one">
-
-      <span>
-        🛍️
-      </span>
-
+      🛍️
     </div>
 
 
     <div class="hud-shopping-bag bag-two">
-
-      <span>
-        🎁
-      </span>
-
+      🎁
     </div>
-
 
 
     <div class="hud-cart">
@@ -264,25 +245,11 @@
 
       <div class="hud-cart-body">
 
-        <div class="hud-cart-line"></div>
+        <span>🛍️</span>
 
-        <div class="hud-cart-line short"></div>
+        <span>📦</span>
 
-        <div class="hud-cart-products">
-
-          <span>
-            📦
-          </span>
-
-          <span>
-            🎁
-          </span>
-
-          <span>
-            🛍️
-          </span>
-
-        </div>
+        <span>🎁</span>
 
       </div>
 
@@ -337,7 +304,6 @@
       class="category-card hud-category-card"
       data-category="home"
       title="Home & Kitchen"
-      aria-label="Home & Kitchen"
     >
 
       <div class="hud-category-icon">
@@ -356,7 +322,6 @@
       class="category-card hud-category-card"
       data-category="gadgets"
       title="Gadgets"
-      aria-label="Gadgets"
     >
 
       <div class="hud-category-icon">
@@ -375,7 +340,6 @@
       class="category-card hud-category-card"
       data-category="wood"
       title="Wood Products"
-      aria-label="Wood Products"
     >
 
       <div class="hud-category-icon">
@@ -394,7 +358,6 @@
       class="category-card hud-category-card"
       data-category="trending"
       title="Trending"
-      aria-label="Trending"
     >
 
       <div class="hud-category-icon">
@@ -409,6 +372,7 @@
 
 
   </div>
+
 
 </section>
 
@@ -433,18 +397,15 @@
         HOT PICKS
       </p>
 
-
       <h2>
         🔥 Trending Products
       </h2>
-
 
       <p class="hud-products-subtitle">
         High demand. Don't miss out!
       </p>
 
     </div>
-
 
 
     <button
@@ -458,8 +419,6 @@
   </div>
 
 
-
-  <!-- EXISTING PRODUCT GRID -->
 
   <div
     id="dynamicProductGrid"
@@ -483,6 +442,7 @@
 
     <div class="hud-deal-content">
 
+
       <span class="hud-deal-label">
         LIMITED TIME
       </span>
@@ -501,10 +461,12 @@
 
       <button
         type="button"
+        class="hud-shop-button"
         onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
       >
         Shop Now →
       </button>
+
 
     </div>
 
@@ -540,12 +502,11 @@
 >
 
 
-  <div class="hud-footer-brand">
+  <div class="logo">
 
     <img
-      src="product-hud-logo.png"
+      src="product-hud-logo.png.jpg"
       alt="Product HUD"
-      class="hud-footer-logo"
     >
 
   </div>
@@ -562,82 +523,6 @@
 
 
 </footer>
-
-
-
-<!-- =====================================================
-     MOBILE BOTTOM NAV
-===================================================== -->
-
-<div class="hud-mobile-bottom-nav">
-
-
-  <a href="#top" class="active">
-
-    <span>
-      🏠
-    </span>
-
-    <small>
-      Home
-    </small>
-
-  </a>
-
-
-  <a href="#products">
-
-    <span>
-      ▦
-    </span>
-
-    <small>
-      Products
-    </small>
-
-  </a>
-
-
-  <a href="#categories">
-
-    <span>
-      🏷
-    </span>
-
-    <small>
-      Categories
-    </small>
-
-  </a>
-
-
-  <a href="saved.html">
-
-    <span>
-      🛒
-    </span>
-
-    <small>
-      Cart
-    </small>
-
-  </a>
-
-
-  <a href="login.html">
-
-    <span>
-      👤
-    </span>
-
-    <small>
-      Account
-    </small>
-
-  </a>
-
-
-</div>
 
 
 
@@ -680,6 +565,7 @@ async function loadProductsFromSupabase() {
   productGrid.innerHTML = "";
 
 
+
   const { data, error } =
     await supabaseClient
       .from("products")
@@ -690,6 +576,7 @@ async function loadProductsFromSupabase() {
           ascending: false
         }
       );
+
 
 
   if (error) {
@@ -719,9 +606,13 @@ async function loadProductsFromSupabase() {
   }
 
 
+
   const products =
     data || [];
 
+
+
+  /* Existing local backup */
 
   localStorage.setItem(
 
@@ -760,7 +651,9 @@ async function loadProductsFromSupabase() {
    RENDER PRODUCTS
 ===================================================== */
 
-function renderProducts(products) {
+function renderProducts(
+  products
+) {
 
 
   const productGrid =
@@ -775,6 +668,7 @@ function renderProducts(products) {
   productGrid.innerHTML = "";
 
 
+
   products.forEach(
     (product) => {
 
@@ -787,6 +681,7 @@ function renderProducts(products) {
 
       productCard.className =
         "product-card hud-product-card";
+
 
 
       productCard.innerHTML = `
@@ -804,19 +699,9 @@ function renderProducts(products) {
         <div class="product-info">
 
 
-          <div class="product-badge">
-            ${product.trending ? "Trending" : "Hot"}
-          </div>
-
-
           <h3>
             ${product.name || "Product"}
           </h3>
-
-
-          <p class="product-card-rating">
-            ⭐ ${product.rating || "0"} / 5
-          </p>
 
 
           <p class="price">
@@ -824,23 +709,9 @@ function renderProducts(products) {
           </p>
 
 
-          ${
-            product.discount
-              ? `<p class="old-price">
-                   ₹${product.discount}
-                 </p>`
-              : ""
-          }
-
-
-          ${
-            product.estimated_profit
-              ? `<p class="profit">
-                   Estimated Profit:
-                   ${product.estimated_profit}
-                 </p>`
-              : ""
-          }
+          <p class="product-card-rating">
+            ⭐ ${product.rating || "0"} / 5
+          </p>
 
 
           <a
@@ -857,12 +728,11 @@ function renderProducts(products) {
 
 
 
-      /* Existing View Product functionality */
-
       const viewButton =
         productCard.querySelector(
           ".view-btn"
         );
+
 
 
       if (viewButton) {
@@ -897,6 +767,7 @@ function renderProducts(products) {
       }
 
 
+
       productGrid.appendChild(
         productCard
       );
@@ -905,6 +776,7 @@ function renderProducts(products) {
     }
   );
 
+
 }
 
 
@@ -912,6 +784,164 @@ function renderProducts(products) {
 /* Load products */
 
 loadProductsFromSupabase();
+
+</script>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<script>
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+
+    const searchInput =
+      document.getElementById(
+        "productSearchInput"
+      );
+
+
+    const searchButton =
+      document.getElementById(
+        "productSearchButton"
+      );
+
+
+    function performSearch() {
+
+
+      const searchText =
+        (
+          searchInput.value || ""
+        )
+        .trim()
+        .toLowerCase();
+
+
+      const cards =
+        document.querySelectorAll(
+          ".hud-product-card"
+        );
+
+
+      if (!searchText) {
+
+
+        cards.forEach(
+          card => {
+
+            card.style.display =
+              "";
+
+          }
+        );
+
+
+        return;
+
+      }
+
+
+
+      let found = false;
+
+
+
+      cards.forEach(
+        card => {
+
+
+          const productName =
+            card
+              .querySelector(
+                "h3"
+              )
+              ?.textContent
+              .toLowerCase() || "";
+
+
+          if (
+            productName.includes(
+              searchText
+            )
+          ) {
+
+            card.style.display =
+              "";
+
+            found = true;
+
+          } else {
+
+            card.style.display =
+              "none";
+
+          }
+
+
+        }
+      );
+
+
+
+      document
+        .getElementById(
+          "products"
+        )
+        ?.scrollIntoView({
+          behavior:
+            "smooth"
+        });
+
+
+    }
+
+
+
+    if (searchButton) {
+
+
+      searchButton.addEventListener(
+        "click",
+        performSearch
+      );
+
+
+    }
+
+
+
+    if (searchInput) {
+
+
+      searchInput.addEventListener(
+        "keydown",
+        function(e) {
+
+
+          if (
+            e.key === "Enter"
+          ) {
+
+            performSearch();
+
+          }
+
+
+        }
+      );
+
+
+    }
+
+
+  }
+);
 
 </script>
 
@@ -937,10 +967,12 @@ document.addEventListener(
     if (!accountArea) return;
 
 
+
     const customerName =
       localStorage.getItem(
         "customerName"
       );
+
 
 
     if (customerName) {
@@ -955,9 +987,7 @@ document.addEventListener(
             class="customer-btn"
             type="button"
           >
-
             👤 ${customerName}
-
           </button>
 
 
@@ -990,10 +1020,12 @@ document.addEventListener(
       `;
 
 
+
       const logoutBtn =
         document.getElementById(
           "logoutBtn"
         );
+
 
 
       if (logoutBtn) {
@@ -1010,6 +1042,7 @@ document.addEventListener(
             await supabaseClient
               .auth
               .signOut();
+
 
 
             localStorage.removeItem(
@@ -1029,9 +1062,12 @@ document.addEventListener(
           }
         );
 
+
       }
 
+
     }
+
 
   }
 );
@@ -1041,204 +1077,43 @@ document.addEventListener(
 
 
 <!-- =====================================================
-     RED / BLACK DESIGN
+     RED / BLACK MOBILE + HERO DESIGN
 ===================================================== -->
 
 <style>
 
 
 /* =====================================================
-   GLOBAL
-===================================================== */
-
-* {
-  box-sizing: border-box;
-}
-
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-body {
-
-  margin: 0;
-
-  background:
-    #050505;
-
-  color:
-    #ffffff;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  overflow-x: hidden;
-
-}
-
-
-a {
-  text-decoration: none;
-}
-
-
-
-/* =====================================================
-   NAVBAR
+   BASE
 ===================================================== */
 
 .hud-navbar {
 
   background:
-    rgba(5,5,5,0.96) !important;
+    #070707;
 
   border-bottom:
-    1px solid #2b2b2b;
-
-  min-height:
-    70px;
-
-  padding:
-    10px 5% !important;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    30px;
-
-  position:
-    relative;
-
-  z-index:
-    100;
+    1px solid #252525;
 
 }
 
 
-.hud-brand {
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  flex-shrink:
-    0;
-
-}
-
-
-.hud-logo-image {
+.hud-navbar .logo img {
 
   width:
-    190px;
+    150px;
 
   height:
-    58px;
-
-  object-fit:
-    contain;
+    auto;
 
   display:
     block;
 
-}
-
-
-.hud-navbar nav {
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  gap:
-    28px;
-
-  flex:
-    1;
+  object-fit:
+    contain;
 
 }
 
-
-.hud-navbar nav a {
-
-  color:
-    #e8e8e8;
-
-  font-size:
-    14px;
-
-  transition:
-    0.2s;
-
-}
-
-
-.hud-navbar nav a:hover {
-
-  color:
-    #ff1f2d;
-
-}
-
-
-.login-btn {
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  min-width:
-    96px;
-
-  height:
-    40px;
-
-  padding:
-    0 18px;
-
-  background:
-    #ff1727;
-
-  color:
-    #ffffff !important;
-
-  border-radius:
-    22px;
-
-  font-weight:
-    700;
-
-  box-shadow:
-    0 0 20px
-    rgba(255,20,40,0.18);
-
-}
-
-
-
-/* =====================================================
-   HERO
-===================================================== */
 
 .hud-hero {
 
@@ -1248,14 +1123,8 @@ a {
   min-height:
     520px;
 
-  display:
-    flex;
-
-  align-items:
-    center;
-
   padding:
-    65px 7%;
+    65px 7% 50px;
 
   overflow:
     hidden;
@@ -1263,78 +1132,20 @@ a {
   background:
 
     radial-gradient(
-      circle at 78% 50%,
-      rgba(255,20,35,0.16),
-      transparent 32%
+      circle at 82% 40%,
+      rgba(255,20,35,.18),
+      transparent 30%
     ),
 
     linear-gradient(
       135deg,
-      #030303 0%,
-      #080000 55%,
-      #180003 100%
+      #050505,
+      #0c0001 55%,
+      #1e0005
     );
 
-  border-bottom:
-    1px solid #3a1115;
-
-}
-
-
-.hud-hero::before {
-
-  content:
-    "";
-
-  position:
-    absolute;
-
-  inset:
-    0;
-
-  background:
-
-    linear-gradient(
-      125deg,
-      transparent 0 58%,
-      rgba(255,0,20,0.08) 59% 63%,
-      transparent 64%
-    );
-
-  pointer-events:
-    none;
-
-}
-
-
-.hud-hero::after {
-
-  content:
-    "";
-
-  position:
-    absolute;
-
-  width:
-    550px;
-
-  height:
-    550px;
-
-  right:
-    -160px;
-
-  top:
-    -100px;
-
-  border-radius:
-    50%;
-
-  background:
-    rgba(255,0,25,0.08);
-
-  filter:
-    blur(70px);
+  color:
+    #ffffff;
 
 }
 
@@ -1345,13 +1156,10 @@ a {
     relative;
 
   z-index:
-    10;
-
-  width:
-    52%;
+    5;
 
   max-width:
-    620px;
+    600px;
 
 }
 
@@ -1362,7 +1170,7 @@ a {
     #ff1f2d;
 
   font-size:
-    15px;
+    13px;
 
   font-weight:
     800;
@@ -1378,14 +1186,14 @@ a {
 
 .hud-hero h1 {
 
-  margin:
-    0 0 18px;
-
   font-size:
-    clamp(42px, 5vw, 72px);
+    clamp(42px, 6vw, 70px);
 
   line-height:
-    0.98;
+    1;
+
+  margin:
+    0 0 20px;
 
   color:
     #ffffff;
@@ -1396,7 +1204,7 @@ a {
 .hud-hero h1 span {
 
   color:
-    #ff1828;
+    #ff1f2d;
 
 }
 
@@ -1404,22 +1212,18 @@ a {
 .hud-hero-description {
 
   color:
-    #c7c7c7;
+    #c9c9c9;
 
   font-size:
-    17px;
+    16px;
 
   line-height:
-    1.5;
-
-  max-width:
-    520px;
+    1.6;
 
   margin:
     0;
 
 }
-
 
 
 /* =====================================================
@@ -1431,11 +1235,8 @@ a {
   display:
     flex;
 
-  align-items:
-    center;
-
   gap:
-    26px;
+    25px;
 
   margin-top:
     28px;
@@ -1460,10 +1261,19 @@ a {
 .hud-feature-icon {
 
   width:
-    46px;
+    42px;
 
   height:
-    46px;
+    42px;
+
+  border:
+    1px solid #333;
+
+  border-radius:
+    50%;
+
+  background:
+    #101010;
 
   display:
     flex;
@@ -1474,17 +1284,8 @@ a {
   justify-content:
     center;
 
-  border:
-    1px solid #3c3c3c;
-
-  border-radius:
-    50%;
-
-  background:
-    #0d0d0d;
-
   font-size:
-    20px;
+    18px;
 
 }
 
@@ -1493,6 +1294,9 @@ a {
 
   display:
     block;
+
+  color:
+    #ffffff;
 
   font-size:
     12px;
@@ -1506,16 +1310,12 @@ a {
     block;
 
   color:
-    #999;
+    #888;
 
   font-size:
     10px;
 
-  margin-top:
-    3px;
-
 }
-
 
 
 /* =====================================================
@@ -1528,7 +1328,7 @@ a {
     relative;
 
   z-index:
-    20;
+    10;
 
   display:
     flex;
@@ -1540,49 +1340,39 @@ a {
     100%;
 
   max-width:
-    520px;
+    590px;
 
   height:
-    55px;
+    58px;
 
   margin-top:
-    27px;
+    30px;
 
   padding:
-    0 6px 0 18px;
+    5px 7px 5px 20px;
 
   background:
     #1a1d20;
 
   border:
-    1px solid #414448;
+    1px solid #3a3d40;
 
   border-radius:
-    30px;
+    32px;
 
   box-shadow:
-    0 8px 35px
-    rgba(0,0,0,0.35);
+    0 10px 35px rgba(0,0,0,.35);
 
 }
 
 
 .hud-search-icon {
 
-  color:
-    #ffffff;
-
   font-size:
-    29px;
-
-  line-height:
-    1;
-
-  transform:
-    rotate(-20deg);
+    20px;
 
   margin-right:
-    12px;
+    10px;
 
 }
 
@@ -1596,7 +1386,7 @@ a {
     0;
 
   border:
-    0;
+    none;
 
   outline:
     none;
@@ -1616,7 +1406,7 @@ a {
 .hud-search-box input::placeholder {
 
   color:
-    #a6a6a6;
+    #a5a5a5;
 
 }
 
@@ -1624,19 +1414,19 @@ a {
 .hud-search-box button {
 
   width:
-    46px;
+    48px;
 
   height:
-    46px;
+    48px;
 
   border:
-    0;
+    none;
 
   border-radius:
     50%;
 
   background:
-    #ff1c2b;
+    #ff1f2d;
 
   color:
     #ffffff;
@@ -1650,9 +1440,8 @@ a {
 }
 
 
-
 /* =====================================================
-   SHOPPING CART VISUAL
+   SHOPPING CART
 ===================================================== */
 
 .hud-shopping-illustration {
@@ -1661,19 +1450,19 @@ a {
     absolute;
 
   right:
-    4%;
+    5%;
 
   top:
-    40px;
+    75px;
 
   width:
-    47%;
-
-  height:
     430px;
 
+  height:
+    330px;
+
   z-index:
-    4;
+    2;
 
 }
 
@@ -1684,62 +1473,74 @@ a {
     absolute;
 
   width:
-    360px;
+    290px;
 
   height:
-    360px;
+    290px;
 
   right:
-    5%;
+    55px;
 
   top:
-    20px;
+    5px;
 
   border-radius:
     50%;
 
   background:
-
     radial-gradient(
       circle,
-      rgba(255,35,45,0.45),
-      rgba(120,0,10,0.12),
+      rgba(255,25,40,.5),
+      rgba(120,0,10,.12),
       transparent 70%
     );
 
 }
 
 
-.hud-red-glow {
+.hud-shopping-bag {
 
   position:
     absolute;
 
-  width:
-    430px;
-
-  height:
-    120px;
-
-  right:
-    0;
-
-  bottom:
-    15px;
-
-  background:
-    rgba(255,0,20,0.16);
+  z-index:
+    4;
 
   filter:
-    blur(35px);
-
-  border-radius:
-    50%;
+    drop-shadow(
+      0 8px 10px rgba(0,0,0,.5)
+    );
 
 }
 
 
-/* cart */
+.bag-one {
+
+  right:
+    245px;
+
+  top:
+    30px;
+
+  font-size:
+    65px;
+
+}
+
+
+.bag-two {
+
+  right:
+    90px;
+
+  top:
+    50px;
+
+  font-size:
+    55px;
+
+}
+
 
 .hud-cart {
 
@@ -1747,19 +1548,19 @@ a {
     absolute;
 
   right:
-    4%;
+    10px;
 
-  top:
-    85px;
+  bottom:
+    40px;
 
   width:
-    390px;
+    350px;
 
   height:
-    285px;
+    180px;
 
   transform:
-    rotate(-2deg);
+    rotate(-3deg);
 
 }
 
@@ -1776,19 +1577,19 @@ a {
     0;
 
   width:
-    105px;
+    90px;
 
   height:
-    85px;
-
-  border-left:
-    12px solid #ff1c2b;
+    70px;
 
   border-top:
-    12px solid #ff1c2b;
+    12px solid #ff1f2d;
+
+  border-left:
+    12px solid #ff1f2d;
 
   border-radius:
-    22px 0 0 0;
+    25px 0 0 0;
 
 }
 
@@ -1802,116 +1603,44 @@ a {
     0;
 
   top:
-    48px;
+    30px;
 
   width:
-    325px;
+    300px;
 
   height:
-    175px;
+    125px;
 
   background:
     linear-gradient(
       145deg,
-      #242424,
-      #070707
+      #303030,
+      #080808
     );
 
   border:
-    7px solid #181818;
+    5px solid #ff1f2d;
 
   border-top:
-    9px solid #111;
+    8px solid #ff1f2d;
 
   border-radius:
-    8px 15px 25px 25px;
+    8px;
 
   transform:
     skewX(-8deg);
 
-  box-shadow:
-    inset 0 0 0 2px #4b4b4b,
-    0 20px 35px
-    rgba(0,0,0,0.5);
-
-}
-
-
-.hud-cart-line {
-
-  position:
-    absolute;
-
-  left:
-    35px;
-
-  top:
-    45px;
-
-  width:
-    250px;
-
-  height:
-    4px;
-
-  background:
-    #4d4d4d;
-
-}
-
-
-.hud-cart-line.short {
-
-  top:
-    90px;
-
-  width:
-    210px;
-
-}
-
-
-.hud-cart-products {
-
-  position:
-    absolute;
-
-  left:
-    30px;
-
-  top:
-    -95px;
-
-  width:
-    270px;
-
   display:
     flex;
+
+  align-items:
+    center;
 
   justify-content:
     space-around;
 
-  align-items:
-    flex-end;
-
   font-size:
-    65px;
-
-}
-
-
-.hud-cart-products span:nth-child(2) {
-
-  transform:
-    translateY(-25px);
-
-}
-
-
-.hud-cart-products span:nth-child(3) {
-
-  transform:
-    translateY(-5px);
+    45px;
 
 }
 
@@ -1922,13 +1651,13 @@ a {
     absolute;
 
   bottom:
-    15px;
+    -20px;
 
   width:
-    43px;
+    35px;
 
   height:
-    43px;
+    35px;
 
   border-radius:
     50%;
@@ -1937,10 +1666,7 @@ a {
     #080808;
 
   border:
-    8px solid #ff1c2b;
-
-  box-shadow:
-    0 0 0 3px #303030;
+    7px solid #ff1f2d;
 
 }
 
@@ -1948,7 +1674,7 @@ a {
 .wheel-one {
 
   left:
-    100px;
+    85px;
 
 }
 
@@ -1956,55 +1682,9 @@ a {
 .wheel-two {
 
   right:
-    25px;
+    35px;
 
 }
-
-
-.hud-shopping-bag {
-
-  position:
-    absolute;
-
-  z-index:
-    8;
-
-  font-size:
-    65px;
-
-  filter:
-    drop-shadow(
-      0 8px 8px
-      rgba(0,0,0,0.5)
-    );
-
-}
-
-
-.bag-one {
-
-  right:
-    170px;
-
-  top:
-    15px;
-
-}
-
-
-.bag-two {
-
-  right:
-    70px;
-
-  top:
-    55px;
-
-  font-size:
-    50px;
-
-}
-
 
 
 /* =====================================================
@@ -2014,41 +1694,7 @@ a {
 .hud-categories {
 
   background:
-    #070707 !important;
-
-  padding:
-    55px 7%;
-
-}
-
-
-.hud-section-mini {
-
-  margin:
-    0 0 5px;
-
-  color:
-    #ff1c2b;
-
-  font-size:
-    12px;
-
-  font-weight:
-    800;
-
-  letter-spacing:
-    2px;
-
-}
-
-
-.hud-section-title h2 {
-
-  margin:
-    0 0 30px;
-
-  font-size:
-    36px;
+    #070707;
 
   color:
     #ffffff;
@@ -2056,99 +1702,63 @@ a {
 }
 
 
+.hud-section-mini {
+
+  color:
+    #ff1f2d;
+
+  font-size:
+    11px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    2px;
+
+  margin:
+    0 0 4px;
+
+}
+
+
 .hud-category-grid {
 
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
   gap:
-    18px;
+    15px;
 
 }
 
 
 .hud-category-card {
 
-  min-height:
-    145px;
+  background:
+    #111416 !important;
 
   border:
-    1px solid #35171a;
+    1px solid #282b2e !important;
 
   border-radius:
-    15px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #151515,
-      #080808
-    );
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
+    18px;
 
   transition:
-    0.25s;
-
-  cursor:
-    pointer;
+    .25s;
 
 }
 
 
 .hud-category-card:hover {
 
-  transform:
-    translateY(-5px);
-
   border-color:
-    #ff1c2b;
+    #ff1f2d !important;
 
-  box-shadow:
-    0 10px 30px
-    rgba(255,0,20,0.15);
+  transform:
+    translateY(-4px);
 
 }
 
 
 .hud-category-icon {
-
-  width:
-    65px;
-
-  height:
-    65px;
-
-  border-radius:
-    50%;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  background:
-    #191919;
-
-  border:
-    1px solid #ff1c2b;
 
   font-size:
     30px;
@@ -2158,17 +1768,16 @@ a {
 
 .hud-category-card h3 {
 
-  margin:
-    13px 0 0;
-
   color:
     #ffffff;
 
   font-size:
-    15px;
+    12px;
+
+  margin-top:
+    8px;
 
 }
-
 
 
 /* =====================================================
@@ -2178,38 +1787,15 @@ a {
 .hud-products {
 
   background:
-    #050505 !important;
+    #070707;
 
-  padding:
-    20px 7% 60px;
-
-}
-
-
-.hud-products-heading {
-
-  display:
-    flex;
-
-  align-items:
-    flex-end;
-
-  justify-content:
-    space-between;
-
-  margin-bottom:
-    25px;
+  color:
+    #ffffff;
 
 }
 
 
 .hud-products-heading h2 {
-
-  margin:
-    0;
-
-  font-size:
-    34px;
 
   color:
     #ffffff;
@@ -2219,28 +1805,22 @@ a {
 
 .hud-products-subtitle {
 
-  margin:
-    7px 0 0;
-
   color:
-    #999;
+    #888;
 
 }
 
 
-#viewAllBtn {
-
-  border:
-    0;
+.hud-products-heading button {
 
   background:
     transparent;
 
   color:
-    #ff1c2b;
+    #ff1f2d;
 
-  font-size:
-    15px;
+  border:
+    none;
 
   font-weight:
     700;
@@ -2251,70 +1831,27 @@ a {
 }
 
 
-.hud-product-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap:
-    18px;
-
-}
-
-
 .hud-product-card {
 
-  position:
-    relative;
-
   background:
-    #101417;
+    #111416 !important;
 
   border:
-    1px solid #2c3337;
+    1px solid #2b2f32 !important;
 
   border-radius:
-    14px;
+    16px !important;
 
   overflow:
     hidden;
-
-  padding:
-    9px;
-
-  transition:
-    0.25s;
-
-}
-
-
-.hud-product-card:hover {
-
-  transform:
-    translateY(-4px);
-
-  border-color:
-    #ff1c2b;
 
 }
 
 
 .hud-product-card .product-image {
 
-  height:
-    190px;
-
-  overflow:
-    hidden;
-
-  border-radius:
-    10px;
-
   background:
-    #202020;
+    #181a1c;
 
 }
 
@@ -2325,50 +1862,10 @@ a {
     100%;
 
   height:
-    100%;
+    190px;
 
   object-fit:
     cover;
-
-  display:
-    block;
-
-}
-
-
-.hud-product-card .product-info {
-
-  padding:
-    10px 3px 3px;
-
-}
-
-
-.product-badge {
-
-  display:
-    inline-block;
-
-  background:
-    #ff1727;
-
-  color:
-    #ffffff;
-
-  padding:
-    4px 9px;
-
-  border-radius:
-    20px;
-
-  font-size:
-    10px;
-
-  font-weight:
-    700;
-
-  margin-bottom:
-    6px;
 
 }
 
@@ -2378,153 +1875,90 @@ a {
   color:
     #ffffff;
 
-  font-size:
-    15px;
-
-  margin:
-    3px 0 7px;
-
-}
-
-
-.product-card-rating {
-
-  color:
-    #e6e6e6;
-
-  font-size:
-    12px;
-
-  margin:
-    0 0 5px;
-
 }
 
 
 .hud-product-card .price {
 
-  display:
-    inline-block;
-
   color:
-    #ff1c2b;
-
-  font-size:
-    18px;
+    #ff1f2d !important;
 
   font-weight:
     800;
 
-  margin:
-    0 5px 7px 0;
-
 }
 
 
-.old-price {
-
-  display:
-    inline-block;
+.hud-product-card .product-card-rating {
 
   color:
-    #888;
-
-  text-decoration:
-    line-through;
-
-  font-size:
-    12px;
-
-}
-
-
-.profit {
-
-  color:
-    #c9c9c9;
-
-  background:
-    #1b2023;
-
-  border-radius:
-    7px;
-
-  padding:
-    7px;
-
-  font-size:
-    10px;
+    #f5c542;
 
 }
 
 
 .hud-view-btn {
 
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  min-height:
-    42px;
-
-  width:
-    100%;
-
-  margin-top:
-    9px;
-
   background:
-    #ff1727;
+    #ff1f2d !important;
 
   color:
     #ffffff !important;
 
   border-radius:
-    8px;
+    9px;
 
-  font-weight:
-    700;
-
-  font-size:
-    13px;
+  text-decoration:
+    none;
 
 }
 
 
-
 /* =====================================================
-   DEAL BANNER
+   DEAL
 ===================================================== */
 
 .hud-deal-section {
 
-  padding:
-    0 7% 65px;
-
   background:
-    #050505;
+    #070707;
+
+  padding:
+    20px;
 
 }
 
 
 .hud-deal-banner {
 
-  min-height:
-    190px;
+  position:
+    relative;
 
-  border:
-    1px solid #542126;
+  overflow:
+    hidden;
 
-  border-radius:
-    15px;
+  max-width:
+    1100px;
+
+  margin:
+    auto;
 
   padding:
-    28px 35px;
+    35px;
+
+  border:
+    1px solid #353535;
+
+  border-radius:
+    20px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #0e0e0e,
+      #190002
+    );
 
   display:
     flex;
@@ -2535,52 +1969,8 @@ a {
   justify-content:
     space-between;
 
-  position:
-    relative;
-
-  overflow:
-    hidden;
-
-  background:
-
-    linear-gradient(
-      125deg,
-      #080808,
-      #120003 60%,
-      #230006
-    );
-
-}
-
-
-.hud-deal-banner::after {
-
-  content:
-    "";
-
-  position:
-    absolute;
-
-  width:
-    300px;
-
-  height:
-    300px;
-
-  right:
-    5%;
-
-  top:
-    -150px;
-
-  border-radius:
-    50%;
-
-  background:
-    rgba(255,0,20,0.16);
-
-  filter:
-    blur(40px);
+  gap:
+    20px;
 
 }
 
@@ -2591,16 +1981,19 @@ a {
     inline-block;
 
   padding:
-    5px 10px;
+    6px 12px;
 
   border-radius:
     20px;
 
   background:
-    #ff1727;
+    #ff1f2d;
+
+  color:
+    #ffffff;
 
   font-size:
-    11px;
+    10px;
 
   font-weight:
     800;
@@ -2608,21 +2001,21 @@ a {
 }
 
 
-.hud-deal-content h2 {
+.hud-deal-banner h2 {
 
-  margin:
-    10px 0 5px;
+  color:
+    #ffffff;
 
   font-size:
-    28px;
+    30px;
+
+  margin:
+    10px 0;
 
 }
 
 
-.hud-deal-content p {
-
-  margin:
-    0 0 15px;
+.hud-deal-banner p {
 
   color:
     #aaa;
@@ -2630,42 +2023,13 @@ a {
 }
 
 
-.hud-deal-content button {
-
-  border:
-    0;
-
-  border-radius:
-    22px;
-
-  padding:
-    11px 20px;
-
-  background:
-    #ff1727;
+.hud-deal-offer {
 
   color:
     #ffffff;
-
-  font-weight:
-    700;
-
-}
-
-
-.hud-deal-offer {
-
-  position:
-    relative;
-
-  z-index:
-    3;
 
   text-align:
     center;
-
-  color:
-    #ffffff;
 
   font-size:
     13px;
@@ -2679,16 +2043,44 @@ a {
     block;
 
   color:
-    #ff1c2b;
+    #ff1f2d;
 
   font-size:
-    42px;
+    60px;
 
   line-height:
-    0.9;
+    .9;
 
 }
 
+
+.hud-shop-button {
+
+  margin-top:
+    12px;
+
+  padding:
+    12px 22px;
+
+  border:
+    none;
+
+  border-radius:
+    25px;
+
+  background:
+    #ff1f2d;
+
+  color:
+    #ffffff;
+
+  font-weight:
+    800;
+
+  cursor:
+    pointer;
+
+}
 
 
 /* =====================================================
@@ -2701,41 +2093,20 @@ a {
     #050505 !important;
 
   border-top:
-    1px solid #302020;
-
-  padding:
-    35px 7%;
-
-  text-align:
-    center;
-
-  color:
-    #888;
+    1px solid #252525;
 
 }
 
 
-.hud-footer-logo {
+.hud-footer .logo img {
 
   width:
     180px;
 
   height:
-    55px;
-
-  object-fit:
-    contain;
+    auto;
 
 }
-
-
-.hud-footer p {
-
-  margin:
-    7px 0;
-
-}
-
 
 
 /* =====================================================
@@ -2750,104 +2121,32 @@ a {
 }
 
 
+.hud-customer-menu
 .customer-btn {
 
-  border:
-    0;
-
   background:
-    #171717;
+    #111;
 
   color:
     #ffffff;
-
-  padding:
-    10px 15px;
-
-  border-radius:
-    22px;
-
-  cursor:
-    pointer;
-
-}
-
-
-.customer-dropdown {
-
-  display:
-    none;
-
-  position:
-    absolute;
-
-  right:
-    0;
-
-  top:
-    48px;
-
-  width:
-    180px;
-
-  background:
-    #151515;
 
   border:
     1px solid #333;
 
   border-radius:
-    10px;
-
-  overflow:
-    hidden;
-
-  z-index:
-    200;
-
-}
-
-
-.customer-menu:hover
-.customer-dropdown {
-
-  display:
-    block;
-
-}
-
-
-.customer-dropdown a {
-
-  display:
-    block;
+    20px;
 
   padding:
-    12px 15px;
-
-  color:
-    #ffffff;
+    9px 13px;
 
 }
 
 
-.customer-dropdown a:hover {
+.hud-customer-menu
+.customer-dropdown {
 
-  background:
-    #ff1727;
-
-}
-
-
-
-/* =====================================================
-   MOBILE BOTTOM NAV
-===================================================== */
-
-.hud-mobile-bottom-nav {
-
-  display:
-    none;
+  z-index:
+    1000;
 
 }
 
@@ -2863,35 +2162,43 @@ a {
   body {
 
     background:
-      #050505 !important;
+      #070707 !important;
 
-    padding-bottom:
-      68px;
+    color:
+      #ffffff;
+
+    overflow-x:
+      hidden;
 
   }
 
+
+  /* NAVBAR */
 
   .hud-navbar {
 
     min-height:
-      62px;
+      65px;
 
     padding:
-      7px 12px !important;
+      8px 12px !important;
 
-    justify-content:
-      space-between;
+    background:
+      #080808 !important;
 
   }
 
 
-  .hud-logo-image {
+  .hud-navbar .logo img {
 
     width:
-      145px;
+      115px;
 
-    height:
-      47px;
+    max-height:
+      50px;
+
+    object-fit:
+      contain;
 
   }
 
@@ -2904,44 +2211,46 @@ a {
   }
 
 
-  .login-btn {
+  .hud-navbar #accountArea {
 
-    min-width:
-      76px;
-
-    height:
-      36px;
-
-    font-size:
-      12px;
-
-    padding:
-      0 13px;
+    margin-left:
+      auto;
 
   }
 
 
+  /* HERO */
+
   .hud-hero {
 
     min-height:
-      540px;
+      555px;
 
     padding:
-      32px 18px 20px !important;
+      34px 18px 25px !important;
 
-    display:
-      block;
+    background:
+
+      radial-gradient(
+        circle at 88% 30%,
+        rgba(255,20,35,.23),
+        transparent 35%
+      ),
+
+      linear-gradient(
+        145deg,
+        #050505,
+        #100002 55%,
+        #250006
+      );
 
   }
 
 
   .hud-hero-content {
 
-    width:
-      100%;
-
     max-width:
-      none;
+      100%;
 
   }
 
@@ -2949,7 +2258,7 @@ a {
   .hud-small-title {
 
     font-size:
-      11px;
+      10px;
 
     letter-spacing:
       2px;
@@ -2965,6 +2274,9 @@ a {
     line-height:
       1.02;
 
+    margin-bottom:
+      13px;
+
   }
 
 
@@ -2973,19 +2285,24 @@ a {
     font-size:
       13px;
 
+    line-height:
+      1.5;
+
     max-width:
       285px;
 
   }
 
 
+  /* FEATURES */
+
   .hud-features {
 
     gap:
-      8px;
+      9px;
 
     margin-top:
-      15px;
+      17px;
 
   }
 
@@ -2993,7 +2310,7 @@ a {
   .hud-feature {
 
     gap:
-      4px;
+      5px;
 
   }
 
@@ -3007,7 +2324,7 @@ a {
       31px;
 
     font-size:
-      14px;
+      13px;
 
   }
 
@@ -3028,33 +2345,24 @@ a {
   }
 
 
-  .hud-search-box {
-
-    margin-top:
-      22px;
-
-    height:
-      52px;
-
-  }
-
+  /* CART */
 
   .hud-shopping-illustration {
 
     right:
-      -24px;
+      -45px;
 
     top:
-      185px;
+      105px;
 
     width:
-      190px;
-
-    height:
       205px;
 
+    height:
+      180px;
+
     opacity:
-      0.92;
+      .95;
 
   }
 
@@ -3062,12 +2370,15 @@ a {
   .hud-red-circle {
 
     width:
-      150px;
+      145px;
 
     height:
-      150px;
+      145px;
 
     right:
+      12px;
+
+    top:
       5px;
 
   }
@@ -3075,18 +2386,93 @@ a {
 
   .hud-cart {
 
-    transform:
-      scale(0.57)
-      rotate(-2deg);
-
-    transform-origin:
-      top right;
-
     right:
-      -8px;
+      0;
 
     top:
-      58px;
+      55px;
+
+    bottom:
+      auto;
+
+    width:
+      170px;
+
+    height:
+      100px;
+
+  }
+
+
+  .hud-cart-handle {
+
+    width:
+      45px;
+
+    height:
+      32px;
+
+    border-top-width:
+      6px;
+
+    border-left-width:
+      6px;
+
+  }
+
+
+  .hud-cart-body {
+
+    width:
+      145px;
+
+    height:
+      68px;
+
+    top:
+      18px;
+
+    border-width:
+      3px;
+
+    border-top-width:
+      5px;
+
+    font-size:
+      24px;
+
+  }
+
+
+  .hud-wheel {
+
+    width:
+      21px;
+
+    height:
+      21px;
+
+    border-width:
+      4px;
+
+    bottom:
+      -13px;
+
+  }
+
+
+  .wheel-one {
+
+    left:
+      40px;
+
+  }
+
+
+  .wheel-two {
+
+    right:
+      15px;
 
   }
 
@@ -3102,10 +2488,10 @@ a {
   .bag-one {
 
     right:
-      78px;
+      82px;
 
     top:
-      8px;
+      7px;
 
   }
 
@@ -3113,10 +2499,10 @@ a {
   .bag-two {
 
     right:
-      20px;
+      25px;
 
     top:
-      22px;
+      18px;
 
     font-size:
       34px;
@@ -3124,32 +2510,67 @@ a {
   }
 
 
-  .hud-categories {
+  /* SEARCH */
 
-    padding:
-      30px 18px;
+  .hud-search-box {
+
+    height:
+      53px;
+
+    margin-top:
+      24px;
+
+    padding-left:
+      14px;
+
+    background:
+      #1a1d20;
 
   }
 
 
-  .hud-section-title h2 {
+  .hud-search-box input {
 
     font-size:
-      28px;
+      13px;
 
-    margin-bottom:
-      20px;
+  }
+
+
+  .hud-search-box button {
+
+    width:
+      44px;
+
+    height:
+      44px;
+
+    font-size:
+      23px;
+
+  }
+
+
+  /* CATEGORIES */
+
+  .hud-categories {
+
+    padding:
+      28px 16px !important;
 
   }
 
 
   .hud-category-grid {
 
+    display:
+      grid !important;
+
     grid-template-columns:
-      repeat(4, 1fr);
+      repeat(4, 1fr) !important;
 
     gap:
-      7px;
+      8px !important;
 
   }
 
@@ -3157,24 +2578,30 @@ a {
   .hud-category-card {
 
     min-height:
-      92px;
+      82px;
 
-    border-radius:
-      11px;
+    padding:
+      10px 4px !important;
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
 
   }
 
 
   .hud-category-icon {
 
-    width:
-      42px;
-
-    height:
-      42px;
-
     font-size:
-      20px;
+      25px;
 
   }
 
@@ -3182,21 +2609,26 @@ a {
   .hud-category-card h3 {
 
     font-size:
-      8px;
+      7px;
 
     text-align:
       center;
 
-    margin-top:
-      7px;
+    line-height:
+      1.15;
+
+    margin:
+      5px 0 0;
 
   }
 
 
+  /* PRODUCTS */
+
   .hud-products {
 
     padding:
-      20px 15px 40px;
+      28px 16px !important;
 
   }
 
@@ -3206,16 +2638,13 @@ a {
     align-items:
       flex-end;
 
-    margin-bottom:
-      17px;
-
   }
 
 
   .hud-products-heading h2 {
 
     font-size:
-      24px;
+      22px;
 
   }
 
@@ -3228,43 +2657,56 @@ a {
   }
 
 
-  #viewAllBtn {
-
-    font-size:
-      12px;
-
-  }
-
-
   .hud-product-grid {
 
     display:
-      grid;
+      flex !important;
 
-    grid-template-columns:
-      repeat(2, minmax(0,1fr));
+    overflow-x:
+      auto;
 
     gap:
-      9px;
+      12px;
+
+    padding-bottom:
+      10px;
+
+    scroll-snap-type:
+      x mandatory;
 
   }
 
 
   .hud-product-card {
 
-    padding:
-      6px;
+    min-width:
+      178px;
 
-    border-radius:
-      10px;
+    width:
+      178px;
+
+    flex:
+      0 0 178px;
+
+    scroll-snap-align:
+      start;
 
   }
 
 
-  .hud-product-card .product-image {
+  .hud-product-card .product-image img {
 
     height:
-      125px;
+      135px;
+
+  }
+
+
+  .hud-product-card
+  .product-info {
+
+    padding:
+      10px !important;
 
   }
 
@@ -3272,15 +2714,7 @@ a {
   .hud-product-card h3 {
 
     font-size:
-      11px;
-
-  }
-
-
-  .product-card-rating {
-
-    font-size:
-      9px;
+      13px;
 
   }
 
@@ -3288,37 +2722,43 @@ a {
   .hud-product-card .price {
 
     font-size:
-      15px;
+      17px;
 
   }
 
 
-  .profit {
+  .hud-product-card
+  .product-card-rating {
 
     font-size:
-      8px;
-
-    padding:
-      5px;
+      11px;
 
   }
 
 
   .hud-view-btn {
 
-    min-height:
-      36px;
+    display:
+      block;
+
+    text-align:
+      center;
+
+    padding:
+      9px 5px;
 
     font-size:
-      10px;
+      11px;
 
   }
 
 
+  /* DEAL */
+
   .hud-deal-section {
 
     padding:
-      0 15px 35px;
+      10px 16px 25px;
 
   }
 
@@ -3326,15 +2766,18 @@ a {
   .hud-deal-banner {
 
     padding:
-      20px 18px;
+      22px 18px;
+
+    border-radius:
+      17px;
 
     min-height:
-      175px;
+      160px;
 
   }
 
 
-  .hud-deal-content h2 {
+  .hud-deal-banner h2 {
 
     font-size:
       21px;
@@ -3342,7 +2785,7 @@ a {
   }
 
 
-  .hud-deal-content p {
+  .hud-deal-banner p {
 
     font-size:
       10px;
@@ -3361,20 +2804,33 @@ a {
   .hud-deal-offer strong {
 
     font-size:
-      32px;
+      45px;
 
   }
 
+
+  .hud-shop-button {
+
+    padding:
+      9px 16px;
+
+    font-size:
+      11px;
+
+  }
+
+
+  /* FOOTER */
 
   .hud-footer {
 
     padding:
-      25px 15px 85px;
+      30px 15px !important;
 
   }
 
 
-  .hud-footer-logo {
+  .hud-footer .logo img {
 
     width:
       145px;
@@ -3382,108 +2838,14 @@ a {
   }
 
 
-  .hud-mobile-bottom-nav {
-
-    position:
-      fixed;
-
-    left:
-      0;
-
-    right:
-      0;
-
-    bottom:
-      0;
-
-    height:
-      67px;
-
-    background:
-      rgba(8,8,8,0.97);
-
-    border-top:
-      1px solid #292929;
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-    justify-content:
-      space-around;
-
-    z-index:
-      999;
-
-    backdrop-filter:
-      blur(12px);
-
-  }
-
-
-  .hud-mobile-bottom-nav a {
-
-    display:
-      flex;
-
-    flex-direction:
-      column;
-
-    align-items:
-      center;
-
-    justify-content:
-      center;
-
-    gap:
-      3px;
-
-    color:
-      #a5a5a5;
-
-    font-size:
-      20px;
-
-    min-width:
-      58px;
-
-  }
-
-
-  .hud-mobile-bottom-nav a small {
-
-    font-size:
-      9px;
-
-  }
-
-
-  .hud-mobile-bottom-nav a.active {
-
-    color:
-      #ff1c2b;
-
-  }
-
 }
 
 
-
 /* =====================================================
-   VERY SMALL MOBILE
+   VERY SMALL PHONES
 ===================================================== */
 
 @media (max-width: 380px) {
-
-
-  .hud-logo-image {
-
-    width:
-      128px;
-
-  }
 
 
   .hud-hero h1 {
@@ -3494,10 +2856,10 @@ a {
   }
 
 
-  .hud-features {
+  .hud-shopping-illustration {
 
-    gap:
-      5px;
+    right:
+      -58px;
 
   }
 
@@ -3518,10 +2880,10 @@ a {
   }
 
 
-  .hud-shopping-illustration {
+  .hud-category-card h3 {
 
-    right:
-      -42px;
+    font-size:
+      6px;
 
   }
 

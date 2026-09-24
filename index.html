@@ -14,7 +14,7 @@
 
   <meta
     name="google-site-verification"
-    content="N4B3BlK9T5KYGx40snnsMC-QxVehv24VnV2TrT6KaH0"
+    content="N4B3BlK9T5KYGx40snnsMC-QxVehv24nV2TrT6KaH0"
   >
 
   <link rel="stylesheet" href="style.css">
@@ -31,9 +31,15 @@
 
 <header class="navbar hud-navbar">
 
-  <div class="logo">
-    Product <span>HUD</span>
-  </div>
+  <a href="#top" class="hud-brand">
+
+    <img
+      src="product-hud-logo.png"
+      alt="Product HUD"
+      class="hud-logo-image"
+    >
+
+  </a>
 
 
   <nav>
@@ -75,6 +81,10 @@
 
 <section class="hud-hero">
 
+
+  <div class="hud-hero-background"></div>
+
+
   <div class="hud-hero-content">
 
 
@@ -84,57 +94,98 @@
 
 
     <h1>
+
       Products.<br>
-      <span>Order Instantly.</span>
+
+      <span>
+        Order Instantly.
+      </span>
+
     </h1>
 
 
     <p class="hud-hero-description">
+
       Top trending products, best prices,
       trusted suppliers — all in one place.
+
       <br>
+
       No extra steps. Just discover & order!
+
     </p>
+
 
 
     <!-- FEATURES -->
 
     <div class="hud-features">
 
+
       <div class="hud-feature">
 
-        <span class="hud-feature-icon">⚡</span>
+        <span class="hud-feature-icon">
+          ⚡
+        </span>
 
         <div>
-          <strong>Fast Order</strong>
-          <small>Just 1 Click</small>
+
+          <strong>
+            Fast Order
+          </strong>
+
+          <small>
+            Just 1 Click
+          </small>
+
         </div>
 
       </div>
 
 
+
       <div class="hud-feature">
 
-        <span class="hud-feature-icon">🛡️</span>
+        <span class="hud-feature-icon">
+          🛡️
+        </span>
 
         <div>
-          <strong>Secure</strong>
-          <small>Payments</small>
+
+          <strong>
+            Secure
+          </strong>
+
+          <small>
+            Payments
+          </small>
+
         </div>
 
       </div>
 
 
+
       <div class="hud-feature">
 
-        <span class="hud-feature-icon">🚚</span>
+        <span class="hud-feature-icon">
+          🚚
+        </span>
 
         <div>
-          <strong>Worldwide</strong>
-          <small>Shipping</small>
+
+          <strong>
+            Worldwide
+          </strong>
+
+          <small>
+            Shipping
+          </small>
+
         </div>
 
       </div>
+
 
     </div>
 
@@ -144,61 +195,108 @@
 
     <div class="hud-search-box">
 
-      <span class="hud-search-icon">⌕</span>
+      <span class="hud-search-icon">
+        ⌕
+      </span>
+
 
       <input
         id="productSearchInput"
         type="text"
         placeholder="Search for products, categories..."
+        autocomplete="off"
       >
+
 
       <button
         id="productSearchButton"
         type="button"
+        aria-label="Search"
       >
         →
       </button>
 
     </div>
 
+
   </div>
 
 
 
   <!-- =================================================
-       SHOPPING CART ILLUSTRATION
+       SHOPPING CART VISUAL
   ================================================= -->
 
   <div class="hud-shopping-illustration">
 
+
     <div class="hud-red-circle"></div>
 
+
+    <div class="hud-red-glow"></div>
+
+
+
     <div class="hud-shopping-bag bag-one">
-      🛍️
+
+      <span>
+        🛍️
+      </span>
+
     </div>
 
+
     <div class="hud-shopping-bag bag-two">
-      🎁
+
+      <span>
+        🎁
+      </span>
+
     </div>
+
+
 
     <div class="hud-cart">
 
+
       <div class="hud-cart-handle"></div>
+
 
       <div class="hud-cart-body">
 
-        <span>🛍️</span>
-        <span>📦</span>
-        <span>🎁</span>
+        <div class="hud-cart-line"></div>
+
+        <div class="hud-cart-line short"></div>
+
+        <div class="hud-cart-products">
+
+          <span>
+            📦
+          </span>
+
+          <span>
+            🎁
+          </span>
+
+          <span>
+            🛍️
+          </span>
+
+        </div>
 
       </div>
 
+
       <div class="hud-wheel wheel-one"></div>
+
       <div class="hud-wheel wheel-two"></div>
+
 
     </div>
 
+
   </div>
+
 
 </section>
 
@@ -235,8 +333,6 @@
   <div class="category-grid hud-category-grid">
 
 
-    <!-- HOME -->
-
     <div
       class="category-card hud-category-card"
       data-category="home"
@@ -248,11 +344,13 @@
         🏠
       </div>
 
+      <h3>
+        Home & Kitchen
+      </h3>
+
     </div>
 
 
-
-    <!-- GADGETS -->
 
     <div
       class="category-card hud-category-card"
@@ -265,11 +363,13 @@
         💡
       </div>
 
+      <h3>
+        Gadgets
+      </h3>
+
     </div>
 
 
-
-    <!-- WOOD -->
 
     <div
       class="category-card hud-category-card"
@@ -282,11 +382,13 @@
         🪵
       </div>
 
+      <h3>
+        Wood Products
+      </h3>
+
     </div>
 
 
-
-    <!-- TRENDING -->
 
     <div
       class="category-card hud-category-card"
@@ -298,6 +400,10 @@
       <div class="hud-category-icon">
         🔥
       </div>
+
+      <h3>
+        Trending
+      </h3>
 
     </div>
 
@@ -320,15 +426,18 @@
 
   <div class="section-heading hud-products-heading">
 
+
     <div>
 
       <p class="hud-section-mini">
         HOT PICKS
       </p>
 
+
       <h2>
         🔥 Trending Products
       </h2>
+
 
       <p class="hud-products-subtitle">
         High demand. Don't miss out!
@@ -337,12 +446,14 @@
     </div>
 
 
+
     <button
       id="viewAllBtn"
       type="button"
     >
       View All →
     </button>
+
 
   </div>
 
@@ -366,41 +477,54 @@
 
 <section class="hud-deal-section">
 
+
   <div class="hud-deal-banner">
 
-    <div>
+
+    <div class="hud-deal-content">
 
       <span class="hud-deal-label">
         LIMITED TIME
       </span>
+
 
       <h2>
         Best Deals.<br>
         Bigger Savings.
       </h2>
 
+
       <p>
         Grab trending products at great prices.
       </p>
 
+
+      <button
+        type="button"
+        onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
+      >
+        Shop Now →
+      </button>
+
     </div>
+
 
 
     <div class="hud-deal-offer">
-      UP TO<br>
-      <strong>50%</strong><br>
+
+      UP TO
+
+      <strong>
+        50%
+      </strong>
+
       OFF
+
     </div>
 
 
-    <button
-      type="button"
-      onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
-    >
-      Shop Now →
-    </button>
-
   </div>
+
 
 </section>
 
@@ -410,21 +534,110 @@
      FOOTER
 ===================================================== -->
 
-<footer id="about" class="hud-footer">
+<footer
+  id="about"
+  class="hud-footer"
+>
 
-  <div class="logo">
-    Product <span>HUD</span>
+
+  <div class="hud-footer-brand">
+
+    <img
+      src="product-hud-logo.png"
+      alt="Product HUD"
+      class="hud-footer-logo"
+    >
+
   </div>
+
 
   <p>
     Discover products. Build your business.
   </p>
 
+
   <p>
     © 2026 Product HUD
   </p>
 
+
 </footer>
+
+
+
+<!-- =====================================================
+     MOBILE BOTTOM NAV
+===================================================== -->
+
+<div class="hud-mobile-bottom-nav">
+
+
+  <a href="#top" class="active">
+
+    <span>
+      🏠
+    </span>
+
+    <small>
+      Home
+    </small>
+
+  </a>
+
+
+  <a href="#products">
+
+    <span>
+      ▦
+    </span>
+
+    <small>
+      Products
+    </small>
+
+  </a>
+
+
+  <a href="#categories">
+
+    <span>
+      🏷
+    </span>
+
+    <small>
+      Categories
+    </small>
+
+  </a>
+
+
+  <a href="saved.html">
+
+    <span>
+      🛒
+    </span>
+
+    <small>
+      Cart
+    </small>
+
+  </a>
+
+
+  <a href="login.html">
+
+    <span>
+      👤
+    </span>
+
+    <small>
+      Account
+    </small>
+
+  </a>
+
+
+</div>
 
 
 
@@ -454,83 +667,6 @@
 
 async function loadProductsFromSupabase() {
 
-  const productGrid =
-    document.getElementById("dynamicProductGrid");
-
-
-  if (!productGrid) return;
-
-
-  productGrid.innerHTML = "";
-
-
-  const { data, error } =
-    await supabaseClient
-      .from("products")
-      .select("*")
-      .order("created_at", {
-        ascending: false
-      });
-
-
-  if (error) {
-
-    console.error(
-      "Supabase error:",
-      error
-    );
-
-
-    const localProducts =
-      JSON.parse(
-        localStorage.getItem("adminProducts")
-      ) || [];
-
-
-    renderProducts(localProducts);
-
-    return;
-
-  }
-
-
-  const products = data || [];
-
-
-  /* Keep existing local product backup */
-
-  localStorage.setItem(
-    "adminProducts",
-
-    JSON.stringify(
-
-      products.map(product => ({
-
-        ...product,
-
-        image:
-          product.image_url || "",
-
-        gallery:
-          product.gallery_urls || ""
-
-      }))
-
-    )
-  );
-
-
-  renderProducts(products);
-
-}
-
-
-
-/* =====================================================
-   RENDER PRODUCTS
-===================================================== */
-
-function renderProducts(products) {
 
   const productGrid =
     document.getElementById(
@@ -544,99 +680,230 @@ function renderProducts(products) {
   productGrid.innerHTML = "";
 
 
-  products.forEach((product) => {
-
-
-    const productCard =
-      document.createElement("div");
-
-
-    productCard.className =
-      "product-card hud-product-card";
-
-
-    productCard.innerHTML = `
-
-      <div class="product-image">
-
-        <img
-          src="${product.image_url || product.image || ""}"
-          alt="${product.name || "Product"}"
-        >
-
-      </div>
-
-
-      <div class="product-info">
-
-        <h3>
-          ${product.name || "Product"}
-        </h3>
-
-
-        <p class="price">
-          ₹${product.price || "0"}
-        </p>
-
-
-        <p class="product-card-rating">
-          ⭐ ${product.rating || "0"} / 5
-        </p>
-
-
-        <a
-          href="product-details.html"
-          class="view-btn hud-view-btn"
-        >
-          View Product
-        </a>
-
-      </div>
-
-    `;
-
-
-
-    /* Existing View Product functionality */
-
-    const viewButton =
-      productCard.querySelector(
-        ".view-btn"
-      );
-
-
-    if (viewButton) {
-
-      viewButton.addEventListener(
-        "click",
-        function(e) {
-
-          e.preventDefault();
-
-
-          localStorage.setItem(
-
-            "adminProduct",
-
-            JSON.stringify(product)
-
-          );
-
-
-          window.location.href =
-            "product-details.html";
-
+  const { data, error } =
+    await supabaseClient
+      .from("products")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending: false
         }
       );
 
-    }
+
+  if (error) {
 
 
-    productGrid.appendChild(
-      productCard
+    console.error(
+      "Supabase error:",
+      error
     );
 
-  });
+
+    const localProducts =
+      JSON.parse(
+        localStorage.getItem(
+          "adminProducts"
+        )
+      ) || [];
+
+
+    renderProducts(
+      localProducts
+    );
+
+
+    return;
+
+  }
+
+
+  const products =
+    data || [];
+
+
+  localStorage.setItem(
+
+    "adminProducts",
+
+    JSON.stringify(
+
+      products.map(
+        product => ({
+
+          ...product,
+
+          image:
+            product.image_url || "",
+
+          gallery:
+            product.gallery_urls || ""
+
+        })
+      )
+
+    )
+
+  );
+
+
+  renderProducts(
+    products
+  );
+
+}
+
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts(products) {
+
+
+  const productGrid =
+    document.getElementById(
+      "dynamicProductGrid"
+    );
+
+
+  if (!productGrid) return;
+
+
+  productGrid.innerHTML = "";
+
+
+  products.forEach(
+    (product) => {
+
+
+      const productCard =
+        document.createElement(
+          "div"
+        );
+
+
+      productCard.className =
+        "product-card hud-product-card";
+
+
+      productCard.innerHTML = `
+
+        <div class="product-image">
+
+          <img
+            src="${product.image_url || product.image || ""}"
+            alt="${product.name || "Product"}"
+          >
+
+        </div>
+
+
+        <div class="product-info">
+
+
+          <div class="product-badge">
+            ${product.trending ? "Trending" : "Hot"}
+          </div>
+
+
+          <h3>
+            ${product.name || "Product"}
+          </h3>
+
+
+          <p class="product-card-rating">
+            ⭐ ${product.rating || "0"} / 5
+          </p>
+
+
+          <p class="price">
+            ₹${product.price || "0"}
+          </p>
+
+
+          ${
+            product.discount
+              ? `<p class="old-price">
+                   ₹${product.discount}
+                 </p>`
+              : ""
+          }
+
+
+          ${
+            product.estimated_profit
+              ? `<p class="profit">
+                   Estimated Profit:
+                   ${product.estimated_profit}
+                 </p>`
+              : ""
+          }
+
+
+          <a
+            href="product-details.html"
+            class="view-btn hud-view-btn"
+          >
+            View Product
+          </a>
+
+
+        </div>
+
+      `;
+
+
+
+      /* Existing View Product functionality */
+
+      const viewButton =
+        productCard.querySelector(
+          ".view-btn"
+        );
+
+
+      if (viewButton) {
+
+
+        viewButton.addEventListener(
+          "click",
+          function(e) {
+
+
+            e.preventDefault();
+
+
+            localStorage.setItem(
+
+              "adminProduct",
+
+              JSON.stringify(
+                product
+              )
+
+            );
+
+
+            window.location.href =
+              "product-details.html";
+
+
+          }
+        );
+
+      }
+
+
+      productGrid.appendChild(
+        productCard
+      );
+
+
+    }
+  );
 
 }
 
@@ -683,15 +950,19 @@ document.addEventListener(
 
         <div class="customer-menu hud-customer-menu">
 
+
           <button
             class="customer-btn"
             type="button"
           >
+
             👤 ${customerName}
+
           </button>
 
 
           <div class="customer-dropdown">
+
 
             <a href="my-orders.html">
               My Orders
@@ -710,7 +981,9 @@ document.addEventListener(
               Logout
             </a>
 
+
           </div>
+
 
         </div>
 
@@ -725,6 +998,7 @@ document.addEventListener(
 
       if (logoutBtn) {
 
+
         logoutBtn.addEventListener(
           "click",
           async function(e) {
@@ -733,7 +1007,9 @@ document.addEventListener(
             e.preventDefault();
 
 
-            await supabaseClient.auth.signOut();
+            await supabaseClient
+              .auth
+              .signOut();
 
 
             localStorage.removeItem(
@@ -748,6 +1024,7 @@ document.addEventListener(
 
             window.location.href =
               "index.html";
+
 
           }
         );
@@ -764,13 +1041,1820 @@ document.addEventListener(
 
 
 <!-- =====================================================
-     RED / BLACK MOBILE DESIGN
+     RED / BLACK DESIGN
 ===================================================== -->
 
 <style>
 
+
 /* =====================================================
-   GLOBAL RED BLACK MOBILE
+   GLOBAL
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+
+  margin: 0;
+
+  background:
+    #050505;
+
+  color:
+    #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x: hidden;
+
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.hud-navbar {
+
+  background:
+    rgba(5,5,5,0.96) !important;
+
+  border-bottom:
+    1px solid #2b2b2b;
+
+  min-height:
+    70px;
+
+  padding:
+    10px 5% !important;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    30px;
+
+  position:
+    relative;
+
+  z-index:
+    100;
+
+}
+
+
+.hud-brand {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  flex-shrink:
+    0;
+
+}
+
+
+.hud-logo-image {
+
+  width:
+    190px;
+
+  height:
+    58px;
+
+  object-fit:
+    contain;
+
+  display:
+    block;
+
+}
+
+
+.hud-navbar nav {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    28px;
+
+  flex:
+    1;
+
+}
+
+
+.hud-navbar nav a {
+
+  color:
+    #e8e8e8;
+
+  font-size:
+    14px;
+
+  transition:
+    0.2s;
+
+}
+
+
+.hud-navbar nav a:hover {
+
+  color:
+    #ff1f2d;
+
+}
+
+
+.login-btn {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  min-width:
+    96px;
+
+  height:
+    40px;
+
+  padding:
+    0 18px;
+
+  background:
+    #ff1727;
+
+  color:
+    #ffffff !important;
+
+  border-radius:
+    22px;
+
+  font-weight:
+    700;
+
+  box-shadow:
+    0 0 20px
+    rgba(255,20,40,0.18);
+
+}
+
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hud-hero {
+
+  position:
+    relative;
+
+  min-height:
+    520px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  padding:
+    65px 7%;
+
+  overflow:
+    hidden;
+
+  background:
+
+    radial-gradient(
+      circle at 78% 50%,
+      rgba(255,20,35,0.16),
+      transparent 32%
+    ),
+
+    linear-gradient(
+      135deg,
+      #030303 0%,
+      #080000 55%,
+      #180003 100%
+    );
+
+  border-bottom:
+    1px solid #3a1115;
+
+}
+
+
+.hud-hero::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+
+    linear-gradient(
+      125deg,
+      transparent 0 58%,
+      rgba(255,0,20,0.08) 59% 63%,
+      transparent 64%
+    );
+
+  pointer-events:
+    none;
+
+}
+
+
+.hud-hero::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    550px;
+
+  height:
+    550px;
+
+  right:
+    -160px;
+
+  top:
+    -100px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(255,0,25,0.08);
+
+  filter:
+    blur(70px);
+
+}
+
+
+.hud-hero-content {
+
+  position:
+    relative;
+
+  z-index:
+    10;
+
+  width:
+    52%;
+
+  max-width:
+    620px;
+
+}
+
+
+.hud-small-title {
+
+  color:
+    #ff1f2d;
+
+  font-size:
+    15px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    3px;
+
+  margin:
+    0 0 12px;
+
+}
+
+
+.hud-hero h1 {
+
+  margin:
+    0 0 18px;
+
+  font-size:
+    clamp(42px, 5vw, 72px);
+
+  line-height:
+    0.98;
+
+  color:
+    #ffffff;
+
+}
+
+
+.hud-hero h1 span {
+
+  color:
+    #ff1828;
+
+}
+
+
+.hud-hero-description {
+
+  color:
+    #c7c7c7;
+
+  font-size:
+    17px;
+
+  line-height:
+    1.5;
+
+  max-width:
+    520px;
+
+  margin:
+    0;
+
+}
+
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.hud-features {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    26px;
+
+  margin-top:
+    28px;
+
+}
+
+
+.hud-feature {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    9px;
+
+}
+
+
+.hud-feature-icon {
+
+  width:
+    46px;
+
+  height:
+    46px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid #3c3c3c;
+
+  border-radius:
+    50%;
+
+  background:
+    #0d0d0d;
+
+  font-size:
+    20px;
+
+}
+
+
+.hud-feature strong {
+
+  display:
+    block;
+
+  font-size:
+    12px;
+
+}
+
+
+.hud-feature small {
+
+  display:
+    block;
+
+  color:
+    #999;
+
+  font-size:
+    10px;
+
+  margin-top:
+    3px;
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.hud-search-box {
+
+  position:
+    relative;
+
+  z-index:
+    20;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  width:
+    100%;
+
+  max-width:
+    520px;
+
+  height:
+    55px;
+
+  margin-top:
+    27px;
+
+  padding:
+    0 6px 0 18px;
+
+  background:
+    #1a1d20;
+
+  border:
+    1px solid #414448;
+
+  border-radius:
+    30px;
+
+  box-shadow:
+    0 8px 35px
+    rgba(0,0,0,0.35);
+
+}
+
+
+.hud-search-icon {
+
+  color:
+    #ffffff;
+
+  font-size:
+    29px;
+
+  line-height:
+    1;
+
+  transform:
+    rotate(-20deg);
+
+  margin-right:
+    12px;
+
+}
+
+
+.hud-search-box input {
+
+  flex:
+    1;
+
+  min-width:
+    0;
+
+  border:
+    0;
+
+  outline:
+    none;
+
+  background:
+    transparent;
+
+  color:
+    #ffffff;
+
+  font-size:
+    15px;
+
+}
+
+
+.hud-search-box input::placeholder {
+
+  color:
+    #a6a6a6;
+
+}
+
+
+.hud-search-box button {
+
+  width:
+    46px;
+
+  height:
+    46px;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    #ff1c2b;
+
+  color:
+    #ffffff;
+
+  font-size:
+    25px;
+
+  cursor:
+    pointer;
+
+}
+
+
+
+/* =====================================================
+   SHOPPING CART VISUAL
+===================================================== */
+
+.hud-shopping-illustration {
+
+  position:
+    absolute;
+
+  right:
+    4%;
+
+  top:
+    40px;
+
+  width:
+    47%;
+
+  height:
+    430px;
+
+  z-index:
+    4;
+
+}
+
+
+.hud-red-circle {
+
+  position:
+    absolute;
+
+  width:
+    360px;
+
+  height:
+    360px;
+
+  right:
+    5%;
+
+  top:
+    20px;
+
+  border-radius:
+    50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(255,35,45,0.45),
+      rgba(120,0,10,0.12),
+      transparent 70%
+    );
+
+}
+
+
+.hud-red-glow {
+
+  position:
+    absolute;
+
+  width:
+    430px;
+
+  height:
+    120px;
+
+  right:
+    0;
+
+  bottom:
+    15px;
+
+  background:
+    rgba(255,0,20,0.16);
+
+  filter:
+    blur(35px);
+
+  border-radius:
+    50%;
+
+}
+
+
+/* cart */
+
+.hud-cart {
+
+  position:
+    absolute;
+
+  right:
+    4%;
+
+  top:
+    85px;
+
+  width:
+    390px;
+
+  height:
+    285px;
+
+  transform:
+    rotate(-2deg);
+
+}
+
+
+.hud-cart-handle {
+
+  position:
+    absolute;
+
+  left:
+    0;
+
+  top:
+    0;
+
+  width:
+    105px;
+
+  height:
+    85px;
+
+  border-left:
+    12px solid #ff1c2b;
+
+  border-top:
+    12px solid #ff1c2b;
+
+  border-radius:
+    22px 0 0 0;
+
+}
+
+
+.hud-cart-body {
+
+  position:
+    absolute;
+
+  right:
+    0;
+
+  top:
+    48px;
+
+  width:
+    325px;
+
+  height:
+    175px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #242424,
+      #070707
+    );
+
+  border:
+    7px solid #181818;
+
+  border-top:
+    9px solid #111;
+
+  border-radius:
+    8px 15px 25px 25px;
+
+  transform:
+    skewX(-8deg);
+
+  box-shadow:
+    inset 0 0 0 2px #4b4b4b,
+    0 20px 35px
+    rgba(0,0,0,0.5);
+
+}
+
+
+.hud-cart-line {
+
+  position:
+    absolute;
+
+  left:
+    35px;
+
+  top:
+    45px;
+
+  width:
+    250px;
+
+  height:
+    4px;
+
+  background:
+    #4d4d4d;
+
+}
+
+
+.hud-cart-line.short {
+
+  top:
+    90px;
+
+  width:
+    210px;
+
+}
+
+
+.hud-cart-products {
+
+  position:
+    absolute;
+
+  left:
+    30px;
+
+  top:
+    -95px;
+
+  width:
+    270px;
+
+  display:
+    flex;
+
+  justify-content:
+    space-around;
+
+  align-items:
+    flex-end;
+
+  font-size:
+    65px;
+
+}
+
+
+.hud-cart-products span:nth-child(2) {
+
+  transform:
+    translateY(-25px);
+
+}
+
+
+.hud-cart-products span:nth-child(3) {
+
+  transform:
+    translateY(-5px);
+
+}
+
+
+.hud-wheel {
+
+  position:
+    absolute;
+
+  bottom:
+    15px;
+
+  width:
+    43px;
+
+  height:
+    43px;
+
+  border-radius:
+    50%;
+
+  background:
+    #080808;
+
+  border:
+    8px solid #ff1c2b;
+
+  box-shadow:
+    0 0 0 3px #303030;
+
+}
+
+
+.wheel-one {
+
+  left:
+    100px;
+
+}
+
+
+.wheel-two {
+
+  right:
+    25px;
+
+}
+
+
+.hud-shopping-bag {
+
+  position:
+    absolute;
+
+  z-index:
+    8;
+
+  font-size:
+    65px;
+
+  filter:
+    drop-shadow(
+      0 8px 8px
+      rgba(0,0,0,0.5)
+    );
+
+}
+
+
+.bag-one {
+
+  right:
+    170px;
+
+  top:
+    15px;
+
+}
+
+
+.bag-two {
+
+  right:
+    70px;
+
+  top:
+    55px;
+
+  font-size:
+    50px;
+
+}
+
+
+
+/* =====================================================
+   CATEGORIES
+===================================================== */
+
+.hud-categories {
+
+  background:
+    #070707 !important;
+
+  padding:
+    55px 7%;
+
+}
+
+
+.hud-section-mini {
+
+  margin:
+    0 0 5px;
+
+  color:
+    #ff1c2b;
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    2px;
+
+}
+
+
+.hud-section-title h2 {
+
+  margin:
+    0 0 30px;
+
+  font-size:
+    36px;
+
+  color:
+    #ffffff;
+
+}
+
+
+.hud-category-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:
+    18px;
+
+}
+
+
+.hud-category-card {
+
+  min-height:
+    145px;
+
+  border:
+    1px solid #35171a;
+
+  border-radius:
+    15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151515,
+      #080808
+    );
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  transition:
+    0.25s;
+
+  cursor:
+    pointer;
+
+}
+
+
+.hud-category-card:hover {
+
+  transform:
+    translateY(-5px);
+
+  border-color:
+    #ff1c2b;
+
+  box-shadow:
+    0 10px 30px
+    rgba(255,0,20,0.15);
+
+}
+
+
+.hud-category-icon {
+
+  width:
+    65px;
+
+  height:
+    65px;
+
+  border-radius:
+    50%;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    #191919;
+
+  border:
+    1px solid #ff1c2b;
+
+  font-size:
+    30px;
+
+}
+
+
+.hud-category-card h3 {
+
+  margin:
+    13px 0 0;
+
+  color:
+    #ffffff;
+
+  font-size:
+    15px;
+
+}
+
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.hud-products {
+
+  background:
+    #050505 !important;
+
+  padding:
+    20px 7% 60px;
+
+}
+
+
+.hud-products-heading {
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  margin-bottom:
+    25px;
+
+}
+
+
+.hud-products-heading h2 {
+
+  margin:
+    0;
+
+  font-size:
+    34px;
+
+  color:
+    #ffffff;
+
+}
+
+
+.hud-products-subtitle {
+
+  margin:
+    7px 0 0;
+
+  color:
+    #999;
+
+}
+
+
+#viewAllBtn {
+
+  border:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    #ff1c2b;
+
+  font-size:
+    15px;
+
+  font-weight:
+    700;
+
+  cursor:
+    pointer;
+
+}
+
+
+.hud-product-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:
+    18px;
+
+}
+
+
+.hud-product-card {
+
+  position:
+    relative;
+
+  background:
+    #101417;
+
+  border:
+    1px solid #2c3337;
+
+  border-radius:
+    14px;
+
+  overflow:
+    hidden;
+
+  padding:
+    9px;
+
+  transition:
+    0.25s;
+
+}
+
+
+.hud-product-card:hover {
+
+  transform:
+    translateY(-4px);
+
+  border-color:
+    #ff1c2b;
+
+}
+
+
+.hud-product-card .product-image {
+
+  height:
+    190px;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    10px;
+
+  background:
+    #202020;
+
+}
+
+
+.hud-product-card .product-image img {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  display:
+    block;
+
+}
+
+
+.hud-product-card .product-info {
+
+  padding:
+    10px 3px 3px;
+
+}
+
+
+.product-badge {
+
+  display:
+    inline-block;
+
+  background:
+    #ff1727;
+
+  color:
+    #ffffff;
+
+  padding:
+    4px 9px;
+
+  border-radius:
+    20px;
+
+  font-size:
+    10px;
+
+  font-weight:
+    700;
+
+  margin-bottom:
+    6px;
+
+}
+
+
+.hud-product-card h3 {
+
+  color:
+    #ffffff;
+
+  font-size:
+    15px;
+
+  margin:
+    3px 0 7px;
+
+}
+
+
+.product-card-rating {
+
+  color:
+    #e6e6e6;
+
+  font-size:
+    12px;
+
+  margin:
+    0 0 5px;
+
+}
+
+
+.hud-product-card .price {
+
+  display:
+    inline-block;
+
+  color:
+    #ff1c2b;
+
+  font-size:
+    18px;
+
+  font-weight:
+    800;
+
+  margin:
+    0 5px 7px 0;
+
+}
+
+
+.old-price {
+
+  display:
+    inline-block;
+
+  color:
+    #888;
+
+  text-decoration:
+    line-through;
+
+  font-size:
+    12px;
+
+}
+
+
+.profit {
+
+  color:
+    #c9c9c9;
+
+  background:
+    #1b2023;
+
+  border-radius:
+    7px;
+
+  padding:
+    7px;
+
+  font-size:
+    10px;
+
+}
+
+
+.hud-view-btn {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  min-height:
+    42px;
+
+  width:
+    100%;
+
+  margin-top:
+    9px;
+
+  background:
+    #ff1727;
+
+  color:
+    #ffffff !important;
+
+  border-radius:
+    8px;
+
+  font-weight:
+    700;
+
+  font-size:
+    13px;
+
+}
+
+
+
+/* =====================================================
+   DEAL BANNER
+===================================================== */
+
+.hud-deal-section {
+
+  padding:
+    0 7% 65px;
+
+  background:
+    #050505;
+
+}
+
+
+.hud-deal-banner {
+
+  min-height:
+    190px;
+
+  border:
+    1px solid #542126;
+
+  border-radius:
+    15px;
+
+  padding:
+    28px 35px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  background:
+
+    linear-gradient(
+      125deg,
+      #080808,
+      #120003 60%,
+      #230006
+    );
+
+}
+
+
+.hud-deal-banner::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  width:
+    300px;
+
+  height:
+    300px;
+
+  right:
+    5%;
+
+  top:
+    -150px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(255,0,20,0.16);
+
+  filter:
+    blur(40px);
+
+}
+
+
+.hud-deal-label {
+
+  display:
+    inline-block;
+
+  padding:
+    5px 10px;
+
+  border-radius:
+    20px;
+
+  background:
+    #ff1727;
+
+  font-size:
+    11px;
+
+  font-weight:
+    800;
+
+}
+
+
+.hud-deal-content h2 {
+
+  margin:
+    10px 0 5px;
+
+  font-size:
+    28px;
+
+}
+
+
+.hud-deal-content p {
+
+  margin:
+    0 0 15px;
+
+  color:
+    #aaa;
+
+}
+
+
+.hud-deal-content button {
+
+  border:
+    0;
+
+  border-radius:
+    22px;
+
+  padding:
+    11px 20px;
+
+  background:
+    #ff1727;
+
+  color:
+    #ffffff;
+
+  font-weight:
+    700;
+
+}
+
+
+.hud-deal-offer {
+
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  text-align:
+    center;
+
+  color:
+    #ffffff;
+
+  font-size:
+    13px;
+
+}
+
+
+.hud-deal-offer strong {
+
+  display:
+    block;
+
+  color:
+    #ff1c2b;
+
+  font-size:
+    42px;
+
+  line-height:
+    0.9;
+
+}
+
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.hud-footer {
+
+  background:
+    #050505 !important;
+
+  border-top:
+    1px solid #302020;
+
+  padding:
+    35px 7%;
+
+  text-align:
+    center;
+
+  color:
+    #888;
+
+}
+
+
+.hud-footer-logo {
+
+  width:
+    180px;
+
+  height:
+    55px;
+
+  object-fit:
+    contain;
+
+}
+
+
+.hud-footer p {
+
+  margin:
+    7px 0;
+
+}
+
+
+
+/* =====================================================
+   CUSTOMER MENU
+===================================================== */
+
+.hud-customer-menu {
+
+  position:
+    relative;
+
+}
+
+
+.customer-btn {
+
+  border:
+    0;
+
+  background:
+    #171717;
+
+  color:
+    #ffffff;
+
+  padding:
+    10px 15px;
+
+  border-radius:
+    22px;
+
+  cursor:
+    pointer;
+
+}
+
+
+.customer-dropdown {
+
+  display:
+    none;
+
+  position:
+    absolute;
+
+  right:
+    0;
+
+  top:
+    48px;
+
+  width:
+    180px;
+
+  background:
+    #151515;
+
+  border:
+    1px solid #333;
+
+  border-radius:
+    10px;
+
+  overflow:
+    hidden;
+
+  z-index:
+    200;
+
+}
+
+
+.customer-menu:hover
+.customer-dropdown {
+
+  display:
+    block;
+
+}
+
+
+.customer-dropdown a {
+
+  display:
+    block;
+
+  padding:
+    12px 15px;
+
+  color:
+    #ffffff;
+
+}
+
+
+.customer-dropdown a:hover {
+
+  background:
+    #ff1727;
+
+}
+
+
+
+/* =====================================================
+   MOBILE BOTTOM NAV
+===================================================== */
+
+.hud-mobile-bottom-nav {
+
+  display:
+    none;
+
+}
+
+
+
+/* =====================================================
+   MOBILE
 ===================================================== */
 
 @media (max-width: 768px) {
@@ -778,477 +2862,675 @@ document.addEventListener(
 
   body {
 
-    background: #070707 !important;
+    background:
+      #050505 !important;
 
-    color: #ffffff;
-
-    overflow-x: hidden;
+    padding-bottom:
+      68px;
 
   }
 
-
-
-  /* ===================================================
-     NAVBAR
-  =================================================== */
 
   .hud-navbar {
 
-    background: #090909 !important;
-
-    border-bottom:
-      1px solid #262626 !important;
-
-    min-height: 62px;
+    min-height:
+      62px;
 
     padding:
-      10px 12px !important;
+      7px 12px !important;
+
+    justify-content:
+      space-between;
 
   }
 
 
-  .hud-navbar .logo {
+  .hud-logo-image {
 
-    color: #ffffff !important;
+    width:
+      145px;
 
-    font-size: 19px;
-
-  }
-
-
-  .hud-navbar .logo span {
-
-    color: #ff1f2d !important;
+    height:
+      47px;
 
   }
 
 
   .hud-navbar nav {
 
-    display: none !important;
+    display:
+      none !important;
 
   }
 
 
-  .hud-navbar #accountArea {
+  .login-btn {
 
-    margin-left: auto;
+    min-width:
+      76px;
+
+    height:
+      36px;
+
+    font-size:
+      12px;
+
+    padding:
+      0 13px;
 
   }
 
-
-
-  /* ===================================================
-     HERO
-  =================================================== */
 
   .hud-hero {
 
-    position: relative;
-
-    min-height: 530px;
+    min-height:
+      540px;
 
     padding:
-      34px 18px 20px !important;
+      32px 18px 20px !important;
 
-    background:
-
-      radial-gradient(
-        circle at 85% 35%,
-        rgba(255, 20, 35, 0.22),
-        transparent 35%
-      ),
-
-      linear-gradient(
-        145deg,
-        #050505,
-        #100002 55%,
-        #250006
-      );
-
-    overflow: hidden;
-
-    border-bottom:
-      1px solid #252525;
+    display:
+      block;
 
   }
 
 
   .hud-hero-content {
 
-    position: relative;
+    width:
+      100%;
 
-    z-index: 5;
-
-    max-width: 100%;
+    max-width:
+      none;
 
   }
 
 
   .hud-small-title {
 
-    color: #ff1f2d !important;
+    font-size:
+      11px;
 
-    font-size: 11px !important;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 8px;
+    letter-spacing:
+      2px;
 
   }
 
 
   .hud-hero h1 {
 
-    color: #ffffff !important;
+    font-size:
+      38px;
 
-    font-size: 36px !important;
-
-    line-height: 1.03 !important;
-
-    margin-bottom: 13px !important;
-
-  }
-
-
-  .hud-hero h1 span {
-
-    color: #ff1f2d !important;
+    line-height:
+      1.02;
 
   }
 
 
   .hud-hero-description {
 
-    color: #c7c7c7 !important;
+    font-size:
+      13px;
 
-    font-size: 13px !important;
-
-    line-height: 1.5;
-
-    max-width: 270px;
+    max-width:
+      285px;
 
   }
 
 
-
-  /* ===================================================
-     FEATURES
-  =================================================== */
-
   .hud-features {
 
-    display: flex;
+    gap:
+      8px;
 
-    gap: 10px;
-
-    margin-top: 17px;
-
-    position: relative;
-
-    z-index: 5;
+    margin-top:
+      15px;
 
   }
 
 
   .hud-feature {
 
-    display: flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-    min-width: 0;
+    gap:
+      4px;
 
   }
 
 
   .hud-feature-icon {
 
-    width: 31px;
+    width:
+      31px;
 
-    height: 31px;
+    height:
+      31px;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #151515;
-
-    border: 1px solid #333;
-
-    font-size: 14px;
+    font-size:
+      14px;
 
   }
 
 
   .hud-feature strong {
 
-    display: block;
-
-    color: #ffffff;
-
-    font-size: 9px;
+    font-size:
+      8px;
 
   }
 
 
   .hud-feature small {
 
-    display: block;
-
-    color: #888;
-
-    font-size: 7px;
+    font-size:
+      7px;
 
   }
 
 
+  .hud-search-box {
 
-  /* ===================================================
-     SHOPPING CART ILLUSTRATION
-  =================================================== */
+    margin-top:
+      22px;
+
+    height:
+      52px;
+
+  }
+
 
   .hud-shopping-illustration {
 
-    position: absolute;
+    right:
+      -24px;
 
-    right: -8px;
+    top:
+      185px;
 
-    top: 105px;
+    width:
+      190px;
 
-    width: 165px;
+    height:
+      205px;
 
-    height: 180px;
-
-    z-index: 1;
-
-    opacity: 0.95;
+    opacity:
+      0.92;
 
   }
 
 
   .hud-red-circle {
 
-    position: absolute;
+    width:
+      150px;
 
-    width: 125px;
+    height:
+      150px;
 
-    height: 125px;
-
-    right: 8px;
-
-    top: 10px;
-
-    border-radius: 50%;
-
-    background:
-
-      radial-gradient(
-        circle,
-        #ff2434,
-        #8d0010
-      );
-
-    opacity: 0.35;
+    right:
+      5px;
 
   }
 
 
   .hud-cart {
 
-    position: absolute;
-
-    right: 5px;
-
-    top: 55px;
-
-    width: 135px;
-
-    height: 90px;
-
     transform:
-      rotate(-4deg);
+      scale(0.57)
+      rotate(-2deg);
 
-  }
+    transform-origin:
+      top right;
 
+    right:
+      -8px;
 
-  .hud-cart-handle {
-
-    position: absolute;
-
-    left: 0;
-
-    top: 0;
-
-    width: 42px;
-
-    height: 30px;
-
-    border-top:
-      7px solid #ff1f2d;
-
-    border-left:
-      7px solid #ff1f2d;
-
-    border-radius:
-      12px 0 0 0;
-
-  }
-
-
-  .hud-cart-body {
-
-    position: absolute;
-
-    right: 0;
-
-    top: 18px;
-
-    width: 120px;
-
-    height: 65px;
-
-    background:
-      linear-gradient(
-        145deg,
-        #252525,
-        #080808
-      );
-
-    border:
-      3px solid #ff1f2d;
-
-    border-top:
-      5px solid #ff1f2d;
-
-    transform:
-      skewX(-8deg);
-
-    border-radius: 5px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-around;
-
-    font-size: 24px;
-
-  }
-
-
-  .hud-wheel {
-
-    position: absolute;
-
-    bottom: -13px;
-
-    width: 20px;
-
-    height: 20px;
-
-    border-radius: 50%;
-
-    background: #111;
-
-    border:
-      4px solid #ff1f2d;
-
-  }
-
-
-  .wheel-one {
-
-    left: 38px;
-
-  }
-
-
-  .wheel-two {
-
-    right: 15px;
+    top:
+      58px;
 
   }
 
 
   .hud-shopping-bag {
 
-    position: absolute;
-
-    font-size: 43px;
-
-    z-index: 2;
+    font-size:
+      42px;
 
   }
 
 
   .bag-one {
 
-    right: 70px;
+    right:
+      78px;
 
-    top: 12px;
+    top:
+      8px;
 
   }
 
 
   .bag-two {
 
-    right: 20px;
+    right:
+      20px;
 
-    top: 22px;
-
-    font-size: 35px;
-
-  }
-
-
-
-  /* ===================================================
-     SEARCH
-  =================================================== */
-
-  .hud-search-box {
-
-    position: relative;
-
-    z-index: 10;
-
-    display: flex;
-
-    align-items: center;
-
-    width: 100%;
-
-    height: 52px;
-
-    margin-top: 24px;
-
-    padding-left: 15px;
-
-    background: #1a1d20;
-
-    border:
-      1px solid #34373a;
-
-    border-radius: 28px;
-
-    box-shadow:
-      0 5px 25px
-      rgba(0,0,0,0.35);
-
-  }
-
-
-  .hud-search-icon {
-
-    color: #ffffff;
+    top:
+      22px;
 
     font-size:
+      34px;
+
+  }
+
+
+  .hud-categories {
+
+    padding:
+      30px 18px;
+
+  }
+
+
+  .hud-section-title h2 {
+
+    font-size:
+      28px;
+
+    margin-bottom:
+      20px;
+
+  }
+
+
+  .hud-category-grid {
+
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    gap:
+      7px;
+
+  }
+
+
+  .hud-category-card {
+
+    min-height:
+      92px;
+
+    border-radius:
+      11px;
+
+  }
+
+
+  .hud-category-icon {
+
+    width:
+      42px;
+
+    height:
+      42px;
+
+    font-size:
+      20px;
+
+  }
+
+
+  .hud-category-card h3 {
+
+    font-size:
+      8px;
+
+    text-align:
+      center;
+
+    margin-top:
+      7px;
+
+  }
+
+
+  .hud-products {
+
+    padding:
+      20px 15px 40px;
+
+  }
+
+
+  .hud-products-heading {
+
+    align-items:
+      flex-end;
+
+    margin-bottom:
+      17px;
+
+  }
+
+
+  .hud-products-heading h2 {
+
+    font-size:
+      24px;
+
+  }
+
+
+  .hud-products-subtitle {
+
+    font-size:
+      11px;
+
+  }
+
+
+  #viewAllBtn {
+
+    font-size:
+      12px;
+
+  }
+
+
+  .hud-product-grid {
+
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+
+    gap:
+      9px;
+
+  }
+
+
+  .hud-product-card {
+
+    padding:
+      6px;
+
+    border-radius:
+      10px;
+
+  }
+
+
+  .hud-product-card .product-image {
+
+    height:
+      125px;
+
+  }
+
+
+  .hud-product-card h3 {
+
+    font-size:
+      11px;
+
+  }
+
+
+  .product-card-rating {
+
+    font-size:
+      9px;
+
+  }
+
+
+  .hud-product-card .price {
+
+    font-size:
+      15px;
+
+  }
+
+
+  .profit {
+
+    font-size:
+      8px;
+
+    padding:
+      5px;
+
+  }
+
+
+  .hud-view-btn {
+
+    min-height:
+      36px;
+
+    font-size:
+      10px;
+
+  }
+
+
+  .hud-deal-section {
+
+    padding:
+      0 15px 35px;
+
+  }
+
+
+  .hud-deal-banner {
+
+    padding:
+      20px 18px;
+
+    min-height:
+      175px;
+
+  }
+
+
+  .hud-deal-content h2 {
+
+    font-size:
+      21px;
+
+  }
+
+
+  .hud-deal-content p {
+
+    font-size:
+      10px;
+
+  }
+
+
+  .hud-deal-offer {
+
+    font-size:
+      9px;
+
+  }
+
+
+  .hud-deal-offer strong {
+
+    font-size:
+      32px;
+
+  }
+
+
+  .hud-footer {
+
+    padding:
+      25px 15px 85px;
+
+  }
+
+
+  .hud-footer-logo {
+
+    width:
+      145px;
+
+  }
+
+
+  .hud-mobile-bottom-nav {
+
+    position:
+      fixed;
+
+    left:
+      0;
+
+    right:
+      0;
+
+    bottom:
+      0;
+
+    height:
+      67px;
+
+    background:
+      rgba(8,8,8,0.97);
+
+    border-top:
+      1px solid #292929;
+
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-around;
+
+    z-index:
+      999;
+
+    backdrop-filter:
+      blur(12px);
+
+  }
+
+
+  .hud-mobile-bottom-nav a {
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      center;
+
+    justify-content:
+      center;
+
+    gap:
+      3px;
+
+    color:
+      #a5a5a5;
+
+    font-size:
+      20px;
+
+    min-width:
+      58px;
+
+  }
+
+
+  .hud-mobile-bottom-nav a small {
+
+    font-size:
+      9px;
+
+  }
+
+
+  .hud-mobile-bottom-nav a.active {
+
+    color:
+      #ff1c2b;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+
+  .hud-logo-image {
+
+    width:
+      128px;
+
+  }
+
+
+  .hud-hero h1 {
+
+    font-size:
+      34px;
+
+  }
+
+
+  .hud-features {
+
+    gap:
+      5px;
+
+  }
+
+
+  .hud-feature strong {
+
+    font-size:
+      7px;
+
+  }
+
+
+  .hud-feature small {
+
+    font-size:
+      6px;
+
+  }
+
+
+  .hud-shopping-illustration {
+
+    right:
+      -42px;
+
+  }
+
+
+}
+
+</style>
+
+
+</body>
+
+</html>

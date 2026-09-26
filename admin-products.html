@@ -1056,11 +1056,65 @@
   }
 
 
-  function confirmDelete() {
+ async function confirmDelete() {
 
-    if (deleteIndex === -1) {
-      return;
+  if (deleteIndex === -1) {
+    return;
+  }
+
+  const product = products[deleteIndex];
+
+  if (!product || !product.id) {
+    alert("Product ID not found.");
+    return;
+  }
+
+  const deleteButton = document.querySelector(".yes-btn");
+
+  try {
+
+    deleteButton.disabled = true;
+    deleteButton.textContent = "Deleting...";
+
+    // Delete product from Supabase
+    const { error } = await supabaseClient
+      .from("products")
+      .delete()
+      .eq("id", product.id);
+
+    if (error) {
+      throw error;
     }
+
+    // Remove from local product list
+    products.splice(deleteIndex, 1);
+
+    localStorage.setItem(
+      "adminProducts",
+      JSON.stringify(products)
+    );
+
+    closeDeletePopup();
+    displayProducts();
+
+    alert("Product deleted successfully!");
+
+  } catch (error) {
+
+    console.error("Delete error:", error);
+
+    alert(
+      "Product delete failed:\n\n" +
+      error.message
+    );
+
+  } finally {
+
+    deleteButton.disabled = false;
+    deleteButton.textContent = "Yes, Delete";
+
+  }
+}
 
 
     /*

@@ -1117,32 +1117,6 @@
 }
 
 
-    /*
-      At this stage we only remove
-      from the current local display.
-      Supabase DELETE will be added
-      after DELETE policy is enabled.
-    */
-
-    products.splice(
-      deleteIndex,
-      1
-    );
-
-
-    localStorage.setItem(
-      "adminProducts",
-      JSON.stringify(products)
-    );
-
-
-    closeDeletePopup();
-
-    displayProducts();
-
-  }
-
-
   /* =========================================
      EDIT
   ========================================= */

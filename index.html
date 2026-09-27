@@ -2555,42 +2555,29 @@ document.addEventListener(
   }
 
 
-  .hud-product-grid {
+ .hud-product-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+  gap: 14px;
+  padding-bottom: 10px;
+}
 
-    display:
-      flex !important;
+.hud-product-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  flex: 0 0 auto !important;
+}
 
-    overflow-x:
-      auto;
+.hud-product-card .product-image img {
+  height: 190px;
+  object-fit: cover;
+}
 
-    gap:
-      12px;
-
-    padding-bottom:
-      10px;
-
-    scroll-snap-type:
-      x mandatory;
-
-  }
-
-
-  .hud-product-card {
-
-    min-width:
-      178px;
-
-    width:
-      178px;
-
-    flex:
-      0 0 178px;
-
-    scroll-snap-align:
-      start;
-
-  }
-
+.hud-product-card .product-info {
+  padding: 10px !important;
+}
 
   .hud-product-card .product-image img {
 

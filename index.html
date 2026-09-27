@@ -642,134 +642,41 @@ async function loadProductsFromSupabase() {
    RENDER PRODUCTS
 ===================================================== */
 
-function renderProducts(
-  products
-) {
-
-
-  const productGrid =
-    document.getElementById(
-      "dynamicProductGrid"
-    );
-
-
+function renderProducts(products) {
+  const productGrid = document.getElementById("dynamicProductGrid");
   if (!productGrid) return;
-
 
   productGrid.innerHTML = "";
 
+  products.forEach((product) => {
+    const productCard = document.createElement("div");
+    productCard.className = "product-card hud-product-card";
 
+    const image = product.image_url || product.image || "";
+    const name = product.name || "Product";
 
-  products.forEach(
-    (product) => {
+    productCard.innerHTML = `
+      <div class="product-image">
+        <img src="${image}" alt="${name}">
+      </div>
+      <div class="product-info">
+        <h3>${name}</h3>
+        <p class="price">₹${product.price || "0"}</p>
+        <p class="product-card-rating">⭐ ${product.rating || "0"} / 5</p>
+      </div>
+    `;
 
+    const openDetails = () => {
+      localStorage.setItem("adminProduct", JSON.stringify(product));
+      window.location.href = "product-details.html";
+    };
 
-      const productCard =
-        document.createElement(
-          "div"
-        );
+    productCard.querySelector(".product-image img").addEventListener("click", openDetails);
+    productCard.querySelector("h3").addEventListener("click", openDetails);
 
-
-      productCard.className =
-        "product-card hud-product-card";
-
-
-
-      productCard.innerHTML = `
-
-        <div class="product-image">
-
-          <img
-            src="${product.image_url || product.image || ""}"
-            alt="${product.name || "Product"}"
-          >
-
-        </div>
-
-
-        <div class="product-info">
-
-
-          <h3>
-            ${product.name || "Product"}
-          </h3>
-
-
-          <p class="price">
-            ₹${product.price || "0"}
-          </p>
-
-
-          <p class="product-card-rating">
-            ⭐ ${product.rating || "0"} / 5
-          </p>
-
-
-          <a
-            href="product-details.html"
-            class="view-btn hud-view-btn"
-          >
-            View Product
-          </a>
-
-
-        </div>
-
-      `;
-
-
-
-      const viewButton =
-        productCard.querySelector(
-          ".view-btn"
-        );
-
-
-
-      if (viewButton) {
-
-
-        viewButton.addEventListener(
-          "click",
-          function(e) {
-
-
-            e.preventDefault();
-
-
-            localStorage.setItem(
-
-              "adminProduct",
-
-              JSON.stringify(
-                product
-              )
-
-            );
-
-
-            window.location.href =
-              "product-details.html";
-
-
-          }
-        );
-
-      }
-
-
-
-      productGrid.appendChild(
-        productCard
-      );
-
-
-    }
-  );
-
-
+    productGrid.appendChild(productCard);
+  });
 }
-
 
 
 /* Load products */

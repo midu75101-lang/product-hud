@@ -2771,6 +2771,47 @@ document.addEventListener(
     word-break: break-word !important;
   }
 }
+  /* PRODUCT HUD - MOBILE FULL WIDTH 3 COLUMN FIX */
+@media screen and (max-width: 600px) {
+
+  #dynamicProductGrid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+    width: calc(100vw - 28px) !important;
+    max-width: none !important;
+
+    margin-left: calc(50% - 50vw + 14px) !important;
+    margin-right: 0 !important;
+
+    padding: 0 !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  #dynamicProductGrid .hud-product-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  #dynamicProductGrid .hud-product-card img {
+    width: 100% !important;
+    height: 125px !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  #dynamicProductGrid .hud-product-card h3,
+  #dynamicProductGrid .hud-product-card p {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+}
 </style>
 
 

@@ -2733,7 +2733,63 @@ document.addEventListener(
     padding-bottom: 62px;
   }
 }
- 
+ /* PRODUCT HUD - COMPACT 3 COLUMN PRODUCT GRID */
+
+#dynamicProductGrid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+    overflow: visible !important;
+}
+
+#dynamicProductGrid .hud-product-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid #292d34;
+    border-radius: 10px;
+    background: #101419;
+    color: #ffffff;
+}
+
+#dynamicProductGrid .hud-product-card img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+#dynamicProductGrid .hud-product-card h3,
+#dynamicProductGrid .hud-product-card p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+#dynamicProductGrid .hud-product-card h3 {
+    font-size: 12px !important;
+    line-height: 1.35;
+    margin: 6px;
+}
+
+#dynamicProductGrid .hud-product-card p {
+    font-size: 12px !important;
+    margin: 5px 6px;
+}
+
+@media (max-width: 600px) {
+    #dynamicProductGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+    }
+}
 </style>
 
 

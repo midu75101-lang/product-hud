@@ -2733,62 +2733,43 @@ document.addEventListener(
     padding-bottom: 62px;
   }
 }
-/* PRODUCT HUD - FULL WIDTH 3 COLUMN GRID */
+/* PRODUCT HUD - MOBILE 3 COLUMN FIX */
+@media (max-width: 600px) {
 
-#dynamicProductGrid {
+  #dynamicProductGrid {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    max-width: 100% !important;
     gap: 8px !important;
-
-    width: calc(100vw - 28px) !important;
-    max-width: none !important;
-    margin-left: calc(50% - 50vw + 14px) !important;
-
-    padding: 0 !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
     box-sizing: border-box !important;
-    overflow: visible !important;
-}
+    justify-content: stretch !important;
+    align-items: stretch !important;
+  }
 
-#dynamicProductGrid .hud-product-card {
+  #dynamicProductGrid .hud-product-card {
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
     margin: 0 !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
+  }
 
-    background: #101419 !important;
-    color: #ffffff !important;
-    border: 1px solid #292d34 !important;
-    border-radius: 10px !important;
-}
-
-#dynamicProductGrid .hud-product-card img {
+  #dynamicProductGrid .hud-product-card img {
     width: 100% !important;
-    aspect-ratio: 1 / 1 !important;
-    height: auto !important;
+    height: 105px !important;
     object-fit: cover !important;
-}
+    display: block !important;
+  }
 
-#dynamicProductGrid .hud-product-card h3 {
-    font-size: 11px !important;
-    line-height: 1.35 !important;
-    margin: 6px !important;
-    overflow-wrap: break-word !important;
-    word-break: normal !important;
-}
-
-#dynamicProductGrid .hud-product-card p {
-    font-size: 11px !important;
-    margin: 5px 6px !important;
-    overflow-wrap: break-word !important;
-}
-
-@media (max-width: 600px) {
-    #dynamicProductGrid {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 7px !important;
-    }
+  #dynamicProductGrid .hud-product-card h3,
+  #dynamicProductGrid .hud-product-card p {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
 }
 </style>
 

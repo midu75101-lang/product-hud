@@ -110,11 +110,7 @@ if (savedProduct) {
   if (discount) discount.textContent =
     (savedProduct.discount || "0") + "%";
 
-  // Estimated Profit
-  const profit = document.getElementById("productProfitDisplay");
-  if (profit) profit.textContent =
-    "💰 Estimated Profit: " + (savedProduct.profit || "Not set");
-
+  
   // Product Image
   const gallery = document.getElementById("productGallery");
 

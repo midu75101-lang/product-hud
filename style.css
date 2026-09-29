@@ -853,7 +853,7 @@ footer p {
   .hero {
     width: 100%;
     min-height: auto;
-    padding: 30px 12px;
+    padding: 20px 12px 0;
     text-align: left;
   }
 
@@ -898,7 +898,7 @@ footer p {
   /* Categories */
 
   .categories {
-    padding: 22px 12px;
+    padding: 8px 12px 22px;
   }
 
   .categories h2 {
